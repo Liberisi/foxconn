@@ -1,0 +1,21 @@
+/**
+ * 支持 Balser, Daheng
+ */
+
+#ifndef SSVISION
+#define SSVISION
+
+#include <camera.h>
+#include <baslercamera.h>
+
+#include <serialport.h>
+#include <qtserialport.h>
+
+#include <logger.h>
+#include <datefilelogger.h>
+
+#include <robotictcpserver.h>
+
+#include <datacode.h>
+
+#endif // SSVISION

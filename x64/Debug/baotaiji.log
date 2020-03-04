@@ -1,0 +1,367 @@
+﻿生成启动时间为 2019/12/29 19:16:28。
+     1>项目“M:\baotaiji_20191210 - 副本\baotaiji-master\baotaiji.vcxproj”在节点 2 上(Build 个目标)。
+     1>CustomBuild:
+         Moc'ing about.h...
+         Moc'ing baojitai.h...
+         Moc'ing camera_config_dialog.h...
+         Moc'ing communication.h...
+         Moc'ing fid_cmc_socket.h...
+         Moc'ing frame_dialog.h...
+         Moc'ing halcon_widget.h...
+         Moc'ing item_information_center.h...
+         Moc'ing location_config.h...
+         Moc'ing main_window.h...
+         Moc'ing material_product_dialog.h...
+         Moc'ing plc_config_dialog.h...
+         Moc'ing position_calibrate.h...
+         Moc'ing reading_code_config.h...
+         Moc'ing save_config_dialog.h...
+         Uic'ing about.ui...
+         Uic'ing camera_config_dialog.ui...
+         Uic'ing communication.ui...
+         Uic'ing config_save.ui...
+         Uic'ing frame_dialog.ui...
+         Uic'ing location_config.ui...
+         Uic'ing main_window.ui...
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\main_window.ui : warning : Z-order assignment: 'verticalSpacer_6' is not a valid widget.
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\main_window.ui : warning : Z-order assignment: 'verticalSpacer_7' is not a valid widget.
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\main_window.ui : warning : Z-order assignment: 'verticalSpacer_10' is not a valid widget.
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\main_window.ui : warning : Z-order assignment: 'verticalSpacer_4' is not a valid widget.
+         Uic'ing material_product_dialog.ui...
+         Uic'ing plc_config_dialog.ui...
+         Uic'ing position_calibrate.ui...
+         Uic'ing reading_code_config.ui...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_about.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_about.cpp, Release\moc_about.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_baojitai.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_baojitai.cpp, Release\moc_baojitai.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_camera_config_dialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_camera_config_dialog.cpp, Release\moc_camera_config_dialog.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_communication.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_communication.cpp, Release\moc_communication.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_fid_cmc_socket.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_fid_cmc_socket.cpp, Release\moc_fid_cmc_socket.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_frame_dialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_frame_dialog.cpp, Release\moc_frame_dialog.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_halcon_widget.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_halcon_widget.cpp, Release\moc_halcon_widget.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_item_information_center.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_item_information_center.cpp, Release\moc_item_information_center.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_location_config.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_location_config.cpp, Release\moc_location_config.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_main_window.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_main_window.cpp, Release\moc_main_window.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_material_product_dialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_material_product_dialog.cpp, Release\moc_material_product_dialog.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_plc_config_dialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_plc_config_dialog.cpp, Release\moc_plc_config_dialog.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_position_calibrate.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_position_calibrate.cpp, Release\moc_position_calibrate.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_reading_code_config.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_reading_code_config.cpp, Release\moc_reading_code_config.cpp.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_save_config_dialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are Debug\moc_save_config_dialog.cpp, Release\moc_save_config_dialog.cpp.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I. /ID:\HALCON\include /ID:\OPENCV\opencv\build\include /ID:\BASLER\development\include /ID:\MX\Act\Include /Issvision /ID:\QT\5.6.3\msvc2013_64\include /ID:\QT\5.6.3\msvc2013_64\include\ActiveQt /ID:\QT\5.6.3\msvc2013_64\include\QtWidgets /ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras /ID:\QT\5.6.3\msvc2013_64\include\QtGui /ID:\QT\5.6.3\msvc2013_64\include\QtANGLE /ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort /ID:\QT\5.6.3\msvc2013_64\include\QtNetwork /ID:\QT\5.6.3\msvc2013_64\include\QtSql /ID:\QT\5.6.3\msvc2013_64\include\QtCore /Idebug /I. /I"D:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" /I.\GeneratedFiles /Zi /nologo /W3 /WX- /Od /D _WINDOWS /D UNICODE /D WIN32 /D WIN64 /D QT_AXCONTAINER_LIB /D QT_AXBASE_LIB /D QT_WIDGETS_LIB /D QT_WINEXTRAS_LIB /D QT_GUI_LIB /D QT_SERIALPORT_LIB /D QT_NETWORK_LIB /D QT_SQL_LIB /D QT_CORE_LIB /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt -w34100 -w34189 -w44996 ActUtlType.cpp about.cpp baojitai.cpp camera_config_dialog.cpp communication.cpp datetime_filesystem.cpp Debug\moc_about.cpp Debug\moc_baojitai.cpp Debug\moc_camera_config_dialog.cpp Debug\moc_communication.cpp Debug\moc_fid_cmc_socket.cpp Debug\moc_frame_dialog.cpp Debug\moc_halcon_widget.cpp Debug\moc_item_information_center.cpp Debug\moc_location_config.cpp Debug\moc_main_window.cpp Debug\moc_material_product_dialog.cpp Debug\moc_plc_config_dialog.cpp Debug\moc_position_calibrate.cpp Debug\moc_reading_code_config.cpp Debug\moc_save_config_dialog.cpp fid_cmc_socket.cpp fidparser.cpp frame_dialog.cpp frameparam.cpp halcon_tools.cpp halcon_widget.cpp item_information_center.cpp location_config.cpp main.cpp main_window.cpp material_product_dialog.cpp material_product_map.cpp plc_config_dialog.cpp position_calibrate.cpp product.cpp reading_code_config.cpp save_config_dialog.cpp saveconfig.cpp serial_port_manager.cpp
+         ActUtlType.cpp
+         about.cpp
+         baojitai.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>baojitai.cpp(268): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(780): warning C4100: “camera”: 未引用的形参
+     1>baojitai.cpp(1042): warning C4258: “i”: 忽略 For 循环中的定义；使用封闭范围中的定义
+                 baojitai.cpp(1030) : 忽略“i”的定义
+                 baojitai.cpp(1014) : 使用“i”的定义
+     1>baojitai.cpp(1918): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2026): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2142): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2165): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2201): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2227): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2395): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+     1>baojitai.cpp(2423): warning C4100: “fid_cmc_socket”: 未引用的形参
+     1>baojitai.cpp(2428): warning C4100: “cmc_client”: 未引用的形参
+     1>baojitai.cpp(2458): warning C4100: “ip_str”: 未引用的形参
+     1>baojitai.cpp(2458): warning C4100: “item_info_center”: 未引用的形参
+     1>baojitai.cpp(2462): warning C4100: “ip_str”: 未引用的形参
+     1>baojitai.cpp(2462): warning C4100: “item_info_center”: 未引用的形参
+     1>baojitai.cpp(2466): warning C4100: “ng_reason”: 未引用的形参
+     1>baojitai.cpp(2466): warning C4100: “is_ng”: 未引用的形参
+     1>baojitai.cpp(2466): warning C4100: “name”: 未引用的形参
+         camera_config_dialog.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         communication.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         datetime_filesystem.cpp
+         moc_about.cpp
+         moc_baojitai.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_camera_config_dialog.cpp
+         moc_communication.cpp
+         moc_fid_cmc_socket.cpp
+         moc_frame_dialog.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_halcon_widget.cpp
+         moc_item_information_center.cpp
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\debug\../item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_location_config.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_main_window.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_material_product_dialog.cpp
+         moc_plc_config_dialog.cpp
+         moc_position_calibrate.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_reading_code_config.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         正在生成代码...
+         正在编译...
+         moc_save_config_dialog.cpp
+         fid_cmc_socket.cpp
+         fidparser.cpp
+     1>fidparser.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         frame_dialog.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>frame_dialog.cpp(179): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(185): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(191): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(197): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(203): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(209): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(215): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(322): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(328): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(334): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(340): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(346): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(352): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(358): warning C4100: “arg1”: 未引用的形参
+     1>frame_dialog.cpp(364): warning C4100: “arg1”: 未引用的形参
+         frameparam.cpp
+         halcon_tools.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>halcon_tools.cpp(402): warning C4100: “out_edges”: 未引用的形参
+     1>halcon_tools.cpp(547): warning C4100: “draw_rect”: 未引用的形参
+         halcon_widget.cpp
+         item_information_center.cpp
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         location_config.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>location_config.cpp(79): warning C4189: “height_mm”: 局部变量已初始化但不引用
+     1>location_config.cpp(76): warning C4189: “width_mm”: 局部变量已初始化但不引用
+     1>location_config.cpp(123): warning C4189: “height”: 局部变量已初始化但不引用
+     1>location_config.cpp(122): warning C4189: “width”: 局部变量已初始化但不引用
+     1>location_config.cpp(186): warning C4100: “robotic_tcp_server”: 未引用的形参
+         main.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         main_window.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>main_window.cpp(412): warning C4100: “iconText”: 未引用的形参
+     1>main_window.cpp(478): warning C4100: “link”: 未引用的形参
+     1>main_window.cpp(801): warning C4100: “device_name”: 未引用的形参
+     1>main_window.cpp(1381): warning C4100: “checked”: 未引用的形参
+         material_product_dialog.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+         material_product_map.cpp
+         plc_config_dialog.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>plc_config_dialog.cpp(62): warning C4189: “iRet”: 局部变量已初始化但不引用
+     1>plc_config_dialog.cpp(74): warning C4189: “iRet”: 局部变量已初始化但不引用
+         position_calibrate.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>position_calibrate.cpp(88): warning C4305: “初始化”: 从“double”到“float”截断
+     1>position_calibrate.cpp(57): warning C4100: “robotic_tcp_server”: 未引用的形参
+     1>position_calibrate.cpp(401): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+         product.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         reading_code_config.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\product.h(144): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+     1>m:\baotaiji_20191210 - 副本\baotaiji-master\item_information_center.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>reading_code_config.cpp(130): warning C4100: “widget”: 未引用的形参
+     1>reading_code_config.cpp(453): warning C4100: “checked”: 未引用的形参
+     1>reading_code_config.cpp(461): warning C4100: “checked”: 未引用的形参
+         save_config_dialog.cpp
+         saveconfig.cpp
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         serial_port_manager.cpp
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>M:\baotaiji_20191210 - 副本\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         正在生成代码...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"debug\\baotaiji.exe" /NOLOGO /LIBPATH:D:\QT\5.6.3\msvc2013_64\lib /LIBPATH:C:\utils\my_sql\my_sql\lib /LIBPATH:C:\utils\postgresql\pgsql\lib /LIBPATH:D:\QT\5.6.3\msvc2013_64\lib /LIBPATH:"D:\HALCON\lib\x64-win64" /LIBPATH:D:\BASLER\development\lib\x64 /LIBPATH:ssvision\debug /LIBPATH:D:\OPENCV\opencv\build\x64\vc12\lib /LIBPATH:D:\QT\5.6.3\msvc2013_64\lib \lib\D:\QT\5.6.3\msvc2013_64\lib\qtmaind.lib shell32.lib "D:\HALCON\lib\x64-win64\halconcpp.lib" D:\BASLER\development\lib\x64\GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib ssvision\debug\ssvision.lib D:\OPENCV\opencv\build\x64\vc12\lib\opencv_world300d.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5AxContainerd.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5AxBased.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Widgetsd.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Guid.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Cored.lib ole32.lib oleaut32.lib user32.lib gdi32.lib advapi32.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Widgetsd.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5WinExtrasd.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Guid.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5SerialPortd.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Networkd.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Sqld.lib \lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Cored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"debug\baotaiji.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /MACHINE:X64 "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" x64\Debug\ActUtlType.obj
+         x64\Debug\about.obj
+         x64\Debug\baojitai.obj
+         x64\Debug\camera_config_dialog.obj
+         x64\Debug\communication.obj
+         x64\Debug\datetime_filesystem.obj
+         x64\Debug\moc_about.obj
+         x64\Debug\moc_baojitai.obj
+         x64\Debug\moc_camera_config_dialog.obj
+         x64\Debug\moc_communication.obj
+         x64\Debug\moc_fid_cmc_socket.obj
+         x64\Debug\moc_frame_dialog.obj
+         x64\Debug\moc_halcon_widget.obj
+         x64\Debug\moc_item_information_center.obj
+         x64\Debug\moc_location_config.obj
+         x64\Debug\moc_main_window.obj
+         x64\Debug\moc_material_product_dialog.obj
+         x64\Debug\moc_plc_config_dialog.obj
+         x64\Debug\moc_position_calibrate.obj
+         x64\Debug\moc_reading_code_config.obj
+         x64\Debug\moc_save_config_dialog.obj
+         x64\Debug\fid_cmc_socket.obj
+         x64\Debug\fidparser.obj
+         x64\Debug\frame_dialog.obj
+         x64\Debug\frameparam.obj
+         x64\Debug\halcon_tools.obj
+         x64\Debug\halcon_widget.obj
+         x64\Debug\item_information_center.obj
+         x64\Debug\location_config.obj
+         x64\Debug\main.obj
+         x64\Debug\main_window.obj
+         x64\Debug\material_product_dialog.obj
+         x64\Debug\material_product_map.obj
+         x64\Debug\plc_config_dialog.obj
+         x64\Debug\position_calibrate.obj
+         x64\Debug\product.obj
+         x64\Debug\reading_code_config.obj
+         x64\Debug\save_config_dialog.obj
+         x64\Debug\saveconfig.obj
+         x64\Debug\serial_port_manager.obj
+     1>LINK : fatal error LNK1104: 无法打开文件“\lib\D:\QT\5.6.3\msvc2013_64\lib\qtmaind.lib”
+     1>已完成生成项目“M:\baotaiji_20191210 - 副本\baotaiji-master\baotaiji.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:01:11.39

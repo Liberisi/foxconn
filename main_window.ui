@@ -1,0 +1,2323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1213</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>93</red>
+        <green>93</green>
+        <blue>93</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
+  <property name="font">
+   <font>
+    <family>新宋体</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>抱机台</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(151, 151, 151);</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="top_menu" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>96</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(71, 71, 71);</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>9</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_2" native="true"/>
+       </item>
+       <item>
+        <widget class="QAxWidget" name="axWidget"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_3" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QToolButton" name="main_btn">
+            <property name="font">
+             <font>
+              <family>微软雅黑 Light</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(251, 251, 251);</string>
+            </property>
+            <property name="text">
+             <string>主界面</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>images/main_main.png</normaloff>images/main_main.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>45</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="pro_btn">
+            <property name="font">
+             <font>
+              <family>微软雅黑 Light</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(251, 251, 251);</string>
+            </property>
+            <property name="text">
+             <string>产品管理</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>images/main_company.png</normaloff>images/main_company.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>45</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="sty_btn">
+            <property name="font">
+             <font>
+              <family>微软雅黑 Light</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(251, 251, 251);</string>
+            </property>
+            <property name="text">
+             <string>系统设置</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>images/main_config.png</normaloff>images/main_config.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>45</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="help_btn">
+            <property name="font">
+             <font>
+              <family>微软雅黑 Light</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(251, 251, 251);</string>
+            </property>
+            <property name="text">
+             <string>关于</string>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>images/main_person.png</normaloff>images/main_person.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>45</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Preferred</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>602</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_4" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QWidget" name="widget_5" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_6" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>5</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="main">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QWidget" name="console" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>2</number>
+           </property>
+           <item row="9" column="0">
+            <widget class="QWidget" name="widget_13" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>y</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_y_offset">
+                <property name="minimum">
+                 <number>-200</number>
+                </property>
+                <property name="maximum">
+                 <number>200</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QWidget" name="widget_14" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>20</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_18">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_4">
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>rz</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_rz_offset">
+                <property name="minimum">
+                 <number>-30</number>
+                </property>
+                <property name="maximum">
+                 <number>30</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QWidget" name="widget_12" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="maximumSize">
+                 <size>
+                  <width>20</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>x</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_x_offset">
+                <property name="minimum">
+                 <number>-100</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="16" column="0">
+            <widget class="QCheckBox" name="checkBox_close_fid">
+             <property name="text">
+              <string>关闭读fid</string>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="0">
+            <widget class="QToolButton" name="toolButton_send_undo_0">
+             <property name="text">
+              <string> UNDO 0 </string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>2</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0">
+            <widget class="QPushButton" name="pushButton_send_AAAAAA">
+             <property name="text">
+              <string>AAAAAA</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QCheckBox" name="checkBox_close_location">
+             <property name="text">
+              <string>关闭定位</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QCheckBox" name="checkBox_offline">
+             <property name="text">
+              <string>离线模式</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QCheckBox" name="checkBox_close_tid">
+             <property name="text">
+              <string>关闭读tid</string>
+             </property>
+            </widget>
+           </item>
+           <item row="21" column="0">
+            <widget class="QToolButton" name="toolButton_start">
+             <property name="minimumSize">
+              <size>
+               <width>91</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>启动</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/power_64px_1175644_easyicon.net.png</normaloff>images/power_64px_1175644_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>45</width>
+               <height>45</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="0">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>214</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="24" column="0">
+            <widget class="QToolButton" name="toolButton_reset">
+             <property name="minimumSize">
+              <size>
+               <width>91</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>复位</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/refresh_64px_1165521_easyicon.net.png</normaloff>images/refresh_64px_1165521_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>45</width>
+               <height>45</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QToolButton" name="toolButton_change_product">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>20</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>91</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>切换型号</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_current_product">
+             <property name="text">
+              <string>未选择</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QComboBox" name="comboBox_product_list">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>91</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(251, 251, 251);</string>
+             </property>
+            </widget>
+           </item>
+           <item row="23" column="0">
+            <widget class="QToolButton" name="toolButton_stop">
+             <property name="minimumSize">
+              <size>
+               <width>91</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>停止</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/stop_64px_1229026_easyicon.net.png</normaloff>images/stop_64px_1229026_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>45</width>
+               <height>45</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>80</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>当前产品型号</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="0">
+            <widget class="QCheckBox" name="checkBox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>收发流水板码</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QCheckBox" name="checkBox_close_sn">
+             <property name="text">
+              <string>关闭读sn</string>
+             </property>
+            </widget>
+           </item>
+           <item row="22" column="0">
+            <widget class="QLabel" name="label_repair_mode">
+             <property name="text">
+              <string>正常模式</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="im_display" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>190</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>190</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>信息显示</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListView" name="listView_info"/>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButton_9">
+             <property name="text">
+              <string>计数清零</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/Refresh_48px_1186205_easyicon.net.png</normaloff>images/Refresh_48px_1186205_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>35</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="signal_display" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QTabWidget" name="tabWidget">
+             <property name="currentIndex">
+              <number>3</number>
+             </property>
+             <widget class="QWidget" name="pos_visual_angle">
+              <attribute name="title">
+               <string>定位视角</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_17">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="tab_location" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="HalconWidget" name="widget_image_location" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_location_result">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: white;
+background-color: black;</string>
+                    </property>
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="margin">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="data_collect_visual_angle">
+              <attribute name="title">
+               <string>数据采集视角</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_18">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="tab_reading_code" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="HalconWidget" name="widget_reading_code" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_reading_code_result">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: white;
+background-color: black;</string>
+                    </property>
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="frame_angle">
+              <attribute name="title">
+               <string>支架视角</string>
+              </attribute>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QWidget" name="tab_check_frame" native="true">
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="HalconWidget" name="widget_image_check_frame" native="true"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_check_frame_result">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: white;
+background-color: black;</string>
+                    </property>
+                    <property name="text">
+                     <string>TextLabel</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_3">
+              <attribute name="title">
+               <string>NG表格</string>
+              </attribute>
+              <widget class="QWidget" name="widget_21" native="true">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>671</width>
+                 <height>531</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_10">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QTableView" name="tableView_ng"/>
+                </item>
+                <item>
+                 <widget class="QWidget" name="widget_22" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_25">
+                   <item>
+                    <widget class="QPushButton" name="pushButton_clear_ng_table">
+                     <property name="text">
+                      <string>清空</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_export_ng_table">
+                     <property name="text">
+                      <string>导出</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_ng_table_export_path">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>420</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="PM">
+       <layout class="QVBoxLayout" name="verticalLayout_15">
+        <item>
+         <widget class="QWidget" name="widget_8" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>440</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QGroupBox" name="groupBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>型号管理</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QWidget" name="widget_11" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_11">
+                   <property name="text">
+                    <string>创建型号</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_3">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>69</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_28" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_create">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(251, 251, 251);</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_9" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_15">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_13">
+                   <property name="text">
+                    <string>切换型号</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>69</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="switch_model">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(251, 251, 251);</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_29" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>当前型号</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>69</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_30" native="true">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_12">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_current">
+                   <property name="focusPolicy">
+                    <enum>Qt::NoFocus</enum>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(251, 251, 251);</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>27</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_31" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QToolButton" name="toolButton_create">
+                   <property name="text">
+                    <string>创建型号</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>images/folder_201px_1201752_easyicon.net.png</normaloff>images/folder_201px_1201752_easyicon.net.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>45</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="toolButtonStyle">
+                    <enum>Qt::ToolButtonTextUnderIcon</enum>
+                   </property>
+                   <property name="autoRaise">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>26</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_32" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_14">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QToolButton" name="toolButton_change">
+                   <property name="text">
+                    <string>切换型号</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>images/folder_198px_1201767_easyicon.net.png</normaloff>images/folder_198px_1201767_easyicon.net.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>45</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="toolButtonStyle">
+                    <enum>Qt::ToolButtonTextUnderIcon</enum>
+                   </property>
+                   <property name="autoRaise">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_20" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_24">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_3">
+                   <property name="text">
+                    <string>扫码换机种</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_select_scan_dir">
+                   <property name="text">
+                    <string>选择扫描目录</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_select_scan_dir">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_19" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_23">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_10">
+                   <property name="text">
+                    <string>扫tid码</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_scan_tid">
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(251, 251, 251);</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_15" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_19">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_line">
+                   <property name="text">
+                    <string>线别</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_line_name">
+                   <property name="text">
+                    <string>LCDB1A</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_16" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_20">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>工站</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_station_name">
+                   <property name="text">
+                    <string>ZBD</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_17" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_21">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>站别</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_station_id">
+                   <property name="text">
+                    <string>A1</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_18" native="true">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>25</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_22">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="horizontalSpacer_6">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>53</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_save_line_station_info">
+                   <property name="minimumSize">
+                    <size>
+                     <width>130</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>保存扫描目录/线别/工站/站别</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_10">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_10" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_16">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QToolButton" name="toolButton_del">
+                   <property name="text">
+                    <string>删除型号</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>images/folder_201px_1201754_easyicon.net.png</normaloff>images/folder_201px_1201754_easyicon.net.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>45</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="toolButtonStyle">
+                    <enum>Qt::ToolButtonTextUnderIcon</enum>
+                   </property>
+                   <property name="autoRaise">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+             <zorder>widget_11</zorder>
+             <zorder>widget_28</zorder>
+             <zorder>widget_30</zorder>
+             <zorder>widget_31</zorder>
+             <zorder>widget_32</zorder>
+             <zorder>widget_9</zorder>
+             <zorder>switch_model</zorder>
+             <zorder>widget_29</zorder>
+             <zorder>widget_10</zorder>
+             <zorder>verticalSpacer_6</zorder>
+             <zorder>verticalSpacer_7</zorder>
+             <zorder>verticalSpacer_10</zorder>
+             <zorder>verticalSpacer_4</zorder>
+             <zorder>widget_15</zorder>
+             <zorder>widget_16</zorder>
+             <zorder>widget_17</zorder>
+             <zorder>widget_18</zorder>
+             <zorder>widget_19</zorder>
+             <zorder>widget_20</zorder>
+             <zorder>label_select_scan_dir</zorder>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableView" name="tableView">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>1000</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="sys_seT">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(151, 151,151);</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QWidget" name="widget_7" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(121, 121, 121);</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QToolButton" name="qr_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>读码设置</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/Qr_512px_1064441_easyicon.net.png</normaloff>images/Qr_512px_1064441_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="cam_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>相机参数</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/ooopic_1495029806.ico</normaloff>images/ooopic_1495029806.ico</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="Imparam_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>定位参数</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/Apps_display_properties_icon_64px_1081619_easyicon.net.png</normaloff>images/Apps_display_properties_icon_64px_1081619_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="Pc_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>标定定位</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/robot_300px_1151002_easyicon.net.png</normaloff>images/robot_300px_1151002_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="plc_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>PLC</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/PLC.PNG</normaloff>images/PLC.PNG</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="commun_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>通信设置</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/network_76.751145038168px_1202783_easyicon.net.png</normaloff>images/network_76.751145038168px_1202783_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="sav_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>保存设置</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/document_save_all_256px_539660_easyicon.net.png</normaloff>images/document_save_all_256px_539660_easyicon.net.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="frame_btn">
+             <property name="font">
+              <font>
+               <family>微软雅黑 Light</family>
+               <pointsize>14</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(251, 251, 251);</string>
+             </property>
+             <property name="text">
+              <string>支架</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>images/frame.png</normaloff>images/frame.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>42</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextUnderIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Preferred</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>738</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QStackedWidget" name="stackedWidget_2">
+          <property name="maximumSize">
+           <size>
+            <width>1677777</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>微软雅黑 Light</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(251, 251, 251);</string>
+          </property>
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="page_3"/>
+          <widget class="QWidget" name="page_4"/>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="sta_item">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(54, 54, 54);</string>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhNone</set>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QAxWidget</class>
+   <extends>QWidget</extends>
+   <header>qaxwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HalconWidget</class>
+   <extends>QWidget</extends>
+   <header>halcon_widget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

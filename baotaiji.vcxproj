@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1EBA2BF7-5272-33A2-9E1A-A4D76AE8B03F}</ProjectGuid>
+    <RootNamespace>baotaiji</RootNamespace>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v120</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>baotaiji</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v120</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>baotaiji</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">baotaiji</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">baotaiji</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;D:\HALCON\include;D:\OPENCV\opencv\build\include;D:\BASLER\development\include;D:\MX\Act\Include;ssvision;D:\QT\5.6.3\msvc2013_64\include;D:\QT\5.6.3\msvc2013_64\include\ActiveQt;D:\QT\5.6.3\msvc2013_64\include\QtWidgets;D:\QT\5.6.3\msvc2013_64\include\QtWinExtras;D:\QT\5.6.3\msvc2013_64\include\QtGui;D:\QT\5.6.3\msvc2013_64\include\QtANGLE;D:\QT\5.6.3\msvc2013_64\include\QtSerialPort;D:\QT\5.6.3\msvc2013_64\include\QtNetwork;D:\QT\5.6.3\msvc2013_64\include\QtSql;D:\QT\5.6.3\msvc2013_64\include\QtCore;release;.;D:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:strictStrings -w34100 -w34189 -w44996 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;WIN64;QT_NO_DEBUG;QT_AXCONTAINER_LIB;QT_AXBASE_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\qtmain.lib;shell32.lib;D:\HALCON\lib\x64-win64\halconcpp.lib;D:\BASLER\development\lib\x64\GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;ssvision\release\ssvision.lib;D:\OPENCV\opencv\build\x64\vc12\lib\opencv_world300.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5AxContainer.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5AxBase.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Widgets.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Gui.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Core.lib;ole32.lib;oleaut32.lib;user32.lib;gdi32.lib;advapi32.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Widgets.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5WinExtras.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Gui.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5SerialPort.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Network.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Sql.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\QT\5.6.3\msvc2013_64\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;D:\QT\5.6.3\msvc2013_64\lib;D:\HALCON\lib\x64-win64;D:\BASLER\development\lib\x64;ssvision\release;D:\OPENCV\opencv\build\x64\vc12\lib;D:\QT\5.6.3\msvc2013_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OutputFile>$(OutDir)\baotaiji.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;WIN64;QT_NO_DEBUG;QT_AXCONTAINER_LIB;QT_AXBASE_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;D:\HALCON\include;D:\OPENCV\opencv\build\include;D:\BASLER\development\include;D:\MX\Act\Include;ssvision;D:\QT\5.6.3\msvc2013_64\include;D:\QT\5.6.3\msvc2013_64\include\ActiveQt;D:\QT\5.6.3\msvc2013_64\include\QtWidgets;D:\QT\5.6.3\msvc2013_64\include\QtWinExtras;D:\QT\5.6.3\msvc2013_64\include\QtGui;D:\QT\5.6.3\msvc2013_64\include\QtANGLE;D:\QT\5.6.3\msvc2013_64\include\QtSerialPort;D:\QT\5.6.3\msvc2013_64\include\QtNetwork;D:\QT\5.6.3\msvc2013_64\include\QtSql;D:\QT\5.6.3\msvc2013_64\include\QtCore;debug;.;D:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013;.\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-w34100 -w34189 -w44996 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;WIN64;QT_AXCONTAINER_LIB;QT_AXBASE_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <WarningLevel>Level3</WarningLevel>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\qtmaind.lib;shell32.lib;D:\HALCON\lib\x64-win64\halconcpp.lib;D:\BASLER\development\lib\x64\GenApi_MD_VC120_v3_0_Basler_pylon_v5_0.lib;ssvision\debug\ssvision.lib;D:\OPENCV\opencv\build\x64\vc12\lib\opencv_world300d.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5AxContainerd.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5AxBased.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Guid.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Cored.lib;ole32.lib;oleaut32.lib;user32.lib;gdi32.lib;advapi32.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5WinExtrasd.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Guid.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5SerialPortd.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Networkd.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Sqld.lib;$(QTDIR)\lib\D:\QT\5.6.3\msvc2013_64\lib\Qt5Cored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\QT\5.6.3\msvc2013_64\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;D:\QT\5.6.3\msvc2013_64\lib;D:\HALCON\lib\x64-win64;D:\BASLER\development\lib\x64;ssvision\debug;D:\OPENCV\opencv\build\x64\vc12\lib;D:\QT\5.6.3\msvc2013_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\baotaiji.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;WIN32;WIN64;QT_AXCONTAINER_LIB;QT_AXBASE_LIB;QT_WIDGETS_LIB;QT_WINEXTRAS_LIB;QT_GUI_LIB;QT_SERIALPORT_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_CORE_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ActUtlType.cpp" />
+    <ClCompile Include="about.cpp" />
+    <ClCompile Include="baojitai.cpp" />
+    <ClCompile Include="camera_config_dialog.cpp" />
+    <ClCompile Include="communication.cpp" />
+    <ClCompile Include="datetime_filesystem.cpp" />
+    <ClCompile Include="Debug\moc_about.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_baojitai.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_camera_config_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_communication.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_fid_cmc_socket.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_frame_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_halcon_widget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_item_information_center.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_location_config.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_main_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_material_product_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_plc_config_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_position_calibrate.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_reading_code_config.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_save_config_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="fid_cmc_socket.cpp" />
+    <ClCompile Include="fidparser.cpp" />
+    <ClCompile Include="frame_dialog.cpp" />
+    <ClCompile Include="frameparam.cpp" />
+    <ClCompile Include="halcon_tools.cpp" />
+    <ClCompile Include="halcon_widget.cpp" />
+    <ClCompile Include="item_information_center.cpp" />
+    <ClCompile Include="location_config.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_window.cpp" />
+    <ClCompile Include="material_product_dialog.cpp" />
+    <ClCompile Include="material_product_map.cpp" />
+    <ClCompile Include="plc_config_dialog.cpp" />
+    <ClCompile Include="position_calibrate.cpp" />
+    <ClCompile Include="product.cpp" />
+    <ClCompile Include="reading_code_config.cpp" />
+    <ClCompile Include="Release\moc_about.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_baojitai.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_camera_config_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_communication.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_fid_cmc_socket.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_frame_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_halcon_widget.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_item_information_center.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_location_config.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_main_window.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_material_product_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_plc_config_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_position_calibrate.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_reading_code_config.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Release\moc_save_config_dialog.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="save_config_dialog.cpp" />
+    <ClCompile Include="saveconfig.cpp" />
+    <ClCompile Include="serial_port_manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ActUtlType.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="about.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing about.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing about.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="baojitai.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing baojitai.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing baojitai.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="camera_config_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing camera_config_dialog.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing camera_config_dialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="communication.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing communication.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing communication.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="datetime_filesystem.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="fid_cmc_socket.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing fid_cmc_socket.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing fid_cmc_socket.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="fidparser.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="frame_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing frame_dialog.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing frame_dialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="frameparam.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_about.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_camera_config_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_communication.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_config_save.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_frame_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_location_config.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_main_window.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_material_product_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_plc_config_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_position_calibrate.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_reading_code_config.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="halcon_tools.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="halcon_widget.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing halcon_widget.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing halcon_widget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="item_information_center.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing item_information_center.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing item_information_center.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="location_config.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing location_config.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing location_config.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="main_window.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing main_window.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing main_window.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="material_product_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing material_product_dialog.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing material_product_dialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="material_product_map.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="plc_config_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing plc_config_dialog.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing plc_config_dialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="position_calibrate.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing position_calibrate.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing position_calibrate.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="product.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="reading_code_config.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing reading_code_config.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing reading_code_config.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="resource.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="save_config_dialog.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\release" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing save_config_dialog.h...</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB  "-I." "-ID:\HALCON\include" "-ID:\OPENCV\opencv\build\include" "-ID:\BASLER\development\include" "-ID:\MX\Act\Include" "-I.\ssvision" "-ID:\QT\5.6.3\msvc2013_64\include" "-ID:\QT\5.6.3\msvc2013_64\include\ActiveQt" "-ID:\QT\5.6.3\msvc2013_64\include\QtWidgets" "-ID:\QT\5.6.3\msvc2013_64\include\QtWinExtras" "-ID:\QT\5.6.3\msvc2013_64\include\QtGui" "-ID:\QT\5.6.3\msvc2013_64\include\QtANGLE" "-ID:\QT\5.6.3\msvc2013_64\include\QtSerialPort" "-ID:\QT\5.6.3\msvc2013_64\include\QtNetwork" "-ID:\QT\5.6.3\msvc2013_64\include\QtSql" "-ID:\QT\5.6.3\msvc2013_64\include\QtCore" "-I.\debug" "-ID:\QT\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" "-I.\GeneratedFiles"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing save_config_dialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\moc.exe;%(FullPath)</AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="saveconfig.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+    <CustomBuild Include="serial_port_manager.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </AdditionalInputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="about.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="camera_config_dialog.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="communication.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="config_save.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="frame_dialog.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="location_config.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="main_window.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="material_product_dialog.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="plc_config_dialog.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="position_calibrate.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="reading_code_config.ui">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\QT\5.6.3\msvc2013_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"D:\QT\5.6.3\msvc2013_64\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

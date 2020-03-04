@@ -1,0 +1,41 @@
+﻿生成启动时间为 2019/8/26 11:20:53。
+     1>项目“D:\build\baotaiji\ssvision\ssvision.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I. /I. /I..\..\..\BASLER\development\include /I..\..\..\OPENCV\opencv\build\include /I..\..\..\qt\5.6.3\msvc2013_64\include /I..\..\..\qt\5.6.3\msvc2013_64\include\QtTest /I..\..\..\qt\5.6.3\msvc2013_64\include\QtSerialPort /I..\..\..\qt\5.6.3\msvc2013_64\include\QtCore /Irelease /I"..\..\..\qt\5.6.3\msvc2013_64\mkspecs\win32-msvc2013" /nologo /W3 /WX- /O2 /D _CONSOLE /D UNICODE /D WIN32 /D WIN64 /D QT_NO_DEBUG /D QT_TESTLIB_LIB /D QT_SERIALPORT_LIB /D QT_CORE_LIB /D "QT_TESTCASE_BUILDDIR=\"D:/build/baotaiji/ssvision\"" /D NDEBUG /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt -Zc:strictStrings -w34100 -w34189 -w44996 baslercamera.cpp camera.cpp datacode.cpp datefilelogger.cpp logger.cpp qtserialport.cpp serialport.cpp
+         baslercamera.cpp
+     1>baslercamera.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\build\baotaiji\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>.\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         camera.cpp
+     1>d:\build\baotaiji\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>..\..\..\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>..\..\..\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>..\..\..\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         datacode.cpp
+         datefilelogger.cpp
+     1>d:\build\baotaiji\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>.\logger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         logger.cpp
+     1>d:\build\baotaiji\ssvision\logger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         qtserialport.cpp
+     1>d:\build\baotaiji\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\build\baotaiji\ssvision\serialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\build\baotaiji\ssvision\logger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         serialport.cpp
+     1>d:\build\baotaiji\ssvision\serialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\build\baotaiji\ssvision\logger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         正在生成代码...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\Lib.exe /OUT:"release\\ssvision.lib" /NOLOGO /MACHINE:X64 x64\Release\baslercamera.obj
+         x64\Release\camera.obj
+         x64\Release\datacode.obj
+         x64\Release\datefilelogger.obj
+         x64\Release\logger.obj
+         x64\Release\qtserialport.obj
+         x64\Release\serialport.obj
+         ssvision.vcxproj -> D:\build\baotaiji\ssvision\release\ssvision.lib
+     1>已完成生成项目“D:\build\baotaiji\ssvision\ssvision.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.59

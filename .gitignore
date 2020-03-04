@@ -1,0 +1,6 @@
+
+*.Debug
+*.pdb
+*.lib
+*.obj
+*.Release
