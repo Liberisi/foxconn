@@ -301,10 +301,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit_station_name->setText(baojitai->station_name().c_str());
     ui->lineEdit_station_id->setText(baojitai->station_id().c_str());
 
-    ui->spinBox_x_offset->setValue(baojitai->robotic_x_offset());
-    ui->spinBox_y_offset->setValue(baojitai->robotic_y_offset());
-    ui->spinBox_rz_offset->setValue(baojitai->robotic_rz_offset());
-
 //    RoboticTCPServer* robotic_server = baojitai->robotic_tcp_server();
 //    if (robotic_server)
 //        ui->label_robotic_port->setText(to_string(robotic_server->listening_port()).c_str());
@@ -1308,20 +1304,20 @@ void MainWindow::on_toolButton_9_clicked()
 
 }
 
-void MainWindow::on_spinBox_x_offset_valueChanged(int arg1)
-{
-    Baojitai::instance()->set_robotic_x_offset(arg1);
-}
+//void MainWindow::on_spinBox_x_offset_valueChanged(int arg1)
+//{
+//    Baojitai::instance()->set_robotic_x_offset(arg1);
+//}
 
-void MainWindow::on_spinBox_y_offset_valueChanged(int arg1)
-{
-    Baojitai::instance()->set_robotic_y_offset(arg1);
-}
+//void MainWindow::on_spinBox_y_offset_valueChanged(int arg1)
+//{
+//    Baojitai::instance()->set_robotic_y_offset(arg1);
+//}
 
-void MainWindow::on_spinBox_rz_offset_valueChanged(int arg1)
-{
-    Baojitai::instance()->set_robotic_rz_offset(arg1);
-}
+//void MainWindow::on_spinBox_rz_offset_valueChanged(int arg1)
+//{
+//    Baojitai::instance()->set_robotic_rz_offset(arg1);
+//}
 
 void MainWindow::on_toolButton_send_undo_0_clicked()
 {

@@ -1,7 +1,8 @@
 #include "item_information_center.h"
 #include <QDebug>
+#include "baojitai.h"
 
-ItemInformationCenter* ItemInformationCenter::instance()
+ItemInformationCenter* ItemInformationCenter::instance()  //继承
 {
     static ItemInformationCenter* item_information = NULL;
     if (item_information == NULL)
@@ -11,18 +12,18 @@ ItemInformationCenter* ItemInformationCenter::instance()
     return item_information;
 }
 
-ItemInformationCenter::ItemInformationCenter()
+ItemInformationCenter::ItemInformationCenter() //连接
 {
     delegate_ = NULL;
     connect(&tcp_server_, SIGNAL(newConnection()), this, SLOT(on_socket_connect()));
 }
 
-void ItemInformationCenter::set_delegate(ItemInformationCenterDelegate *delegate)
+void ItemInformationCenter::set_delegate(ItemInformationCenterDelegate *delegate) //断开
 {
     delegate_ = delegate;
 }
 
-void ItemInformationCenter::listening(int port)
+void ItemInformationCenter::listening(int port)  //侦听
 {
     if (!tcp_server_.isListening())
     {
@@ -30,7 +31,7 @@ void ItemInformationCenter::listening(int port)
     }
 }
 
-bool ItemInformationCenter::is_listening()
+bool ItemInformationCenter::is_listening() //侦听中
 {
     return tcp_server_.isListening();
 }
@@ -38,7 +39,7 @@ int ItemInformationCenter::listening_port()
 {
     return tcp_server_.serverPort();
 }
-vector<string> ItemInformationCenter::connected_device_ip_list()
+vector<string> ItemInformationCenter::connected_device_ip_list() //连接设备ip地址
 {
     vector<string> ip_list;
     vector<QTcpSocket*>::iterator iter = sockets_.begin();
@@ -54,7 +55,7 @@ vector<string> ItemInformationCenter::connected_device_ip_list()
     }
     return ip_list;
 }
-void ItemInformationCenter::on_socket_connect()
+void ItemInformationCenter::on_socket_connect()  //隧道连接
 {
     QTcpSocket* socket = tcp_server_.nextPendingConnection();
     connect(socket, SIGNAL(readyRead()), this, SLOT(on_socket_read()));
@@ -64,7 +65,7 @@ void ItemInformationCenter::on_socket_connect()
     if (delegate_)
         delegate_->on_advanced_device_connect(this, ip_str);
 }
-void ItemInformationCenter::on_socket_disconnect()
+void ItemInformationCenter::on_socket_disconnect()   //隧道断开
 {
     vector<QTcpSocket*>::iterator iter = sockets_.begin();
     while(iter != sockets_.end())
@@ -86,7 +87,7 @@ void ItemInformationCenter::on_socket_disconnect()
         }
     }
 }
-void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message)
+void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message) //信息
 {
     if (message.length() == 0)
         return;
@@ -94,8 +95,8 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
         return;
 
     // 消息格式
-    // @条码_ok
-    // @条码_ng_原因
+    // @条码_ok_工站_datatime\r
+    // @条码_ng_原因_工站_datatime\r
 
     QStringList str_list = message.split('_');
     QString item_name;
@@ -133,10 +134,38 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
 
     if (item_name.length() > 0 && ng_type != -1)
     {
-        string response_item_name = item_name.toStdString() + "\r\n";
-        socket->write(response_item_name.c_str(), response_item_name.length());
-        add_item(item_name.toStdString(), ng_type == 1, ng_reason.toStdString());
+        bool repair_mode = Baojitai::instance()->is_repair_mode();
+        if (repair_mode = false)
+        {
+            string response_item_name = item_name.toStdString()+ "autoNG\r\n";
+            socket->write(response_item_name.c_str(), response_item_name.length());
+        }
+        else
+        {
+            string response_item_name = item_name.toStdString()+ "manualNG\r\n";
+            socket->write(response_item_name.c_str(), response_item_name.length());
+        }
     }
+
+    //工站
+    //贴标机和锁螺丝机
+    QString station;
+    if (str_list.length() > 1)
+    {
+        station = str_list[3];
+    }
+
+    //日期
+    QString datatime;
+    if (str_list.length() > 1)
+    {
+        datatime = str_list[4];
+        if (datatime.length() > 1)
+        {
+            datatime = item_name.left(item_name.length()-2);
+        }
+    }
+    add_item(item_name.toStdString(), ng_type == 1 , ng_reason.toStdString(), station.toStdString(), datatime.toStdString());
 }
 
 void ItemInformationCenter::on_socket_read()
@@ -169,24 +198,24 @@ void ItemInformationCenter::open(const string db_path)
             qWarning() << "ERROR: " << query.lastError().text();
     }
 }
-void ItemInformationCenter::add_item(const string& id_str, bool is_ng, const string& ng_reason)
+void ItemInformationCenter::add_item(const string& id_str, bool is_ng, const string& ng_reason, const string& station, const string &datatime) //sql增加
 {
     QSqlQuery query;
-    string command = "INSERT INTO product (id, ng, reason) VALUES (";
-    command += "\'"+id_str+"\'," + (is_ng ? "1" : "0") + ",\'" + ng_reason + "\'" + ")";
+    string command = "INSERT INTO product (id, ng, reason，station) VALUES (";
+    command += "\'"+id_str+"\'," + (is_ng ? "1" : "0") + ",\'" + ng_reason + station + ",\'" + datatime +"\'" + ")";
     if(!query.exec(command.c_str()))
     {
-        set_item(id_str, is_ng, ng_reason);
+        set_item(id_str, is_ng, ng_reason, station, datatime);
     }
 }
-void ItemInformationCenter::remove_item(const string& id_str)
+void ItemInformationCenter::remove_item(const string& id_str) //sql移除
 {
     QSqlQuery query;
     string command = "DELETE FROM product WHERE id = ";
     command += "\'" + id_str + "\'";
     query.exec(command.c_str());
 }
-bool ItemInformationCenter::get_item(const string& id_str, bool* is_ng, string& ng_reason)
+bool ItemInformationCenter::get_item(const string& id_str, bool* is_ng, string& ng_reason , string& station, string &datatime) //查询
 {
     QSqlQuery query;
     string command = "SELECT ng , reason FROM product WHERE id = ";
@@ -205,17 +234,22 @@ bool ItemInformationCenter::get_item(const string& id_str, bool* is_ng, string& 
                 *is_ng = query.value(0).toBool();
             }
             ng_reason = query.value(1).toString().toStdString();
+            station = query.value(2).toString().toStdString();
+            datatime = query.value(3).toString().toStdString();
         }
         return true;
     }
 }
-void ItemInformationCenter::set_item(const string& id_str, bool is_ng, const string& ng_reason)
+void ItemInformationCenter::set_item(const string& id_str, bool is_ng, const string& ng_reason, const string &station, const string &datatime) //修改
 {
     QSqlQuery query;
     string command = "UPDATE product set ";
     command += "ng = " + (is_ng ? string("1") : string("0")) + ", ";
     command += "reason = '" + ng_reason + "' ";
     command += "WHERE id = ";
+    command += "\'" + station + "\'";
     command += "\'" + id_str + "\'";
+    command += "'" + datatime + "'";
     query.exec(command.c_str());
 }
+

@@ -25,6 +25,10 @@ LocationConfigDialog::LocationConfigDialog(QWidget *parent) :
         ui->lineEdit_l1->setText(to_string(param.l1).c_str());
         ui->lineEdit_l2->setText(to_string(param.l2).c_str());
         ui->lineEdit_size_var->setText(to_string(param.xl1).c_str());
+        //待保存至每个产品
+        ui->lineEdit_x_offset->setValue(baojitai->robotic_x_offset());
+        ui->lineEdit_y_offset->setValue(baojitai->robotic_y_offset());
+        ui->lineEdit_z_offset->setValue(baojitai->robotic_rz_offset());
     }
 
     connect(Baojitai::instance(), SIGNAL(signal_camera_buffer_updated(Camera*)), this, SLOT(on_camera_buffer_changed(Camera*)), Qt::QueuedConnection);

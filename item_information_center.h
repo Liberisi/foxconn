@@ -19,7 +19,7 @@ class ItemInformationCenterDelegate
 public:
     virtual void on_advanced_device_connect(ItemInformationCenter* item_info_center, const string& ip_str) = NULL;
     virtual void on_advanced_device_disconnect(ItemInformationCenter* item_info_center, const string& ip_str) = NULL;
-    virtual void on_advanced_device_item_information(const string& name, bool is_ng, const string& ng_reason) = NULL;
+    virtual void on_advanced_device_item_information(const string& name, bool is_ng, const string& ng_reason, const string &station, const string &datatime) = NULL;
 };
 
 class ItemInformationCenter : public QObject
@@ -42,10 +42,10 @@ public:
 
     void open(const string db_path);
     // is_ng 为 true 表示 NG
-    void add_item(const string& id_str, bool is_ng, const string& ng_reason);
+    void add_item(const string& id_str, bool is_ng, const string& ng_reason , const string& station, const string &datatime);
     void remove_item(const string& id_str);
-    bool get_item(const string& id_str, bool* is_ng, string& ng_reason);
-    void set_item(const string& id_str, bool is_ng, const string& ng_reason);
+    bool get_item(const string& id_str, bool* is_ng, string& ng_reason , string &station, string &datatime);
+    void set_item(const string& id_str, bool is_ng, const string& ng_reason , const string& station, const string &datatime);
 
 protected:
     void on_item_message(QTcpSocket* socket, QString& message);
@@ -62,5 +62,6 @@ protected:
      vector<QTcpSocket*> sockets_;
      ItemInformationCenterDelegate* delegate_;
 };
+
 
 #endif // ITEMINFORMATION_H
