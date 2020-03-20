@@ -78,6 +78,9 @@ void read_2d_code(void* data, int width, int height, const string& code_name, ve
 void read_2d_code_complex(const HImage& img, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms);
 void read_2d_code_complex(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms);
 
+void read_2d_code_special(const HImage& img, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms);
+void read_2d_code_special(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms);
+
 void extract_rect(const HImage& img, int* x, int* y, double* phi, int* length1, int* length2, bool *find, int black_region_threshold);
 void extract_rect(void* data, int width, int height, int* x, int* y, double* phi, int* length1, int* length2, bool *find, int black_region_threshold);
 bool check_rect_size(int x, int y, double phi, int l1, int l2, HHomMat2D mat, int w, int h, int var);

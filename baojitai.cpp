@@ -590,8 +590,8 @@ void Baojitai::setup()
 		}
 	}
 
-    QString Read_code_msleep_time_path = QDir::cleanPath(QString(config_dir.c_str())+QDir::separator() + kReadCodeMsleepTimeFileName);
-    msleep_time_.read_param(Read_code_msleep_time_path.toStdString());
+    QString msleep_time_path = QDir::cleanPath(QString(config_dir.c_str())+QDir::separator() + kReadCodeMsleepTimeFileName);
+    msleep_time_.read_param(msleep_time_path.toStdString());
 
     QString frame_param_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kFrameParamFileName);
     frame_param_.read_param(frame_param_path.toStdString());
@@ -618,8 +618,8 @@ void Baojitai::save_frame_param()
 void Baojitai::save_msleep_time()
 {
     string config_dir = config_dir_path();
-    QString Read_code_msleep_time_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kReadCodeMsleepTimeFileName);
-    msleep_time_.write_param(Read_code_msleep_time_path.toStdString());
+    QString msleep_time_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kReadCodeMsleepTimeFileName);
+    msleep_time_.write_param(msleep_time_path.toStdString());
 }
 
 void Baojitai::shutdown()
@@ -1184,7 +1184,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 		{
 			mat_code_xlds.clear();
 			mat_codes.clear();
-			halcontools::read_2d_code(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
 			for (int i = 0; i < mat_codes.size(); ++i)
 			{
 				string code = mat_codes[i];
@@ -1202,7 +1202,29 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 				}
 			}
 		}
-	}
+        else if(!find_product_code)
+        {
+            mat_code_xlds.clear();
+            mat_codes.clear();
+            halcontools::read_2d_code(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            for (int i = 0; i < mat_codes.size(); ++i)
+            {
+                string code = mat_codes[i];
+                if (code.length() <= 2)
+                    continue;
+                code = code.substr(1, code.length() - 2);
+                qDebug() << "product mat code: " << code.c_str() << endl;
+                qDebug() << "check mat code length: " << code.length() << " vs " << param.product_code_length << endl;
+                if (code.length() == param.product_code_length)
+                {
+                    find_product_code = true;
+                    sn_ = code;
+                    product_mat_code_xld_ = mat_code_xlds[i];
+                    break;
+                }
+            }
+        }
+    }
 	else if (param.product_bar_code_type)
 	{
         emit signal_product_info("sn - bar code");

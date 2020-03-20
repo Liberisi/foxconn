@@ -172,6 +172,61 @@ namespace halcontools
         read_2d_code_complex(img, code_name, codes, code_regions, duration_ms);
     }
 
+    void read_2d_code_special(const HImage& img, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms)
+       {
+           clock_t clock_begin = clock();
+           HDataCode2D datacode;
+           datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
+           HTuple readed_strings;
+           HTuple result_handles;
+
+           Hlong Width;
+           Hlong Height;
+           img.GetImageSize(Hlong* Width, Hlong* Height);
+           HRegion get_rectangle_region;
+           get_rectangle_region.GenRectangle1(800, 0, 2000,Width);
+           HImage image_reduce =image.ReduceDomain(get_rectangle_region);
+           HImage ScaleImage = image_reduce.ScaleImageMax();
+           HImage image_emphasize = ScaleImage.Emphasize(7,7,1);
+           HImage image_median = image_emphasize.MedianImage("circle", 1, "mirrored");
+
+           HXLDCont Edgexld = image_median.EdgesSubPix('canny', 1.2,5, 70);
+
+           //HXLDCont HXLDCont::SelectShapeXld(const HTuple& Features, const HString& Operation, const HTuple& Min, const HTuple& Max) const
+           //	select_shape(ConnectedRegions2, SelectedRegions1, ['area', 'rectangularity'], 'and', [99999, 0.5], [9999999, 1])
+           HTuple features;
+           features.Append("area");
+           HTuple min, max;
+           min.Append(10000);
+           max.Append(30000);
+           SelectedXLD = Edgexld.SelectShapeXld(features, "and", min, max);
+           HXLDCont SelectedContours = SelectedXLD.SelectContoursXld("closed", 0.5, 5, -0.5, 0.5);
+           HRegion Target_region = SelectedContours.GenRegionContourXld("filled");
+           Hlong Target_region_numbers = Target_region.CountObj();
+           for(int i = 0; i<Target_region_numbers; i++)
+           {
+               HRegion Selected_Target_region = Target_region.SelectObj(i);
+               HImage Reduce_Target_region = img.ReduceDomain(Selected_Target_region);
+               HXLDCont xld = datacode.FindDataCode2d(Reduce_Target_region, "stop_after_result_num", 2, &result_handles, &readed_strings);
+               for (int i = 0; i < readed_strings.Length(); ++i)
+               {
+                   //HString* str = readed_strings.ToSArr();
+                   HTuple t = readed_strings[i];
+                   codes.push_back(t.ToString().Text());
+                   HXLD region = xld.SelectObj(i + 1);
+                   code_regions.push_back(region);
+               }
+           }
+           datacode.Clear();
+           clock_t clock_end = clock();
+           duration_ms = (clock_end - clock_begin) * 1000 / CLOCKS_PER_SEC;
+       }
+
+    void read_2d_code_special(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms)
+    {
+        HImage img("byte", width, height, data);
+        read_2d_code_special(img, code_name, codes, code_regions, duration_ms);
+    }
     void read_2d_code(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms)
     {
         HImage img("byte", width, height, data);
