@@ -166,6 +166,20 @@ public:
     QHBoxLayout *horizontalLayout_9;
     QLabel *label_9;
     QLineEdit *lineEdit_board_code_prefix;
+    QWidget *widget_3;
+    QVBoxLayout *verticalLayout_11;
+    QWidget *widget_13;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *label_5;
+    QSpinBox *spinBox_TID_send_cmc_msleep_time;
+    QWidget *widget_12;
+    QHBoxLayout *horizontalLayout_24;
+    QLabel *label_6;
+    QSpinBox *spinBox_sn_send_cmc_msleep_time;
+    QWidget *widget_11;
+    QHBoxLayout *horizontalLayout_25;
+    QLabel *label_7;
+    QSpinBox *spinBox_wait_last_fid_max_time;
     QWidget *Button;
     QHBoxLayout *horizontalLayout_3;
     QToolButton *toolButton_reading_code;
@@ -655,7 +669,7 @@ public:
         data_collect->setObjectName(QStringLiteral("data_collect"));
         widget = new QWidget(data_collect);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(0, 0, 360, 746));
+        widget->setGeometry(QRect(0, 0, 360, 673));
         widget->setMinimumSize(QSize(360, 641));
         widget->setMaximumSize(QSize(360, 16777215));
         verticalLayout_4 = new QVBoxLayout(widget);
@@ -837,6 +851,69 @@ public:
 
         verticalLayout_4->addWidget(groupBox_3);
 
+        widget_3 = new QWidget(widget);
+        widget_3->setObjectName(QStringLiteral("widget_3"));
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(widget_3->sizePolicy().hasHeightForWidth());
+        widget_3->setSizePolicy(sizePolicy5);
+        verticalLayout_11 = new QVBoxLayout(widget_3);
+        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        widget_13 = new QWidget(widget_3);
+        widget_13->setObjectName(QStringLiteral("widget_13"));
+        horizontalLayout_23 = new QHBoxLayout(widget_13);
+        horizontalLayout_23->setObjectName(QStringLiteral("horizontalLayout_23"));
+        label_5 = new QLabel(widget_13);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        horizontalLayout_23->addWidget(label_5);
+
+        spinBox_TID_send_cmc_msleep_time = new QSpinBox(widget_13);
+        spinBox_TID_send_cmc_msleep_time->setObjectName(QStringLiteral("spinBox_TID_send_cmc_msleep_time"));
+
+        horizontalLayout_23->addWidget(spinBox_TID_send_cmc_msleep_time);
+
+
+        verticalLayout_11->addWidget(widget_13);
+
+        widget_12 = new QWidget(widget_3);
+        widget_12->setObjectName(QStringLiteral("widget_12"));
+        horizontalLayout_24 = new QHBoxLayout(widget_12);
+        horizontalLayout_24->setObjectName(QStringLiteral("horizontalLayout_24"));
+        label_6 = new QLabel(widget_12);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        horizontalLayout_24->addWidget(label_6);
+
+        spinBox_sn_send_cmc_msleep_time = new QSpinBox(widget_12);
+        spinBox_sn_send_cmc_msleep_time->setObjectName(QStringLiteral("spinBox_sn_send_cmc_msleep_time"));
+
+        horizontalLayout_24->addWidget(spinBox_sn_send_cmc_msleep_time);
+
+
+        verticalLayout_11->addWidget(widget_12);
+
+        widget_11 = new QWidget(widget_3);
+        widget_11->setObjectName(QStringLiteral("widget_11"));
+        horizontalLayout_25 = new QHBoxLayout(widget_11);
+        horizontalLayout_25->setObjectName(QStringLiteral("horizontalLayout_25"));
+        label_7 = new QLabel(widget_11);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        horizontalLayout_25->addWidget(label_7);
+
+        spinBox_wait_last_fid_max_time = new QSpinBox(widget_11);
+        spinBox_wait_last_fid_max_time->setObjectName(QStringLiteral("spinBox_wait_last_fid_max_time"));
+
+        horizontalLayout_25->addWidget(spinBox_wait_last_fid_max_time);
+
+
+        verticalLayout_11->addWidget(widget_11);
+
+
+        verticalLayout_4->addWidget(widget_3);
+
         Button = new QWidget(widget);
         Button->setObjectName(QStringLiteral("Button"));
         Button->setMaximumSize(QSize(16777215, 50));
@@ -983,6 +1060,9 @@ public:
         label_3->setText(QApplication::translate("ReadingCodeConfigDialog", "\347\240\201\351\225\277\345\272\246 ", Q_NULLPTR));
         label_4->setText(QApplication::translate("ReadingCodeConfigDialog", "\347\240\201\347\261\273\345\236\213", Q_NULLPTR));
         label_9->setText(QApplication::translate("ReadingCodeConfigDialog", "\346\235\277\350\275\275\347\240\201\345\211\215\345\207\240\344\275\215\345\255\227\347\254\246\357\274\232", Q_NULLPTR));
+        label_5->setText(QApplication::translate("ReadingCodeConfigDialog", "TID\347\240\201\346\234\272\344\272\244\344\272\222\345\273\266\350\277\237", Q_NULLPTR));
+        label_6->setText(QApplication::translate("ReadingCodeConfigDialog", "SN\347\240\201\346\234\272\344\272\244\344\272\222\345\273\266\350\277\237", Q_NULLPTR));
+        label_7->setText(QApplication::translate("ReadingCodeConfigDialog", "FID\346\234\200\345\244\247\347\255\211\345\276\205\346\216\245\346\224\266\346\227\266\351\227\264", Q_NULLPTR));
         toolButton_reading_code->setText(QApplication::translate("ReadingCodeConfigDialog", "\350\247\243\347\240\201\346\265\213\350\257\225", Q_NULLPTR));
         toolButton_save->setText(QApplication::translate("ReadingCodeConfigDialog", "\344\277\235\345\255\230\350\256\276\347\275\256", Q_NULLPTR));
         pushButton_save_image->setText(QApplication::translate("ReadingCodeConfigDialog", "\344\277\235\345\255\230\345\233\276\345\203\217", Q_NULLPTR));

@@ -1,0 +1,5 @@
+23220399
+trigger frame start on
+trigger acquisition start off
+set trigger delay
+start grabbing
