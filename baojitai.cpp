@@ -14,6 +14,7 @@
 #include <product.h>
 #include "halcon_tools.h"
 #include "serial_port_manager.h"
+#include <QSettings>
 
 
 using namespace ssvision;
@@ -707,9 +708,18 @@ void Baojitai::setup_cameras()
     //string camera_check_frame_sn = "23200940";
 
 	// 6线
-	string camera_reading_code_sn = "23220388";
-	string camera_location_sn = "23034793";
-	string camera_check_frame_sn = "23200934";
+//	string camera_reading_code_sn = "23220388";
+//	string camera_location_sn = "23034793";
+//	string camera_check_frame_sn = "23200934";
+    QSettings *configIni=new QSettings("config_sn.ini",QSettings::IniFormat);
+    QString camera_reading_code_sn_data =configIni->value("Camera/camera_reading_code_sn").toString();
+    QString camera_location_sn_data =configIni->value("Camera/camera_location_sn").toString();
+    QString camera_check_frame_data =configIni->value("Camera/camera_check_frame_sn").toString();
+    string camera_reading_code_sn = camera_reading_code_sn_data.toInt();
+    string camera_location_sn = camera_location_sn_data.toInt();
+    string camera_check_frame_sn = camera_check_frame_data.toInt();
+    delete  configIni;
+
 
     vector<string> camera_list = BaslerCamera::camera_list();
     foreach (string sn, camera_list)
