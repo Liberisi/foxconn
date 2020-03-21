@@ -150,7 +150,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_x_offset"/>
+          <widget class="QSpinBox" name="spinBox_x_offset"/>
          </item>
          <item>
           <widget class="QLabel" name="label_8">
@@ -160,7 +160,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_y_offset"/>
+          <widget class="QSpinBox" name="spinBox_y_offset"/>
          </item>
          <item>
           <widget class="QLabel" name="label_9">
@@ -170,7 +170,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_z_offset"/>
+          <widget class="QSpinBox" name="spinBox_z_offset"/>
          </item>
         </layout>
        </widget>

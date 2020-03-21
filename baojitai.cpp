@@ -1172,7 +1172,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
         emit signal_product_info("sn - mat code");
 		vector<HXLD> mat_code_xlds;
 		vector<string> mat_codes;
-		halcontools::read_2d_code_complex(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+        halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
 		for (int i = 0; i < mat_codes.size(); ++i)
 		{
 			string code = mat_codes[i];
@@ -1194,7 +1194,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 		{
 			mat_code_xlds.clear();
 			mat_codes.clear();
-            halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            halcontools::read_2d_code_complex(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
 			for (int i = 0; i < mat_codes.size(); ++i)
 			{
 				string code = mat_codes[i];

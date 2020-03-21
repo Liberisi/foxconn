@@ -180,12 +180,12 @@ namespace halcontools
            HTuple readed_strings;
            HTuple result_handles;
 
-           Hlong Width;
-           Hlong Height;
-           img.GetImageSize(Hlong* Width, Hlong* Height);
+           Hlong Width = 0;
+           Hlong Height = 0;
+           img.GetImageSize(&Width, &Height);
            HRegion get_rectangle_region;
            get_rectangle_region.GenRectangle1(800, 0, 2000,Width);
-           HImage image_reduce =image.ReduceDomain(get_rectangle_region);
+           HImage image_reduce =img.ReduceDomain(get_rectangle_region);
            HImage ScaleImage = image_reduce.ScaleImageMax();
            HImage image_emphasize = ScaleImage.Emphasize(7,7,1);
            HImage image_median = image_emphasize.MedianImage("circle", 1, "mirrored");
@@ -199,7 +199,7 @@ namespace halcontools
            HTuple min, max;
            min.Append(10000);
            max.Append(30000);
-           SelectedXLD = Edgexld.SelectShapeXld(features, "and", min, max);
+           HXLDCont SelectedXLD = Edgexld.SelectShapeXld(features, "and", min, max);
            HXLDCont SelectedContours = SelectedXLD.SelectContoursXld("closed", 0.5, 5, -0.5, 0.5);
            HRegion Target_region = SelectedContours.GenRegionContourXld("filled");
            Hlong Target_region_numbers = Target_region.CountObj();

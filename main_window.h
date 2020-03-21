@@ -89,12 +89,6 @@ private slots:
 
     void on_toolButton_9_clicked();
 
-    void on_spinBox_x_offset_valueChanged(int arg1);
-
-    void on_spinBox_y_offset_valueChanged(int arg1);
-
-    void on_spinBox_rz_offset_valueChanged(int arg1);
-
     void on_toolButton_send_undo_0_clicked();
 
     void on_checkBox_close_location_toggled(bool checked);

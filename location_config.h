@@ -39,6 +39,12 @@ private slots:
 
     void on_pushButton_save_result_image_clicked();
 
+    void on_spinBox_x_offset_valueChanged(int arg1);
+
+    void on_spinBox_y_offset_valueChanged(int arg1);
+
+    void on_spinBox_z_offset_valueChanged(int arg1);
+
 private:
     Ui::Imageparameter *ui;
     HalconCpp::HImage  halcon_image_;

@@ -26,10 +26,13 @@ LocationConfigDialog::LocationConfigDialog(QWidget *parent) :
         ui->lineEdit_l2->setText(to_string(param.l2).c_str());
         ui->lineEdit_size_var->setText(to_string(param.xl1).c_str());
         //待保存至每个产品
-        ui->lineEdit_x_offset->setValue(baojitai->robotic_x_offset());
-        ui->lineEdit_y_offset->setValue(baojitai->robotic_y_offset());
-        ui->lineEdit_z_offset->setValue(baojitai->robotic_rz_offset());
+
     }
+
+    Baojitai* baojitai = Baojitai::instance();
+    ui->spinBox_x_offset->setValue(baojitai->robotic_x_offset());
+    ui->spinBox_y_offset->setValue(baojitai->robotic_y_offset());
+    ui->spinBox_z_offset->setValue(baojitai->robotic_rz_offset());
 
     connect(Baojitai::instance(), SIGNAL(signal_camera_buffer_updated(Camera*)), this, SLOT(on_camera_buffer_changed(Camera*)), Qt::QueuedConnection);
     connect(Baojitai::instance(), SIGNAL(signal_robotic_command(RoboticTCPServer*,QString)), this, SLOT(on_robotic_command(RoboticTCPServer*,QString)));
@@ -290,4 +293,19 @@ void LocationConfigDialog::on_pushButton_save_result_image_clicked()
             halcontools::write_location_image_ng(image, found_, x_, y_, phi_, l1_, l2_, "unknown", filename.toStdString());
         }
     }
+}
+
+void LocationConfigDialog::on_spinBox_x_offset_valueChanged(int arg1)
+{
+    Baojitai::instance()->set_robotic_x_offset(arg1);
+}
+
+void LocationConfigDialog::on_spinBox_y_offset_valueChanged(int arg1)
+{
+    Baojitai::instance()->set_robotic_y_offset(arg1);
+}
+
+void LocationConfigDialog::on_spinBox_z_offset_valueChanged(int arg1)
+{
+    Baojitai::instance()->set_robotic_rz_offset(arg1);
 }
