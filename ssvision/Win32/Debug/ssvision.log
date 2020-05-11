@@ -1,0 +1,45 @@
+﻿生成启动时间为 2020/1/13 15:03:53。
+     1>项目“D:\baotaiji_20191210\baotaiji-master\ssvision\ssvision.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>CustomBuild:
+         Moc'ing robotictcpserver.h...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_robotictcpserver.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are GeneratedFiles\Debug\moc_robotictcpserver.cpp, GeneratedFiles\Release\moc_robotictcpserver.cpp.
+       ClCompile:
+         D:\vs2013\VC\bin\CL.exe /c /I. /I. /I..\..\..\balser\development\include /I..\..\..\OPENCV\opencv\build\include /I/Act/Include/ /I..\..\..\qt\5.6.3\msvc2013\include /I..\..\..\qt\5.6.3\msvc2013\include\QtTest /I..\..\..\qt\5.6.3\msvc2013\include\QtSerialPort /I..\..\..\qt\5.6.3\msvc2013\include\QtNetwork /I..\..\..\qt\5.6.3\msvc2013\include\QtCore /Idebug /I"..\..\..\qt\5.6.3\msvc2013\mkspecs\win32-msvc2013" /Zi /nologo /W3 /WX- /Od /Oy- /D _CONSOLE /D UNICODE /D WIN32 /D QT_TESTLIB_LIB /D QT_SERIALPORT_LIB /D QT_NETWORK_LIB /D QT_CORE_LIB /D "QT_TESTCASE_BUILDDIR=\"D:/baotaiji_20191210/baotaiji-master/ssvision\"" /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt -w34100 -w34189 -w44996 baslercamera.cpp camera.cpp datacode.cpp datefilelogger.cpp GeneratedFiles\Debug\moc_robotictcpserver.cpp logger.cpp qtserialport.cpp robotictcpserver.cpp serialport.cpp
+         baslercamera.cpp
+     1>d:\baotaiji_20191210\baotaiji-master\ssvision\baslercamera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\baotaiji_20191210\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>baslercamera.cpp(64): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+         camera.cpp
+     1>d:\baotaiji_20191210\baotaiji-master\ssvision\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>D:\OPENCV\opencv\build\include\opencv2/core/utility.hpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         datacode.cpp
+         datefilelogger.cpp
+     1>d:\baotaiji_20191210\baotaiji-master\ssvision\datefilelogger.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         moc_robotictcpserver.cpp
+         logger.cpp
+         qtserialport.cpp
+     1>qtserialport.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\baotaiji_20191210\baotaiji-master\ssvision\qtserialport.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         robotictcpserver.cpp
+     1>robotictcpserver.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         serialport.cpp
+         正在生成代码...
+     1>d:\baotaiji_20191210\baotaiji-master\ssvision\robotictcpserver.cpp(46): warning C4715: “ssvision::RoboticTCPServer::send_command”: 不是所有的控件路径都返回值
+       Lib:
+         D:\vs2013\VC\bin\Lib.exe /OUT:"debug\\ssvision.lib" /NOLOGO Win32\Debug\baslercamera.obj
+         Win32\Debug\camera.obj
+         Win32\Debug\datacode.obj
+         Win32\Debug\datefilelogger.obj
+         Win32\Debug\moc_robotictcpserver.obj
+         Win32\Debug\logger.obj
+         Win32\Debug\qtserialport.obj
+         Win32\Debug\robotictcpserver.obj
+         Win32\Debug\serialport.obj
+         ssvision.vcxproj -> D:\baotaiji_20191210\baotaiji-master\ssvision\debug\ssvision.lib
+     1>已完成生成项目“D:\baotaiji_20191210\baotaiji-master\ssvision\ssvision.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:06.57

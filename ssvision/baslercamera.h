@@ -38,7 +38,9 @@ public:
 //    virtual void set_gain(float gain);
     virtual void open();
     virtual bool is_open();
+	virtual bool is_connected();
     virtual void close();
+	virtual void detach();
     virtual bool trigger();
     // 硬触发延时: 0 ~ 1000000 us 即最多可延时 1s
     virtual bool start(float trigger_delay_us = 0.0f);

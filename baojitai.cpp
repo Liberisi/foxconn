@@ -34,6 +34,7 @@ static const char* const kLineStationInfoFileName = "line_station_info";
 // 配置文件名称
 // 注意，产品文件由用户命名，且占用 xml 扩展名
 // 其他配置文件不能使用 xml 做扩展名
+static const char* const kImageToMetrologyHandleFileName = "image2MetrologyHandle";
 static const char* const kImageToRoboticCoordsTransformMatrixFileName = "image2robotic_matrix";
 static const char* const kSerialPortSendingCodeConfigFileName = "send_code_sp_config";
 static const char* const kSerialPortRepairModeConfigFileName = "repair_mode_sp_config";
@@ -46,6 +47,7 @@ static const char* const kFrameSideHandSVMFileName = "frame_side_hand_svm";
 static const char* const kCurrentProductNGDataBaseFileName = "item.db";
 static const char* const kMaterialProductDataBaseFileName = "material_product.db";
 static const char* const kReadCodeMsleepTimeFileName = "Msleep_Time_setting";
+static const char* const kcameraexposureFileName = "Msleep_Time_setting";
 string config_dir_path();
 string log_dir_path();
 string data_dir_path();
@@ -80,6 +82,8 @@ Baojitai::Baojitai():
     is_waiting_fid_ = false;
     wait_fid_send_ = false;
     //receive_send_fid_ = false;
+
+//    MetrologyHandle.CreateMetrologyModel();
 
     robotic_x_offset_ = 0;
     robotic_y_offset_ = 0;
@@ -156,32 +160,58 @@ void Baojitai::start()
 
 	this->setup_cameras();
 
+    Product* product = current_product();
+    if (!product)
+        return;
+
+    float location_exposure_time = product->vision_param().location_exposure_time;
+	float read_code_exposure_time = product->vision_param().read_code_exposure_time;
+	float frame_exposure_time = product->vision_param().frame_exposure_time;
+
 	this->log_camera_status(camera_reading_code_, "camera_reading_code");
 	if (camera_reading_code_ && !camera_reading_code_->is_open())
+	{
 		camera_reading_code_->open();
+		camera_reading_code_->set_exposure(read_code_exposure_time);
+	}
 	this->log_camera_status(camera_reading_code_, "camera_reading_code");
 	if (camera_reading_code_ && camera_reading_code_->is_open())
+    {
         camera_reading_code_->start(1000);
+     //   camera_reading_code_->set_exposure(read_code_exposure_time);
+    }
 	QThread::msleep(200);
 	if (baojitai_logger_)
 		baojitai_logger_->log(Logger::kLogLevelInfo, "camera_reading_code started");
 
 	this->log_camera_status(camera_location_, "camera_location");
 	if (camera_location_ && !camera_location_->is_open())
+	{
 		camera_location_->open();
+		camera_location_->set_exposure(location_exposure_time);
+	}
 	this->log_camera_status(camera_location_, "camera_location");
 	if (camera_location_ && camera_location_->is_open())
+    {
         camera_location_->start(10);
+     //   camera_location_->set_exposure(location_exposure_time);
+    }
 	QThread::msleep(200);
 	if (baojitai_logger_)
 		baojitai_logger_->log(Logger::kLogLevelInfo, "camera_location started");
 
 	this->log_camera_status(camera_check_frame_, "camera_check_frame");
 	if (camera_check_frame_ && !camera_check_frame_->is_open())
+	{
 		camera_check_frame_->open();
+		camera_check_frame_->set_exposure(frame_exposure_time);
+	}
 	this->log_camera_status(camera_check_frame_, "camera_check_frame");
 	if (camera_check_frame_ && camera_check_frame_->is_open())
+    {
         camera_check_frame_->start(10);
+     //  camera_check_frame_->set_exposure(frame_exposure_time);
+    }
 	QThread::msleep(200);
 	if (baojitai_logger_)
 		baojitai_logger_->log(Logger::kLogLevelInfo, "camera_check_frame started");
@@ -197,6 +227,9 @@ void Baojitai::start()
 
     try_sending_undo();
 
+//    HMetrologyModel MetrologyHandle;
+//    MetrologyHandle.CreateMetrologyModel();
+
     static bool start_once = false;
     if (!start_once)
     {
@@ -209,6 +242,8 @@ void Baojitai::stop()
 {
     if (!is_running_)
         return;
+
+//    ClearMetrologyModel(MetrologyHandle);
 
 	this->log_camera_status(camera_reading_code_, "camera_reading_code");
 	this->log_camera_status(camera_check_frame_, "camera_check_frame");
@@ -518,9 +553,12 @@ void Baojitai::setup()
 
     QDate today = QDate::currentDate();
     QDate date(2019, 10, 10);
+//    QTime now = QTime::currentTime();
+//    QTime time(00,00,00,000);
     while (bytes_available_GB < 200)
     {
-        date = date.addDays(1);
+        date = date.addDays(1);//这里需要如何分割
+//        time = time.currentTime();
         if (date == today)
             break;
         remove_data_files(date);
@@ -545,7 +583,7 @@ void Baojitai::setup()
     QString current_item_db_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kCurrentProductNGDataBaseFileName);
     item_center_->open(current_item_db_path.toStdString());
     item_center_->set_delegate(this);
-    item_center_->listening(6668);
+    item_center_->listening(8001);
 
     QString material_product_db_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kMaterialProductDataBaseFileName);
     material_product_map_.open(material_product_db_path.toStdString());
@@ -623,6 +661,13 @@ void Baojitai::save_msleep_time()
     msleep_time_.write_param(msleep_time_path.toStdString());
 }
 
+//void Baojitai::save_camera_exposure()
+//{
+//    string config_dir = config_dir_path();
+//    QString camera_exposure_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kReadCodecameraexposureFileName);
+//    camera_exposure_.write_param(camera_exposure_path.toStdString());
+//}
+
 void Baojitai::shutdown()
 {
     shutdown_cameras();
@@ -634,6 +679,16 @@ void Baojitai::shutdown()
     }
     shutdown_loggers();
 }
+
+//void Baojitai::set_image_to_MetrologyHandle(HMetrologyModel HMetrologyHandle)
+//{
+//    MetrologyHandle = HMetrologyHandle;
+////	string config_dir = config_dir_path();
+////    QString config_MetrologyHandle_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kImageToMetrologyHandleFileName);
+////	HSerializedItem serilized_item = MetrologyHandle.SerializeHomMat2d();
+////	HFile file(config_MetrologyHandle_path.toStdString().c_str(), "output_binary");
+////	serilized_item.FwriteSerializedItem(file);
+//}
 
 void Baojitai::set_image_to_robotic_matrix(HHomMat2D hommat)
 {
@@ -715,9 +770,9 @@ void Baojitai::setup_cameras()
     QString camera_reading_code_sn_data =configIni->value("Camera/camera_reading_code_sn").toString();
     QString camera_location_sn_data =configIni->value("Camera/camera_location_sn").toString();
     QString camera_check_frame_data =configIni->value("Camera/camera_check_frame_sn").toString();
-    string camera_reading_code_sn = camera_reading_code_sn_data.toInt();
-    string camera_location_sn = camera_location_sn_data.toInt();
-    string camera_check_frame_sn = camera_check_frame_data.toInt();
+    string camera_reading_code_sn = camera_reading_code_sn_data.toStdString();
+	string camera_location_sn = camera_location_sn_data.toStdString();
+	string camera_check_frame_sn = camera_check_frame_data.toStdString();
     delete  configIni;
 
 
@@ -989,31 +1044,40 @@ void Baojitai::update_camera_reading_code_buffer(void* data, int width, int heig
 
 void Baojitai::process_location_image(void* data, int width, int height)
 {
-    location_result_.success = false;
-    location_result_.find_rect = false;
-    Product* product = current_product();
-    if (!product)
-        return;
+    char file_name[128];
+            memset(file_name, 0, 128);
+            sprintf(file_name, "location_image_threshold.log");
+            std::ofstream out_log(file_name);
 
-    int width_config = product->vision_param().l1;
-    int height_config = product->vision_param().l2;
-    int var = product->vision_param().xl1;
+	location_result_.success = false;
+	location_result_.find_rect = false;
+	Product* product = current_product();
+	if (!product)
+		return;
 
-    string width_config_str = to_string(width_config);
-    string height_config_str = to_string(height_config);
-    string var_str = to_string(var);
-    baojitai_logger_->log(Logger::kLogLevelInfo,
-                          "config size",
-                          string("[") + width_config_str + ", " + height_config_str + "] var " + var_str);
+	int width_config = product->vision_param().l1;
+	int height_config = product->vision_param().l2;
+	int var = product->vision_param().xl1;
 
-    // 图像处理， 定位
-    int black_region_threshold[4] = {98, 128, 118, 108};
-    bool find_sucess = false;
-    for (int i = 0; i < sizeof(black_region_threshold) / sizeof(black_region_threshold[0]); ++i)
-    {
-        int x, y, length1, length2;
-        double phi;
-        bool find = false;
+    int region_threshold = product->vision_param().black_region_threshold;
+
+    out_log<<region_threshold<<endl;
+
+	string width_config_str = to_string(width_config);
+	string height_config_str = to_string(height_config);
+	string var_str = to_string(var);
+	baojitai_logger_->log(Logger::kLogLevelInfo,
+		"config size",
+		string("[") + width_config_str + ", " + height_config_str + "] var " + var_str);
+
+	// 图像处理， 定位
+    int black_region_threshold[3] = {  region_threshold+10,region_threshold,region_threshold-10 };
+	bool find_sucess = false;
+	for (int i = 0; i < sizeof(black_region_threshold) / sizeof(black_region_threshold[0]); ++i)
+	{
+		int x, y, length1, length2;
+		double phi;
+		bool find = false;
         halcontools::extract_rect(data, width, height, &x, &y, &phi, &length1, &length2, &find, black_region_threshold[i]);
 
         if (find
@@ -1079,11 +1143,11 @@ void Baojitai::process_location_image(void* data, int width, int height)
         }
     }
 
-    if (baojitai_logger_)
-    {
-        baojitai_logger_->log(Logger::kLogLevelInfo,
-                              location_result_.success ? "location success" : "location fail");
-    }
+	if (baojitai_logger_)
+	{
+		baojitai_logger_->log(Logger::kLogLevelInfo,
+			location_result_.success ? "location success" : "location fail");
+	}
 }
 
 void Baojitai::process_reading_code_image(void* data, int width, int height)
@@ -1105,6 +1169,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 	bool find_board_code = false;
 	if (param.use_board_code && bar_codes.size() > 0)
 	{
+
 		for (int i = 0; i < bar_codes.size(); ++i)
 		{
 			string code = bar_codes[i];
@@ -1151,6 +1216,53 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
                 qDebug() << "board code length error" << endl;
             }
 		}
+        if (!find_board_code)
+        {
+            bar_code_regions.clear();
+            bar_codes.clear();
+            halcontools::read_tid_bar_code(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, board_code_duration);
+            for (int i = 0; i < bar_codes.size(); ++i)
+            {
+                string code = bar_codes[i];
+                if (code.length() <= 2 )
+                    continue;
+                code = code.substr(1, code.length() - 2);
+                qDebug() << "board bar code: " << code.c_str() << endl;
+                qDebug() << "check length: " << code.length() << " vs " << param.board_code_length << endl;
+                if (code.length() == param.board_code_length)
+                {
+                    string prefix = param.board_code_prefix();
+                    qDebug() << "check length: " << param.board_code_length << endl;
+                    qDebug() << "check prefix: " << prefix.c_str() << endl;
+                    if (prefix.length() > 0 && prefix.length() <= code.length())
+                    {
+                        bool prefix_equal = true;
+                        for (int i = 0; i < prefix.length(); ++i)
+                        {
+                            if (prefix[i] != code[i])
+                            {
+                                prefix_equal = false;
+                                break;
+                            }
+                        }
+                        if (prefix_equal)
+                        {
+                            find_board_code = true;
+                            tid_ = code;
+                            board_bar_code_region_ = bar_code_regions[i];
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        qDebug() << "not check prefix and find board code " << endl;
+                        find_board_code = true;
+                        tid_ = code;
+                        board_bar_code_region_ = bar_code_regions[i];
+                        break;
+                    }
+                }
+        }
 	}
 	if (!param.use_board_code || find_board_code)
 		board_code_success_ = true;
@@ -1172,7 +1284,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
         emit signal_product_info("sn - mat code");
 		vector<HXLD> mat_code_xlds;
 		vector<string> mat_codes;
-        halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+		halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
 		for (int i = 0; i < mat_codes.size(); ++i)
 		{
 			string code = mat_codes[i];
@@ -1194,7 +1306,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 		{
 			mat_code_xlds.clear();
 			mat_codes.clear();
-            halcontools::read_2d_code_complex(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            halcontools::read_2d_code(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
 			for (int i = 0; i < mat_codes.size(); ++i)
 			{
 				string code = mat_codes[i];
@@ -1216,7 +1328,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
         {
             mat_code_xlds.clear();
             mat_codes.clear();
-            halcontools::read_2d_code(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            halcontools::read_2d_code_complex(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
             for (int i = 0; i < mat_codes.size(); ++i)
             {
                 string code = mat_codes[i];
@@ -1257,6 +1369,50 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 				break;
 			}
 		}
+        if (!find_product_code)
+        {
+            vector<HRegion> bar_code_regions;
+            vector<string> bar_codes;
+            halcontools::read_bar_code_second(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, product_mat_code_duration);
+            for (int i = 0; i < bar_codes.size(); ++i)
+            {
+                string code = bar_codes[i];
+                if (code.length() <= 2 )
+                    continue;
+                code = code.substr(1, code.length() - 2);
+                qDebug() << "product bar code " << code.c_str() << endl;
+                qDebug() << "check bar code length: " << code.length() << " vs " << param.product_code_length << endl;
+                if (code.length() == param.product_code_length)
+                {
+                    find_product_code = true;
+                    sn_ = code;
+                    product_bar_code_region_ = bar_code_regions[i];
+                    break;
+                }
+            }
+        }
+        else if (!find_product_code)
+        {
+            vector<HRegion> bar_code_regions;
+            vector<string> bar_codes;
+            halcontools::read_bar_code_thrid(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, product_mat_code_duration);
+            for (int i = 0; i < bar_codes.size(); ++i)
+            {
+                string code = bar_codes[i];
+                if (code.length() <= 2 )
+                    continue;
+                code = code.substr(1, code.length() - 2);
+                qDebug() << "product bar code " << code.c_str() << endl;
+                qDebug() << "check bar code length: " << code.length() << " vs " << param.product_code_length << endl;
+                if (code.length() == param.product_code_length)
+                {
+                    find_product_code = true;
+                    sn_ = code;
+                    product_bar_code_region_ = bar_code_regions[i];
+                    break;
+                }
+            }
+        }
 	}
 	if (!param.use_product_code || find_product_code)
 		product_code_success_ = true;
@@ -1293,6 +1449,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 			baojitai_logger_->log(Logger::kLogLevelInfo, "not use product code");
 		}
 	}
+    }
 
     // remove me
 //    this->board_code_success_ = true;
@@ -1628,10 +1785,10 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
         reading_code_time_ = QDateTime::currentDateTime();
         if (baojitai_logger_)
             baojitai_logger_->log(Logger::kLogLevelInfo, "读码相机", "capture");
-		switch (pixel_format)
-		{
-		case kPixelFormatGray8:
-		{
+        switch (pixel_format)
+        {
+        case kPixelFormatGray8:
+        {
             update_camera_reading_code_buffer(data, width, height);
             if (is_running()){
                 process_reading_code_image(data, width, height);
@@ -1641,10 +1798,10 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
                     emit signal_post_process_reading_code_image();
             }
         }
-			break;
-		default:
-			break;
-		}
+            break;
+        default:
+            break;
+        }
     }
     else if (camera == camera_location())
     {
@@ -1676,34 +1833,34 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
         location_time_ = QDateTime::currentDateTime();
         if (baojitai_logger_)
             baojitai_logger_->log(Logger::kLogLevelInfo, "定位相机", "capture");
-    switch (pixel_format)
+        switch (pixel_format)
         {
         case kPixelFormatGray8:
         {
             emit signal_product_arrive();
             update_camera_location_buffer(data, width, height);
 
-//            unsigned char* img_data = (unsigned char*)data;
+            unsigned char* img_data = (unsigned char*)data;
 
             // 152, 745
             //    444, 1362
-//            for (int row = 152; row < 500; row++)
-//            {
-//                for (int col = 765; col < 1662; ++col)
-//                {
-//                    unsigned char* byte = img_data + row * width + col;
-//                    *byte = 255;
-//                }
-//            }
+            for (int row = 152; row < 500; row++)
+            {
+                for (int col = 765; col < 1662; ++col)
+                {
+                    unsigned char* byte = img_data + row * width + col;
+                    *byte = 255;
+                }
+            }
 
-//            for (int row = 1354; row < 1652; row++)
-//            {
-//                for (int col = 569; col < 1357; col++)
-//                {
-//                    unsigned char* byte = img_data + row * width + col;
-//                    *byte = 255;
-//                }
-//            }
+            for (int row = 1354; row < 1652; row++)
+            {
+                for (int col = 569; col < 1357; col++)
+                {
+                    unsigned char* byte = img_data + row * width + col;
+                    *byte = 255;
+                }
+            }
 
             if (is_running()){
                 process_location_image(data, width, height);
@@ -2126,7 +2283,8 @@ void Baojitai::send_sn(SerialPort* sp)
     {
         set_plc("M63", 1);
         QThread::msleep(10);
-        plc_act_utl_->SetDevice("D1100", 10);
+//        plc_act_utl_->SetDevice("D1100", 10);
+        set_plc("D1100", 10);
 
         QThread::msleep(30);
         int flag;
@@ -2170,7 +2328,7 @@ void Baojitai::on_timer_check_sn_result()
     if (plc_act_utl_)
     {
         int sn_ok;
-        //plc_act_utl_->GetDevice("M64", sn_ok);
+        plc_act_utl_->GetDevice("M64", sn_ok);
         get_plc("M64", sn_ok);
         if (sn_ok == 1)
         {
@@ -2523,11 +2681,14 @@ void Baojitai::send_product_information_to_robotic(float x, float y, float delta
     {
         char info[512];
         memset(info, 0, sizeof(info));
+        float x_offset = current_product_->vision_param().x_offset;
+        float y_offset = current_product_->vision_param().y_offset;
+        float z_offset = current_product_->vision_param().z_offset;
         sprintf(info, "%0.2f;%0.2f;%0.2f;%0.2f;%0.2f;",
-                x + robotic_x_offset_ ,
-                y + robotic_y_offset_ ,
+                x + x_offset ,
+                y + y_offset ,
                 delta_z,
-                -rotation * 180 / 3.14 + robotic_rz_offset_,
+                -rotation * 180 / 3.14 + z_offset,
                 vertical_length);
         emit signal_product_info(info);
         robotic_tcp_server_ ->send_command((const char*)info, strlen(info));
@@ -2601,7 +2762,7 @@ void Baojitai::on_advanced_device_disconnect(ItemInformationCenter* item_info_ce
 {
     emit signal_advanced_device_count_change();
 }
-void Baojitai::on_advanced_device_item_information(const string& name, bool is_ng, const string& ng_reason)
+void Baojitai::on_advanced_device_item_information(const string& name, bool is_ng, const string& ng_reason, const string &station, const string &datatime)
 {
     // log ?
 }

@@ -109,12 +109,24 @@ ReadingCodeConfigDialog::ReadingCodeConfigDialog(QWidget *parent) :
             foreach (string code_2d_name, code_2d_names)
                 ui->comboBox_product_code_type->addItem(code_2d_name.c_str());
         }
-		ui->lineEdit_board_code_prefix->setText(param.board_code_prefix().c_str());
+        ui->lineEdit_board_code_prefix->setText(param.board_code_prefix().c_str());
+
+        Product::VisionParam param1 = product->vision_param();
+        ui->spinBox_read_code_exposure_time->setValue(param1.read_code_exposure_time);
     }
+
+
 
     vector<string> bar_code_names = halcontools::all_bar_code_names();
     foreach(string bar_code_name, bar_code_names)
         ui->comboBox_bar_code_type->addItem(bar_code_name.c_str());
+
+    int sn_msleep_time = baojitai->msleep_time_.sn_msleep_time();
+    int tid_msleep_time = baojitai->msleep_time_.tid_msleep_time();
+    int fid_singleslot_time = baojitai->msleep_time_.fid_singleslot_time();
+    ui->spinBox_sn_send_cmc_msleep_time->setValue(sn_msleep_time);
+    ui->spinBox_TID_send_cmc_msleep_time->setValue(tid_msleep_time);
+    ui->spinBox_wait_last_fid_max_time->setValue(fid_singleslot_time);
 
     connect(baojitai, SIGNAL(signal_product_change(Product*)), this, SLOT(on_product_change_signal(Product*)), Qt::QueuedConnection);
     connect(baojitai, SIGNAL(signal_camera_buffer_updated(Camera*)), this, SLOT(on_camera_buffer_changed(Camera*)), Qt::QueuedConnection);
@@ -309,7 +321,7 @@ void ReadingCodeConfigDialog::on_toolButton_reading_code_clicked()
     mat_code_xlds_.clear();
     mat_codes_.clear();
     int mat_code_duration;
-    halcontools::read_2d_code_complex(halcon_image_, ssvision::k2DCodeDataMatrixECC200, mat_codes_, mat_code_xlds_, mat_code_duration);
+    halcontools::read_2d_code_special(halcon_image_, ssvision::k2DCodeDataMatrixECC200, mat_codes_, mat_code_xlds_, mat_code_duration);
 
     reading_code_duration_ = bar_code_duration + mat_code_duration;
 
@@ -410,6 +422,12 @@ void ReadingCodeConfigDialog::on_toolButton_save_clicked()
     Product* product = Baojitai::instance()->current_product();
 	if (!product)
 		return;
+
+    Product::VisionParam param1 = product->vision_param();
+    int read_code_exposure_time = ui->spinBox_read_code_exposure_time->text().toInt();
+    param1.read_code_exposure_time = read_code_exposure_time;
+    product->set_vision_param(param1);
+
 
     Product::DataCodeParam param = product->data_code_param();
     param.use_product_code = ui->checkBox_mat_code->isChecked();

@@ -1,5 +1,7 @@
 #include "baslercamera.h"
 
+#include <fstream>
+
 namespace  ssvision {
 
 void BaslerCamera::start_basler_camera()
@@ -52,6 +54,7 @@ BaslerCamera::~BaslerCamera()
     if (pylon_camera_)
     {
         pylon_camera_->Close();
+		pylon_camera_->DetachDevice();
         delete pylon_camera_;
         pylon_camera_ = NULL;
     }
@@ -108,10 +111,26 @@ bool BaslerCamera::is_open()
     else
         return false;
 }
+bool BaslerCamera::is_connected()
+{
+	if (pylon_camera_)
+		return pylon_camera_->IsPylonDeviceAttached();
+	else
+		return false;
+}
 void BaslerCamera::close()
 {
-    if (pylon_camera_)
-        pylon_camera_->Close();
+	if (pylon_camera_)
+	{
+		pylon_camera_->Close();
+	}      
+}
+void BaslerCamera::detach()
+{
+	if (pylon_camera_)
+	{
+		pylon_camera_->DetachDevice();
+	}
 }
 bool BaslerCamera::trigger()
 {
@@ -137,18 +156,32 @@ bool BaslerCamera::start(float trigger_delay_us)
 {
     if (is_open() && !is_grabbing())
     {
+		char file_name[128];
+		memset(file_name, 0, 128);
+		sprintf(file_name, "camera_%s.log", this->sn_.c_str());
+		std::ofstream out_log(file_name);
+		out_log << this->sn_ << endl;
+	    
         GenApi::INodeMap& nodemap = pylon_camera_->GetNodeMap();
         GenApi::CEnumerationPtr(nodemap.GetNode("TriggerSelector"))->FromString("FrameStart");
         GenApi::CEnumerationPtr(nodemap.GetNode("TriggerMode"))->FromString("On");
-        // 硬编码参数依据来自于 pylon viewer
-        if (trigger_delay_us >= 0.0f && trigger_delay_us <= 1000000.0f)
-        {
-              GenApi::CFloatPtr(nodemap.GetNode("TriggerDelayAbs"))->SetValue(trigger_delay_us);
-        }
+		out_log << "trigger frame start on" << endl;
+
         GenApi::CEnumerationPtr(nodemap.GetNode("TriggerSelector"))->FromString("AcquisitionStart");
         GenApi::CEnumerationPtr(nodemap.GetNode("TriggerMode"))->FromString("Off");
+		out_log << "trigger acquisition start off" << endl;
+
+		// 硬编码参数依据来自于 pylon viewer
+		if (trigger_delay_us >= 0.0f && trigger_delay_us <= 1000000.0f)
+		{
+			GenApi::CFloatPtr(nodemap.GetNode("TriggerDelayAbs"))->SetValue(trigger_delay_us);
+		}
+		out_log << "set trigger delay" << endl;
+
         pylon_camera_->StartGrabbing(GrabStrategy_OneByOne, GrabLoop_ProvidedByInstantCamera);
-        return true;
+		out_log << "start grabbing" << endl;
+		
+		return true;
     }else
     {
         return false;

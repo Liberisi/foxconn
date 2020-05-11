@@ -12,7 +12,123 @@ ItemInformationCenter* ItemInformationCenter::instance()  //继承
     return item_information;
 }
 
-ItemInformationCenter::ItemInformationCenter() //连接
+
+//
+//void ItemInformationCenter::initServerSignals()   //初始化信号槽
+//{
+//    connect(&m_server, SIGNAL(newConnection()), this, SLOT(onServerNewConnection()));
+
+
+//}
+//bool ItemInformationCenter::startServer(int port)         //启动服务器
+//{
+
+//    if(m_server.listen(QHostAddress::AnyIPv4,port)       //只监听IPV4的所有客户端
+//    {
+////        ui->targetLabel->show();
+////        ui->targetObject->show();
+////        ui->localPort->setText(QString("%1").arg(m_server.serverPort()));
+
+//        return true;
+//    }
+//    else
+//       return false;
+
+//}
+
+//void ItemInformationCenter::onServerNewConnection()
+//{
+//    qDebug() << "onNewConnection";
+//    QTcpSocket* tcp = m_server.nextPendingConnection();     //获取新的客户端信息
+
+//    QString info=tcp->peerAddress().toString()+":"+QString("%1").arg(tcp->peerPort());
+//    //ui->targetObject->addItem(info);
+//    QMessageBox::information(this,"提示",QString("新的客户端连入:%1").arg(info),QMessageBox::Ok);
+
+//    tcp->setObjectName(info);       //设置名称,方便查找
+
+//    connect(tcp, SIGNAL(connected()), this, SLOT(onServerConnected()));
+//    connect(tcp, SIGNAL(disconnected()), this, SLOT(onServerDisconnected()));
+//    connect(tcp, SIGNAL(readyRead()), this, SLOT(onServerDataReady()));
+//    connect(tcp, SIGNAL(bytesWritten(qint64)), this, SLOT(onServerBytesWritten(qint64)));
+
+//}
+//void ItemInformationCenter::onServerConnected()
+//{
+
+//}
+//void ItemInformationCenter::onServerDisconnected()
+//{
+//    QTcpSocket* tcp = dynamic_cast<QTcpSocket*>(sender());
+
+//    if( tcp != NULL )       //从连接对象中移除掉
+//    {
+//        qDebug() << "onServerDisconnected";
+//        qDebug() << "Local Address:" << tcp->peerAddress();
+//        qDebug() << "Local Port:" << tcp->peerPort();
+
+
+//        QString info=tcp->peerAddress().toString()+":"+QString("%1").arg(tcp->peerPort());
+
+//        QMessageBox::information(this,"提示",QString("客户端断开连接:%1").arg(info),QMessageBox::Ok);
+
+//        int index = ui-> targetObject ->findText(info);
+//        if(index>=0)
+//        ui->targetObject->removeItem(index);
+//    }
+
+//}
+//void ItemInformationCenter::onServerDataReady()
+//{
+//    QTcpSocket* tcp = dynamic_cast<QTcpSocket*>(sender());
+
+//    if(tcp->peerAddress().toString()!=targetAddr || tcp->peerPort()!=targetPort  )
+//    {
+//        targetAddr = tcp->peerAddress().toString();
+//        targetPort = tcp->peerPort();
+
+//        ui->recvEdit->insertPlainText("[接受来自"+ targetAddr+":"+QString("%1").arg(targetPort)+"]:\r\n");
+
+//    }
+
+//    ui->recvEdit->moveCursor(QTextCursor::End);
+
+////    if(ui->hexRecv->isChecked())        //十六进制接收？
+////    {
+////          QByteArray data =  tcp->readAll();
+
+
+////          for(int i=0;i<data.length();i++)
+////          {
+
+////              ui->recvEdit->insertPlainText(QString("%1 ").arg((unsigned char)data[i],2,16,QChar('0')).toUpper());
+
+////          }
+////          ui->recvEdit->insertPlainText("\r\n");
+////    }
+////    else
+//            QString message = tcp->readLine();
+//			out_log << message.toStdString() << endl;
+////            on_item_message(socket, message);
+//            if (message.length() > 0 && message[0] == '@')
+//            {
+//                on_item_message(socket, message);
+//				out_log << message.toStdString() << endl;
+//            }
+////        ui->recvEdit->insertPlainText(QString::fromLocal8Bit(tcp->readAll())+"\r\n");
+
+
+//}
+//void ItemInformationCenter::onServerBytesWritten(qint64 bytes)
+//{
+//    qDebug() << "onBytesWritten:" << bytes;
+
+
+//    ui->sendLenLabel->setText(QString("%1").arg(ui->sendLenLabel->text().toInt()+bytes));
+
+//}
+//
+ItemInformationCenter::ItemInformationCenter() //初始化
 {
     delegate_ = NULL;
     connect(&tcp_server_, SIGNAL(newConnection()), this, SLOT(on_socket_connect()));
@@ -55,11 +171,29 @@ vector<string> ItemInformationCenter::connected_device_ip_list() //连接设备i
     }
     return ip_list;
 }
+
+void ItemInformationCenter::onServerBytesWritten(QString bytes)
+{
+//    bool repair_mode = Baojitai::instance()->is_repair_mode();
+//    if (repair_mode = false)
+//    {
+//       string response_item_name = item_name.toStdString()+ "autoNG\r\n";
+//        socket->write(response_item_name.c_str(), response_item_name.length());
+//    }
+//    else
+//    {
+//        string response_item_name = item_name.toStdString()+ "manualNG\r\n";
+//        socket->write(response_item_name.c_str(), response_item_name.length());
+//    }
+
+}
+
 void ItemInformationCenter::on_socket_connect()  //隧道连接
 {
     QTcpSocket* socket = tcp_server_.nextPendingConnection();
     connect(socket, SIGNAL(readyRead()), this, SLOT(on_socket_read()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(on_socket_disconnect()));
+    //    connect(socket, SIGNAL(bytesWritten(qint64)), this, SLOT(onServerBytesWritten(qint64)));
     sockets_.push_back(socket);
     string ip_str = socket->peerAddress().toString().toStdString();
     if (delegate_)
@@ -87,22 +221,71 @@ void ItemInformationCenter::on_socket_disconnect()   //隧道断开
         }
     }
 }
+
+
+void ItemInformationCenter::on_socket_read()
+{
+	char file_name[128];
+	memset(file_name, 0, 128);
+	sprintf(file_name, "server_read.log");
+	std::ofstream out_log(file_name);
+
+	QTcpSocket* socket = dynamic_cast<QTcpSocket*>(sender());
+	QString message = QString::fromLocal8Bit(socket->readAll());
+	on_item_message(socket, message);
+
+	//    if(tcp->peerAddress().toString()!=targetAddr || tcp->peerPort()!=targetPort  )
+	//    {
+	//        targetAddr = tcp->peerAddress().toString();
+	//        targetPort = tcp->peerPort();
+//    vector<QTcpSocket*>::iterator iter = sockets_.begin();
+//    while(iter != sockets_.end())
+//    {
+//        QTcpSocket* socket = *iter;
+//		
+//        while (socket->canReadLine())
+//        {
+//
+//            QString message = QString::fromLocal8Bit(socket->readLine());
+//			out_log << message.toStdString() << endl;
+////            on_item_message(socket, message);
+//            if (message.length() > 0 && message[0] == '@')
+//            {
+//                on_item_message(socket, message);
+//				out_log << message.toStdString() << endl;
+//            }
+////            /*socket->write("autoNG\r\n")*/;
+//            
+//            out_log << message.toStdString() << endl;
+//        }
+//        iter++;
+//    }
+}
+
 void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message) //信息
 {
-    if (message.length() == 0)
-        return;
-    if (message[0] != '@')
-        return;
+//    if (message.length() == 0)
+//        return;
+//    if (message[0] != '@')
+//        return;
 
     // 消息格式
     // @条码_ok_工站_datatime\r
     // @条码_ng_原因_工站_datatime\r
 
+    char file_name[128];
+    memset(file_name, 0, 128);
+    sprintf(file_name, "server.log");
+    std::ofstream out_log(file_name);
+    out_log << message.toStdString() << endl;
     QStringList str_list = message.split('_');
+
+
     QString item_name;
     if (str_list.length() > 0)
     {
         item_name = str_list[0];
+        out_log << item_name.toStdString() << endl;
         if (item_name.length() > 1)
         {
             item_name = item_name.right(item_name.length()-1);
@@ -138,6 +321,7 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
         if (repair_mode = false)
         {
             string response_item_name = item_name.toStdString()+ "autoNG\r\n";
+            out_log << response_item_name << endl;
             socket->write(response_item_name.c_str(), response_item_name.length());
         }
         else
@@ -168,23 +352,6 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
     add_item(item_name.toStdString(), ng_type == 1 , ng_reason.toStdString(), station.toStdString(), datatime.toStdString());
 }
 
-void ItemInformationCenter::on_socket_read()
-{
-    vector<QTcpSocket*>::iterator iter = sockets_.begin();
-    while(iter != sockets_.end())
-    {
-        QTcpSocket* socket = *iter;
-        while (socket->canReadLine())
-        {
-            QString message = socket->readLine();
-            if (message.length() > 0 && message[0] == '@')
-            {
-                on_item_message(socket, message);
-            }
-        }
-        iter++;
-    }
-}
 void ItemInformationCenter::open(const string db_path)
 {
     const QString driver("QSQLITE");

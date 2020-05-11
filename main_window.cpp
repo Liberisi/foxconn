@@ -33,6 +33,17 @@
 #include <QFileDialog>
 #include "halcon_tools.h"
 #include "material_product_dialog.h"
+#include <QtSql/qsql.h>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlQueryModel>
+#include <QtCore>
+#include "xlsxdocument.h"
+#include "xlsxformat.h"
+#include "xlsxcellrange.h"
+#include "xlsxchart.h"
+#include <QtXlsx>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -73,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QString status_bar_item_style_sheet = QStringLiteral(" QLineEdit{ color: white };background-color:rgba(255,255,255,0)");
     QLineEdit *lineEdit = new QLineEdit;
     lineEdit->setMaximumSize(76,24);
+    lineEdit->setMinimumSize(76,24);
     lineEdit->setStyleSheet(status_bar_item_style_sheet);
     lineEdit->setText(QStringLiteral("人员登录"));
 	lineEdit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
@@ -89,6 +101,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QLineEdit *lineEdit3 = new QLineEdit;
     lineEdit3->setMaximumSize(76,24);
+    lineEdit3->setMinimumSize(76,24);
     lineEdit3->setStyleSheet(status_bar_item_style_sheet);
     lineEdit3->setText(QStringLiteral("数据端口"));
 	lineEdit3->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
@@ -119,66 +132,77 @@ MainWindow::MainWindow(QWidget *parent) :
     statusBar()->addWidget(fid_cmc_socket_status_lineedit);
     fid_cmc_socket_status_lineedit->setReadOnly(true);
 
-	QLineEdit* plc_lineedit = new QLineEdit;
-	plc_lineedit->setMaximumSize(42, 24);
-    plc_lineedit->setStyleSheet(status_bar_item_style_sheet);
-	plc_lineedit->setText(QStringLiteral("PLC"));
-	plc_lineedit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-	statusBar()->addWidget(plc_lineedit);
-	plc_lineedit->setReadOnly(true);
+//	QLineEdit* plc_lineedit = new QLineEdit;
+//	plc_lineedit->setMaximumSize(42, 24);
+//    plc_lineedit->setStyleSheet(status_bar_item_style_sheet);
+//	plc_lineedit->setText(QStringLiteral("PLC"));
+//	plc_lineedit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//	statusBar()->addWidget(plc_lineedit);
+//	plc_lineedit->setReadOnly(true);
 	plc_status_lineedit = new QLineEdit;
-	plc_status_lineedit->setMaximumSize(10, 24);
+//	plc_status_lineedit->setMaximumSize(10, 24);
+//    plc_status_lineedit->setStyleSheet(status_bar_item_style_sheet);
+	plc_status_lineedit->setText(QStringLiteral("PLC"));
+	plc_status_lineedit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 	plc_status_lineedit->setStyleSheet(QStringLiteral(" QLineEdit{ color: white }"));
 	statusBar()->addWidget(plc_status_lineedit);
 	plc_status_lineedit->setReadOnly(true);
 
-	QLineEdit* robotic_status_label = new QLineEdit;
-	robotic_status_label->setMaximumSize(58, 24);
-    robotic_status_label->setStyleSheet(status_bar_item_style_sheet);
-	robotic_status_label->setText(QStringLiteral("机械臂"));
-	robotic_status_label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-	statusBar()->addWidget(robotic_status_label);
-	robotic_status_label->setReadOnly(true);
+//	QLineEdit* robotic_status_label = new QLineEdit;
+//	robotic_status_label->setMaximumSize(58, 24);
+//    robotic_status_label->setStyleSheet(status_bar_item_style_sheet);
+//	robotic_status_label->setText(QStringLiteral("机械臂"));
+//	robotic_status_label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//	statusBar()->addWidget(robotic_status_label);
+//	robotic_status_label->setReadOnly(true);
 
 	robotic_status_lineEdit = new QLineEdit;
-	robotic_status_lineEdit->setMaximumSize(10, 24);
+//	robotic_status_lineEdit->setMaximumSize(10, 24);
+    robotic_status_lineEdit->setText(QStringLiteral("机械臂"));
+	robotic_status_lineEdit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 	robotic_status_lineEdit->setStyleSheet(" QLineEdit{ color: white }");
 	statusBar()->addWidget(robotic_status_lineEdit);
 	robotic_status_lineEdit->setReadOnly(true);
 
     //相机状态区
-    QLineEdit *lineEdit6 = new QLineEdit;
-    lineEdit6->setMaximumSize(76,24);
-    lineEdit6->setStyleSheet(status_bar_item_style_sheet);
-    lineEdit6->setText(QStringLiteral("读码相机"));
-	lineEdit6->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    statusBar()->addWidget(lineEdit6);
-    lineEdit6->setReadOnly(true);
+//    QLineEdit *lineEdit6 = new QLineEdit;
+//    lineEdit6->setMaximumSize(76,24);
+//    lineEdit6->setStyleSheet(status_bar_item_style_sheet);
+//    lineEdit6->setText(QStringLiteral("读码相机"));
+//	lineEdit6->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//    statusBar()->addWidget(lineEdit6);
+//    lineEdit6->setReadOnly(true);
     qr_camera_status_lineedit = new QLineEdit;
-    qr_camera_status_lineedit->setMaximumSize(10,24);
+//    qr_camera_status_lineedit->setMaximumSize(10,24);
+    qr_camera_status_lineedit->setText(QStringLiteral("读码相机"));
+	qr_camera_status_lineedit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     statusBar()->addWidget(qr_camera_status_lineedit);
     qr_camera_status_lineedit->setReadOnly(true);
 
-    QLineEdit *lineEdit7 = new QLineEdit;
-    lineEdit7->setMaximumSize(76,24);
-    lineEdit7->setStyleSheet(status_bar_item_style_sheet);
-    lineEdit7->setText(QStringLiteral("定位相机"));
-	lineEdit7->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    statusBar()->addWidget(lineEdit7);
-    lineEdit7->setReadOnly(true);
+//    QLineEdit *lineEdit7 = new QLineEdit;
+//    lineEdit7->setMaximumSize(76,24);
+//    lineEdit7->setStyleSheet(status_bar_item_style_sheet);
+//    lineEdit7->setText(QStringLiteral("定位相机"));
+//	lineEdit7->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//    statusBar()->addWidget(lineEdit7);
+//    lineEdit7->setReadOnly(true);
     pos_camera_status_lineedit = new QLineEdit;
-    pos_camera_status_lineedit->setMaximumSize(10,24);
+//    pos_camera_status_lineedit->setMaximumSize(10,24);
+    pos_camera_status_lineedit->setText(QStringLiteral("定位相机"));
+	pos_camera_status_lineedit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     statusBar()->addWidget(pos_camera_status_lineedit);
     pos_camera_status_lineedit->setReadOnly(true);
-    QLineEdit *lineEdit8 = new QLineEdit;
-    lineEdit8->setMaximumSize(76,24);
-    lineEdit8->setStyleSheet(status_bar_item_style_sheet);
-    lineEdit8->setText(QStringLiteral("支架相机"));
-	lineEdit8->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    statusBar()->addWidget(lineEdit8);
-    lineEdit8->setReadOnly(true);
+//    QLineEdit *lineEdit8 = new QLineEdit;
+//    lineEdit8->setMaximumSize(76,24);
+//    lineEdit8->setStyleSheet(status_bar_item_style_sheet);
+//    lineEdit8->setText(QStringLiteral("支架相机"));
+//	lineEdit8->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//    statusBar()->addWidget(lineEdit8);
+//    lineEdit8->setReadOnly(true);
     frame_camera_status_lineedit = new QLineEdit;
-    frame_camera_status_lineedit->setMaximumSize(10,24);
+//    frame_camera_status_lineedit->setMaximumSize(10,24);
+    frame_camera_status_lineedit->setText(QStringLiteral("支架相机"));
+	frame_camera_status_lineedit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     statusBar()->addWidget(frame_camera_status_lineedit);
     frame_camera_status_lineedit->setReadOnly(true);
     //
@@ -191,30 +215,34 @@ MainWindow::MainWindow(QWidget *parent) :
 //    statusBar()->addWidget(lineEdit9);
 //    lineEdit9->setReadOnly(true);
 
-    QLineEdit *lineEdit10 = new QLineEdit;
-    lineEdit10->setMaximumSize(76,24);
-    lineEdit10->setStyleSheet(status_bar_item_style_sheet);
-    lineEdit10->setText(QStringLiteral("运行状态"));
-	lineEdit10->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    statusBar()->addWidget(lineEdit10);
-    lineEdit10->setReadOnly(true);
+//    QLineEdit *lineEdit10 = new QLineEdit;
+//    lineEdit10->setMaximumSize(76,24);
+//    lineEdit10->setStyleSheet(status_bar_item_style_sheet);
+//    lineEdit10->setText(QStringLiteral("运行状态"));
+//	lineEdit10->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//    statusBar()->addWidget(lineEdit10);
+//    lineEdit10->setReadOnly(true);
 
     running_status_lineEdit = new QLineEdit;
-    running_status_lineEdit->setMaximumSize(10, 24);
+//    running_status_lineEdit->setMaximumSize(10, 24);
     running_status_lineEdit->setStyleSheet(" QLineEdit{ color: white }");
+    running_status_lineEdit->setText(QStringLiteral("运行状态"));
+	running_status_lineEdit->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     statusBar()->addWidget(running_status_lineEdit);
     running_status_lineEdit->setReadOnly(true);
 
-    QLineEdit *lineEdit11 = new QLineEdit;
-    lineEdit11->setMaximumSize(76,24);
-    lineEdit11->setStyleSheet(status_bar_item_style_sheet);
-    lineEdit11->setText(QStringLiteral("上游设备"));
-    lineEdit11->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    statusBar()->addWidget(lineEdit11);
-    lineEdit11->setReadOnly(true);
+//    QLineEdit *lineEdit11 = new QLineEdit;
+//    lineEdit11->setMaximumSize(76,24);
+//    lineEdit11->setStyleSheet(status_bar_item_style_sheet);
+//    lineEdit11->setText(QStringLiteral("上游设备"));
+//    lineEdit11->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+//    statusBar()->addWidget(lineEdit11);
+//    lineEdit11->setReadOnly(true);
 
     advanced_device_count_label = new QLabel;
-    advanced_device_count_label->setMaximumSize(22, 24);
+//    advanced_device_count_label->setMaximumSize(22, 24);
+    advanced_device_count_label->setText(QStringLiteral("上游设备"));
+    advanced_device_count_label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     advanced_device_count_label->setStyleSheet(" QLabel{ color: white }");
     statusBar()->addWidget(advanced_device_count_label);
     advanced_device_count_label->setText("0");
@@ -317,6 +345,24 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listView_info->setModel(&info_list_item_model_);
     ui->tableView_ng->setModel(&ng_list_item_model_);
     ui->tableView_ng->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+
+    //QsqDatabase db = QsqlDatabase::addDatabase("SQLITE");
+    //db.setDatabaseName("item.db");
+    //if(!db.open())
+    //{
+    //       //错误处理
+    //}
+    //static QSqlQueryModel *model = new QSqlQueryModel(ui->tableView_advance_product_ng);
+    //model->setQuery(QString("select * from table;"));
+    //model->setHeaderData(0,Qt::Horizontal,QObject::tr("编号"));
+    //model->setHeaderData(1,Qt::Horizontal,QObject::tr("TID"));
+    //model->setHeaderData(2,Qt::Horizontal,QObject::tr("NG"));
+    //model->setHeaderData(3,Qt::Horizontal,QObject::tr("REASON"));
+    //model->setHeaderData(4,Qt::Horizontal,QObject::tr("STATION"));
+    //model->setHeaderData(5,Qt::Horizontal,QObject::tr("DATATIME"));
+    //ui->tableView_advance_product_ng->setModel(model);
+    //db->close();
 }
 
 MainWindow::~MainWindow()
@@ -1122,7 +1168,9 @@ void MainWindow::on_toolButton_start_clicked()
     baojitai->start();
     ui->toolButton_start->setEnabled(false);
     ui->toolButton_stop->setEnabled(false);
+
     //ui->checkBox_repair_mode->setEnabled(false);
+
 }
 
 void MainWindow::on_toolButton_stop_clicked()
@@ -1546,4 +1594,549 @@ void MainWindow::on_lineEdit_scan_tid_returnPressed()
     scn_file << ui->lineEdit_station_id->text().toStdString() << endl;
 
     QTimer::singleShot(2000, this, SLOT(on_timer_scan_dir()));
+}
+
+//void PositionCalibrate::on_tableview_selection_changed(QItemSelection selected, QItemSelection deselected)
+//{
+//    ui->tableView->selectionModel()->select(selected, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+//    ui->tableView->selectionModel()->select(deselected, QItemSelectionModel::Deselect | QItemSelectionModel::Rows);
+//    ui->tableView_2->selectionModel()->select(selected, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+//    ui->tableView_2->selectionModel()->select(deselected, QItemSelectionModel::Deselect | QItemSelectionModel::Rows);
+//    ui->image_window->update();
+//}
+
+void MainWindow::on_toolButton_information_xlsx_clicked()
+{
+//    QXlsx::Document xlsx("数据采集表.xlsx");/*打开一个book1的文件*/
+//    //第一排
+////    QXlsx::Format format1;/*设置该单元的样式*/
+////    format1.setFontColor(QColor(Qt::black));/*文字为黑色*/
+////    //    format1.setPatternBackgroundColor(QColor(152,251,152));/*背景颜色*/
+////    format1.setFontSize(16);/*设置字体大小*/
+////    format1.setHorizontalAlignment(QXlsx::Format::AlignHCenter);/*横向居中*/
+////    //    format1.setBorderStyle(QXlsx::Format::BorderDashDotDot);/*边框样式*/
+////    xlsx.write("A1:I1", "设备信息采集表!", format1);/*写入文字，应该刚才设置的样式*/
+////    //    QXlsx::Format format2;/
+////    //    format2.setFontBold(true);/*设置加粗*/
+////    //    format2.setFontColor(QColor(Qt::red));/*文字为黑色*/
+////    ////    format1.setPatternBackgroundColor(QColor(152,251,152));/*背景颜色*/
+////    //    format2.setFontSize(11);/*设置字体大小*/
+////    //    format2.setHorizontalAlignment(QXlsx::Format::AlignHCenter);/*横向居中*/
+////    ////    format2.setBorderStyle(QXlsx::Format::BorderDashDotDot);/*边框样式*/
+////    //    xlsx.write("L1", "PLC实际使用地址", format2);/*写入文字，应该刚才设置的样式*/
+
+//        //第二排
+////    QXlsx::Format format3;/*重新设置另一个单元的样式*/
+////    format3.setFontBold(true);/*设置加粗*/
+////    //    format2.setFontUnderline(QXlsx::Format::FontUnderlineDouble);/*下双划线*/
+////    //    format2.setFillPattern(QXlsx::Format::PatternLightUp);/*填充方式*/
+////    format3.setFontSize(14);/*设置字体大小*/
+////    format3.setHorizontalAlignment(QXlsx::Format::AlignHCenter);/*横向居中*/
+////    xlsx.write("A2", "序號", format3);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("B2:C2", "項目", format3);
+////    xlsx.write("D2", "單位", format3);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("E2", "PLC地址分配", format3);
+////    xlsx.write("F2", "PLC數據類型", format3);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("G2", "統計週期", format3);
+////    xlsx.write("H2", "更新頻率", format3);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("I2", "可讀寫性", format3);
+
+//        //第三排
+////    QXlsx::Format format4;/*设置该单元的样式*/
+////    format4.setFontColor(QColor(Qt::red));/*文字为红色*/
+////    format4.setFontSize(12);
+////    format4.setHorizontalAlignment(QXlsx::Format::AlignHCenter);/*横向居中*/
+//    QXlsx::Format format5;
+//    format5.setFontColor(QColor(Qt::black));/*文字为黑色*/
+//    format5.setFontSize(12);
+//    format5.setHorizontalAlignment(QXlsx::Format::AlignHCenter);/*横向居中*/
+////    xlsx.write("A3", "1", format4);
+////    xlsx.write("B3:C3", "設備ID", format4);
+////    xlsx.write("D3", "/", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("E3", "D5000-D5003", format5);
+////    xlsx.write("F3", "/", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("G3", "/", format5);
+////    xlsx.write("H3", "每班一次", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("I3", "讀寫", format5);
+////    xlsx.write("J3", "设置，开机清零时间", format5);
+
+//        //第四排
+////    xlsx.write("A4", "2", format4);
+////    xlsx.write("B4:C4", "設備白班開班時間", format4);
+//    int day_hour_value;
+//    int day_minute_value;
+//	plc_utl_->GetDevice("D5004", day_hour_value);
+//	plc_utl_->GetDevice("D5005", day_minute_value);
+//	xlsx.write("D4", (day_hour_value + string("H ") + day_minute_value + string("MIN ")).c_str(), format5);/*写入文字，应该刚才设置的样式*/
+//    xlsx.write("E4", "D5004-D5005", format5);
+////    xlsx.write("F4", "/", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("G4", "/", format5);
+////    xlsx.write("H4", "每班一次", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("I4", "讀寫", format5);
+////    xlsx.write("J4", "设置，开机清零时间", format5);
+
+//        //第五排
+////    xlsx.write("A5", "3", format4);
+////    xlsx.write("B5:C5", "設備晚班開班時間", format4);
+//    int night_hour_value;
+//    int night_minute_value;
+//	plc_utl_->GetDevice("D5006", night_hour_value);
+//	plc_utl_->GetDevice("D5007", night_minute_value);
+//	xlsx.write("D5", (night_hour_value + string("H") + night_minute_value + string("MIN")).c_str(), format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("E5", "D5000-D5003", format5);
+////    xlsx.write("F5", "/", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("G5", "/", format5);
+////    xlsx.write("H5", "每班一次", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("I5", "讀寫", format5);
+////    xlsx.write("J5", "设置，开机清零时间", format5);
+
+//    //第六排
+////    xlsx.write("A6", "3", format4);
+////    xlsx.write("B6:C6", "設備狀態(1待機、2工作、3報警等)", format4);
+//    int status;
+//	plc_utl_->GetDevice("D5010", status);
+//    switch (status)
+//    {
+//    case 1 :
+//        xlsx.write("D6","待機", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 2 :
+//        xlsx.write("D6","工作", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 3 :
+//        xlsx.write("D6","報警", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    }
+////    xlsx.write("E6", "D5010", format5);
+////    xlsx.write("F6", "16位", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("G6", "實時", format5);
+////    xlsx.write("H6", "實時", format5);/*写入文字，应该刚才设置的样式*/
+////    xlsx.write("I6", "只讀", format5);
+
+//    //第七排
+//    int currunt_code;
+//	plc_utl_->GetDevice("D5011", currunt_code);
+//    switch (status)
+//    {
+//    case 110 :
+//        xlsx.write("D7","视觉定位反馈超时(M20，M21)", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 111 :
+//        xlsx.write("D7","视觉扫TID反馈超时(M60)", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 112 :
+//        xlsx.write("D7","视觉没set M63", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 122 :
+//        xlsx.write("D7","安全门被打开", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 225 :
+//        xlsx.write("D7","急停被按下", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 271 :
+//        xlsx.write("D7","掉真空报警", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 275 :
+//        xlsx.write("D7","FID刷卡失败，设备已暂停，请处理！", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 31 :
+//        xlsx.write("D7","机器人报警", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 43 :
+//        xlsx.write("D7","皮带异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 51 :
+//        xlsx.write("D7","支架转盘拍照NG", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 53 :
+//        xlsx.write("D7","支架挡杆拍照NG", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 601 :
+//        xlsx.write("D7","支架异常总数", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 380 :
+//        xlsx.write("D7","支架上有产品，请清理", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 381 :
+//        xlsx.write("D7","支架转盘偏位", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 382 :
+//        xlsx.write("D7","支架背靠未到位", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 653 :
+//        xlsx.write("D7","流水板气缸上限傳感器異常或流水板卡阻", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 654 :
+//        xlsx.write("D7","機器人放料完成信號異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 658 :
+//        xlsx.write("D7","升降機進料口傳感器X15異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 659 :
+//        xlsx.write("D7","升降线极限位傳感器X16異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 660 :
+//        xlsx.write("D7","机器人原点信号异常或流水板卡阻", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 661 :
+//        xlsx.write("D7","機器人放料完成信號異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 662 :
+//        xlsx.write("D7","检测气缸1收回到位信号異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 663 :
+//        xlsx.write("D7","检测气缸2收回到位信号X11異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 664 :
+//        xlsx.write("D7","检测气缸1伸出位傳感器X6", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 665 :
+//        xlsx.write("D7","气缸2伸出傳感器X10異常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 670 :
+//        xlsx.write("D7","M670升降机正装气缸伸出异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 671 :
+//        xlsx.write("D7","M671升降机正装气缸缩回异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 672 :
+//        xlsx.write("D7","M672升降机倒装气缸伸出异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 673 :
+//        xlsx.write("D7","M673升降机倒装气缸缩回异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 674 :
+//        xlsx.write("D7","M674卡泡棉气缸伸出异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 675 :
+//        xlsx.write("D7","M675卡泡棉气缸缩回异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 676 :
+//        xlsx.write("D7","M676初始化条件不足", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+//    case 677 :
+//        xlsx.write("D7","M677感应器X16异常", format5);/*写入文字，应该刚才设置的样式*/
+//        break;
+
+//    //第七排
+//    int Cycle_Time;
+//	plc_utl_->GetDevice("D5021", Cycle_Time);
+//	xlsx.write("D8", (Cycle_Time + string("S")).c_str(), format5);/*写入文字，应该刚才设置的样式*/
+
+//    //第八排
+//    int production_quantity;
+//	plc_utl_->GetDevice("D5022", production_quantity);
+//	xlsx.write("D9", (production_quantity + string("個")).c_str(), format5);/*写入文字，应该刚才设置的样式*/
+
+//    //第九排
+//    int ng_number;
+//	plc_utl_->GetDevice("D5024", ng_number);
+//	xlsx.write("D10", (ng_number + string("個")).c_str(), format5);
+
+//    //第十排
+//	int yield_rate;
+//	plc_utl_->GetDevice("D5026", yield_rate);
+//	xlsx.write("D11", (yield_rate + string("%")).c_str(), format5);
+
+//    //第十一排
+//    int running_time;
+//	plc_utl_->GetDevice("D5030", running_time);
+//	xlsx.write("D12", (running_time + string("分钟")).c_str(), format5);
+
+//    //第十二排
+//    int change_product;
+//	plc_utl_->GetDevice("D5031", change_product);
+//	xlsx.write("D13", (change_product + string("次")).c_str(), format5);
+
+//    //第十三排
+//    int change_product_used_time;
+//	plc_utl_->GetDevice("D5032", change_product_used_time);
+//	xlsx.write("D14", (change_product_used_time + string("S")).c_str(), format5);
+
+//    //第十四排
+//	int sleep;
+//	plc_utl_->GetDevice("D5034", sleep);
+//	xlsx.write("D15", (sleep + string("S")).c_str(), format5);
+
+//    //第十五排
+//    int bug;
+//	plc_utl_->GetDevice("D5036", bug);
+//	xlsx.write("D16", (bug + string("S")).c_str(), format5);
+
+//    //第十六排
+//    int wait;
+//	plc_utl_->GetDevice("D5038", wait);
+//	xlsx.write("D17", (wait + string("S")).c_str(), format5);
+
+//    //第十七排
+//    int block;
+//	plc_utl_->GetDevice("D5040", block);
+//	xlsx.write("D18", (block + string("S")).c_str(), format5);
+
+//    //第十八排
+//    int in_running_rate;
+//	plc_utl_->GetDevice("D5046", in_running_rate);
+//	xlsx.write("D19", (in_running_rate + string("%")).c_str(), format5);
+
+//    //第十九排
+//    int all_ng_numbers;
+//    int pozition;
+//    int tid;
+//    int sn;
+//    int tid_cmc;
+//    int sn_cmc;
+//    int fid_cmc;
+//    int advance_product;
+//	plc_utl_->GetDevice("D5100", pozition);
+//	plc_utl_->GetDevice("D5102", tid);
+//	plc_utl_->GetDevice("D5106", sn);
+//	plc_utl_->GetDevice("D5108", tid_cmc);
+//	plc_utl_->GetDevice("D5110", sn_cmc);
+//	plc_utl_->GetDevice("D5112", fid_cmc);
+//	plc_utl_->GetDevice("D5104", advance_product);
+//	xlsx.write("D24", (pozition + string("個")).c_str(), format5);
+//	xlsx.write("D25", (tid + string("個")).c_str(), format5);
+//       xlsx.write("D26",(sn+string("個")).c_str(), format5);
+//        xlsx.write("D28",(tid_cmc+string("個")).c_str(), format5);
+//         xlsx.write("D29",(sn_cmc+string("個")).c_str(), format5);
+//         xlsx.write("D20",(fid_cmc+string("個")).c_str(), format5);
+//         xlsx.write("D27",(advance_product+string("個")).c_str(), format5);
+
+//    all_ng_numbers = pozition + tid + sn + tid_cmc + sn_cmc + fid_cmc + advance_product;
+//    xlsx.write("D31",(all_ng_numbers+string("個")).c_str(), format5);
+
+//    //第二十排
+//    int shengjiaangji_maintain;
+//	plc_utl_->GetDevice("D5160", shengjiaangji_maintain);
+//    xlsx.write("D32",(shengjiaangji_maintain+string("天")).c_str(), format5);
+//	int jixieshou_maintain;
+//	plc_utl_->GetDevice("D5161", jixieshou_maintain);
+//	xlsx.write("D33", (jixieshou_maintain + string("天")).c_str(), format5);
+//	int haimian_maintain;
+//	plc_utl_->GetDevice("D5162", haimian_maintain);
+//	xlsx.write("D34", (haimian_maintain + string("天")).c_str(), format5);
+//	int yunxingyixiang_maintain;
+//	plc_utl_->GetDevice("D5163", yunxingyixiang_maintain);
+//	xlsx.write("D35", (yunxingyixiang_maintain + string("天")).c_str(), format5);
+//	int pidai_maintain;
+//	plc_utl_->GetDevice("D5164", pidai_maintain);
+//	xlsx.write("D36", (pidai_maintain + string("天")).c_str(), format5);
+//	int diangui_maintain;
+//	plc_utl_->GetDevice("D5165", diangui_maintain);
+//	xlsx.write("D37", (diangui_maintain + string("天")).c_str(), format5);
+//	int qiguan_maintain;
+//	plc_utl_->GetDevice("D5166", qiguan_maintain);
+//	xlsx.write("D38", (qiguan_maintain + string("天")).c_str(), format5);
+//	int fengshan_maintain;
+//	plc_utl_->GetDevice("D5167", fengshan_maintain);
+//	xlsx.write("D39", (fengshan_maintain + string("天")).c_str(), format5);
+//	int maintain9;
+//	plc_utl_->GetDevice("D5168", maintain9);
+//	xlsx.write("D40", (maintain9 + string("天")).c_str(), format5);
+//	int maintain10;
+//	plc_utl_->GetDevice("D5169", maintain10);
+//	xlsx.write("D41", (maintain10 + string("天")).c_str(), format5);
+
+//    //第二十一项
+//	int pozition_no_rec_num;
+//	int pozition_no_rec_time;
+//	plc_utl_->GetDevice("D5400", pozition_no_rec_num);
+//	plc_utl_->GetDevice("D5600", pozition_no_rec_time);
+////    xlsx.write("D25",pozition_no_rec_num+"次", format5);
+////    xlsx.write("D26",pozition_no_rec_time+"S", format5);
+
+//	int tid_no_rec_num;
+//	int tid_no_rec_time;
+//	plc_utl_->GetDevice("D5402", tid_no_rec_num);
+//	plc_utl_->GetDevice("D5602", tid_no_rec_time);
+////    xlsx.write("D25",tid_no_rec_num+"次", format5);
+////    xlsx.write("D26",tid_no_rec_time+"S", format5);
+
+//	int m63_not_set_num;
+//	int m63_not_set_time;
+//	plc_utl_->GetDevice("D5404", m63_not_set_num);
+//	plc_utl_->GetDevice("D5604", m63_not_set_time);
+////    xlsx.write("D25",m63_not_set_num+"次", format5);
+////    xlsx.write("D26",m63_not_set_time+"S", format5);
+
+//	int door_open_num;
+//	int door_open_time;
+//	plc_utl_->GetDevice("D5406", door_open_num);
+//	plc_utl_->GetDevice("D5606", door_open_time);
+////    xlsx.write("D25",door_open_num+"次", format5);
+////    xlsx.write("D26",door_open_time+"S", format5);
+
+//	int crash_stop_num;
+//	int crash_stop_time;
+//	plc_utl_->GetDevice("D5408", crash_stop_num);
+//	plc_utl_->GetDevice("D5608", crash_stop_time);
+////    xlsx.write("D25",crash_stop_num+"次", format5);
+////    xlsx.write("D26",crash_stop_time+"S", format5);
+
+//	int vacuum_num;
+//	int vacuum_time;
+//	plc_utl_->GetDevice("D5410", vacuum_num);
+//	plc_utl_->GetDevice("D5610", vacuum_time);
+////    xlsx.write("D25",vacuum_num+"次", format5);
+////    xlsx.write("D26",vacuum_time+"S", format5);
+
+//	int fid_failed_num;
+//	int fid_failed_time;
+//	plc_utl_->GetDevice("D5412", fid_failed_num);
+//	plc_utl_->GetDevice("D5612", fid_failed_time);
+////    xlsx.write("D25",fid_failed_num+"次", format5);
+////    xlsx.write("D26",fid_failed_time+"S", format5);
+
+//	int robot_warning_num;
+//	int robot_warning_time;
+//	plc_utl_->GetDevice("D5414", robot_warning_num);
+//	plc_utl_->GetDevice("D5614", robot_warning_time);
+////    xlsx.write("D25",robot_warning_num+"次", format5);
+////    xlsx.write("D26",robot_warning_time+"S", format5);
+
+//	int conveyer_belt_num;
+//	int conveyer_belt_time;
+//	plc_utl_->GetDevice("D5416", conveyer_belt_num);
+//	plc_utl_->GetDevice("D5616", conveyer_belt_time);
+////    xlsx.write("D25",conveyer_belt_num+"次", format5);
+////    xlsx.write("D26",conveyer_belt_time+"S", format5);
+
+//	int frame_disk_num;
+//	int frame_disk_time;
+//	plc_utl_->GetDevice("D5418", frame_disk_num);
+//	plc_utl_->GetDevice("D5618", frame_disk_time);
+////    xlsx.write("D25",frame_disk_num+"次", format5);
+////    xlsx.write("D26",frame_disk_time+"S", format5);
+
+//	int frame_hand_num;
+//	int frame_hand_time;
+//	plc_utl_->GetDevice("D5420", frame_hand_num);
+//	plc_utl_->GetDevice("D5620", frame_hand_time);
+////    xlsx.write("D25",frame_hand_num+"次", format5);
+////    xlsx.write("D26",frame_hand_time+"S", format5);
+
+//	int frame_ng_num;
+//	int frame_ng_time;
+//	plc_utl_->GetDevice("D5422", frame_ng_num);
+//	plc_utl_->GetDevice("D5622", frame_ng_time);
+////    xlsx.write("D25",frame_ng_num+"次", format5);
+////    xlsx.write("D26",frame_ng_time+"S", format5);
+
+//	int frame_product_ng_num;
+//	int frame_product_ng_time;
+//	plc_utl_->GetDevice("D5424", frame_product_ng_num);
+//	plc_utl_->GetDevice("D5624", frame_product_ng_time);
+////    xlsx.write("D25",frame_product_ng_num+"次", format5);
+////    xlsx.write("D26",frame_product_ng_time+"S", format5);
+
+//	int D5426;
+//	int D5626;
+//	plc_utl_->GetDevice("D5426", D5426);
+//	plc_utl_->GetDevice("D5626", D5626);
+
+
+//	int D5428;
+//	int D5628;
+//	plc_utl_->GetDevice("D5400", D5428);
+//	plc_utl_->GetDevice("D5600", D5628);
+////    xlsx.write("D25",pozition_no_rec_num+"次", format5);
+////    xlsx.write("D26",pozition_no_rec_time+"S", format5);
+
+//	int D5430;
+//	int D5630;
+//	plc_utl_->GetDevice("D5430", D5430);
+//	plc_utl_->GetDevice("D5630", D5630);
+
+
+//	int D5432;
+//	int D5632;
+//	plc_utl_->GetDevice("D5432", D5432);
+//	plc_utl_->GetDevice("D5632", D5632);
+
+//	int D5434;
+//	int D5634;
+//	plc_utl_->GetDevice("D5434", D5434);
+//	plc_utl_->GetDevice("D5634", D5634);
+
+//	int D5436;
+//	int D5636;
+//	plc_utl_->GetDevice("D5436", D5436);
+//	plc_utl_->GetDevice("D5636", D5636);
+
+//	int D5438;
+//	int D5638;
+//	plc_utl_->GetDevice("D5438", D5438);
+//	plc_utl_->GetDevice("D5638", D5638);
+
+//	int D5440;
+//	int D5640;
+//	plc_utl_->GetDevice("D5440", D5440);
+//	plc_utl_->GetDevice("D5640", D5640);
+
+//	int D5442;
+//	int D5642;
+//	plc_utl_->GetDevice("D5442", D5442);
+//	plc_utl_->GetDevice("D5642", D5642);
+
+//	int D5444;
+//	int D5644;
+//	plc_utl_->GetDevice("D5444", D5444);
+//	plc_utl_->GetDevice("D5644", D5644);
+
+//	int D5446;
+//	int D5646;
+//	plc_utl_->GetDevice("D5446", D5446);
+//	plc_utl_->GetDevice("D5646", D5646);
+
+//	int D5448;
+//	int D5648;
+//	plc_utl_->GetDevice("D5448", D5448);
+//	plc_utl_->GetDevice("D5648", D5648);
+
+//	int D5450;
+//	int D5650;
+//	plc_utl_->GetDevice("D5450", D5450);
+//	plc_utl_->GetDevice("D5650", D5650);
+
+//	int D5452;
+//	int D5652;
+//	plc_utl_->GetDevice("D5452", D5452);
+//	plc_utl_->GetDevice("D5652", D5652);
+
+//	int D5454;
+//	int D5654;
+//	plc_utl_->GetDevice("D5454", D5454);
+//	plc_utl_->GetDevice("D5654", D5654);
+
+//	int D5456;
+//	int D5656;
+//	plc_utl_->GetDevice("D5456", D5456);
+//	plc_utl_->GetDevice("D5656", D5656);
+
+//	int D5458;
+//	int D5658;
+//	plc_utl_->GetDevice("D5458", D5458);
+//	plc_utl_->GetDevice("D5658", D5658);
+
+//	int D5460;
+//	int D5660;
+//	plc_utl_->GetDevice("D5460", D5460);
+//	plc_utl_->GetDevice("D5660", D5660);
+
+//	int D5462;
+//	int D5662;
+//	plc_utl_->GetDevice("D5462", D5462);
+//	plc_utl_->GetDevice("D5662", D5662);
+
+//    int D5464;
+//    int D5664;
+//	plc_utl_->GetDevice("D5464", D5464);
+//	plc_utl_->GetDevice("D5664", D5664);
+
+//    xlsx.write("D25",pozition_no_rec_num+tid_no_rec_num+m63_not_set_num+"次", format5);
+//    xlsx.write("D26",pozition_no_rec_time+tid_no_rec_time+m63_not_set_time+"S", format5);
+//    }
+
+//    QXlsx::Document xlsx2("equipment_information_collection.xlsx");/*复制book1到book2*/
+//    xlsx2.saveAs("equipment_information_collection.xlsx");
 }

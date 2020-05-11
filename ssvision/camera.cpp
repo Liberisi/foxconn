@@ -62,7 +62,14 @@ bool Camera::is_open()
 {
     return false;
 }
+bool Camera::is_connected()
+{
+	return false;
+}
 void Camera::close()
+{
+}
+void Camera::detach()
 {
 }
 bool Camera::trigger()

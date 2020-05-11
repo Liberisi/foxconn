@@ -15,6 +15,7 @@
 #include "halcon_widget.h"
 #include "baojitai.h"
 #include "ActUtlType.h"
+#include <QtXlsx>
 
 
 using namespace  std;
@@ -117,6 +118,8 @@ private slots:
 
     void on_timer_scan_dir();
 
+    void on_toolButton_information_xlsx_clicked();
+    
 public slots:
     void on_serial_sinal(const string& device_name);
     void on_serial_port_status_signal(SerialPort* serial_port);
@@ -148,6 +151,7 @@ private:
     void draw_camera_reading_code(HWindow& window);
     void draw_camera_location(HWindow& window);
     void draw_camera_check_frame(HWindow& window);
+
 
     Ui::MainWindow *ui;
     QTimer timer_;
@@ -186,8 +190,11 @@ private:
 
     ActUtlTypeLib::ActUtlType plc_utltype_;
 
+	ActUtlTypeLib::ActUtlType* plc_utl_;
+
     QStandardItemModel info_list_item_model_;
     QStandardItemModel ng_list_item_model_;
+
 };
 
 #endif // MAINWINDOW_H

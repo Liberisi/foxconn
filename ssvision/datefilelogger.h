@@ -45,6 +45,7 @@ protected:
     int year_;
     int month_;
     int day_;
+
     string root_dir_path_;
     string file_name_;
     ofstream file_stream_;

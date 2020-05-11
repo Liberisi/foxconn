@@ -18,6 +18,7 @@ public:
     string directory_path(QDate& date);
     string directory_path_ng(QDateTime& datetime);
     string directory_path_ng(QDate& date);
+  //  string directory_
     /**
      * 返回文件路径，并创建目录
      */

@@ -11,9 +11,11 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/objdetect.hpp>
 #include <opencv2/ml.hpp>
+#include <ssvision/ssvision>
 
 using namespace std;
 using namespace HalconCpp;
+using namespace ssvision;
 using namespace cv;
 
 namespace halcontools {
@@ -69,8 +71,17 @@ void write_reading_code_image_ng(cv::Mat image,
                                  string tid, string sn,
                                  const string& image_path);
 
+void read_tid_bar_code(const HImage& img, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
+void read_tid_bar_code(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
+
 void read_bar_code(const HImage& img, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
 void read_bar_code(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
+
+void read_bar_code_second(const HImage& img, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
+void read_bar_code_second(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
+
+void read_bar_code_thrid(const HImage& img, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
+void read_bar_code_thrid(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HRegion>& code_regions, int& duration_ms);
 
 void read_2d_code(const HImage& img, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms);
 void read_2d_code(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms);
@@ -122,6 +133,11 @@ void draw_line(const HWindow& window, float x1, float y1, float x2, float y2, co
 
 void transform_point(HHomMat2D mat, float px, float py, float &qx, float &qy);
 
+void Metrology(const HImage& imgcopy, HTuple &shapeParam, double *r, double *c, double* theta, double *l1, double *l2);
+
+void scale_image_range (HObject ho_Image, HObject *ho_ImageScaled, HTuple hv_Min,
+    HTuple hv_Max);
+
 extern const char* const kHalconColorBlack;// "black",
 extern const char* const kHalconColorWhite;// "white",
 extern const char* const kHalconColorRed;// "red",
@@ -133,12 +149,19 @@ extern const char* const kHalconColorYellow;// "yellow",
 extern const char* const kHalconColorDimGray;// "dim gray",
 extern const char* const kHalconColorGray;// "gray",
 extern const char* const kHalconColorLightGray;// "light gray",
-extern const char* const kHalconColorMediumSlateBlue;// "medium slate blue", 
+extern const char* const kHalconColorMediumSlateBlue;// "medium slate blue",
 //"coral", "slate blue", 
 extern const char* const kHalconColorSpringGreen;// "spring green", 
 //"orange red", "orange", "dark olive green", "pink", "cadet blue", "#003075", "#e53019", "#ffb529", "#f28d26bb"
 
+
+//class pozitiontool
+//{
+//public:
+//    HMetrologyModel MetrologyHandle;
+//};
 }
 
+//  Logger* halcon_tools_logger_;
 
 #endif // HALCON_TOOLS_H

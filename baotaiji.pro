@@ -9,6 +9,7 @@ QT       += serialport
 QT       += winextras
 QT       += network
 QT       += sql
+QT       += xlsx
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -75,7 +76,6 @@ SOURCES += main.cpp\
     saveconfig.cpp \
     save_config_dialog.cpp \
     communication.cpp \
-    serial_port_manager.cpp \
     ActUtlType.cpp \
     frame_dialog.cpp \
     datetime_filesystem.cpp \
@@ -93,7 +93,9 @@ SOURCES += main.cpp\
     fid_cmc_socket.cpp \
     material_product_map.cpp \
     material_product_dialog.cpp \
-    msleepsetting.cpp
+    msleepsetting.cpp \
+    serial_port_manager.cpp \
+    support_location_select_region.cpp
 
 HEADERS  += \
     product.h \
@@ -121,7 +123,9 @@ HEADERS  += \
     fid_cmc_socket.h \
     material_product_map.h \
     material_product_dialog.h \
-    msleepsetting.h
+    msleepsetting.h \
+    xlsx.h \
+    support_location_select_region.h
 
 FORMS    += \
     config_save.ui \

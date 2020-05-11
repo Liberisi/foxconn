@@ -67,7 +67,9 @@ public:
 
     virtual void open();
     virtual bool is_open();
+	virtual bool is_connected();
     virtual void close();
+	virtual void detach();
     virtual bool trigger();
 
     // 开始接收硬触发

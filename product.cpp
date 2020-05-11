@@ -172,6 +172,13 @@ static inline void write(cv::FileStorage& fs, const std::string&, const Product:
     fs << "angle_r2" << vision_param.angle_r2;
     fs << "angle_c2" << vision_param.angle_c2;
     fs << "delta_z_put" << vision_param.delta_z_put;
+    fs << "x_offset" << vision_param.x_offset;
+    fs << "y_offset" << vision_param.y_offset;
+    fs << "z_offset" << vision_param.z_offset;
+    fs << "location_exposure_time" << vision_param.location_exposure_time;
+    fs << "read_code_exposure_time" << vision_param.read_code_exposure_time;
+    fs << "frame_exposure_time" << vision_param.frame_exposure_time;
+    fs << "black_region_threshold" << vision_param.black_region_threshold;
     fs << "}";
 }
 static inline void read(const cv::FileNode& node, Product::VisionParam& vision_param, const Product::VisionParam& default_value = Product::VisionParam())
@@ -197,6 +204,13 @@ static inline void read(const cv::FileNode& node, Product::VisionParam& vision_p
         node["angle_r2"] >> vision_param.angle_r2;
         node["angle_c2"] >> vision_param.angle_c2;
         node["delta_z_put"] >> vision_param.delta_z_put;
+        node["x_offset"] >> vision_param.x_offset;
+        node["y_offset"] >> vision_param.y_offset;
+        node["z_offset"] >> vision_param.z_offset;
+        node["location_exposure_time"] >> vision_param.location_exposure_time;
+        node["read_code_exposure_time"] >> vision_param.read_code_exposure_time;
+        node["frame_exposure_time"] >> vision_param.frame_exposure_time;
+        node["black_region_threshold"] >> vision_param.black_region_threshold;
     }
 }
 static inline void write(cv::FileStorage& fs, const std::string&, const Product::DataCodeParam& code_param)

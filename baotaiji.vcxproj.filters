@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{ef592281-6217-4cb7-9d5b-b2622b9cf098}</UniqueIdentifier>
+      <UniqueIdentifier>{04ade423-9e0c-4d5f-a6b3-e20f98aafc20}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{f2874ea4-4de9-42fe-b2dc-d380f5a3f773}</UniqueIdentifier>
+      <UniqueIdentifier>{7eb082f5-cf67-4dc9-aa74-fe4d20f90b01}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -101,6 +101,9 @@
     <ClCompile Include="material_product_map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="msleepsetting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="plc_config_dialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -120,6 +123,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="serial_port_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="support_location_select_region.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Debug\moc_about.cpp">
@@ -265,6 +271,9 @@
     <ClInclude Include="material_product_map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="msleepsetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <CustomBuild Include="plc_config_dialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -287,6 +296,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="serial_port_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="support_location_select_region.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xlsx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_about.h">

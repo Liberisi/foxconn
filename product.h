@@ -171,6 +171,13 @@ public:
 		int angle_r2;           //        <角R2>1841.00439367311</角R2>
 		int angle_c2;           //        <角C2>2232.88704028021</角C2>
 		int delta_z_put;        //        <z向补偿放>-5</z向补偿放>
+        int x_offset;           //  
+        int y_offset;
+        int z_offset;
+        int location_exposure_time;  //定位曝光
+        int read_code_exposure_time;  //读码曝光
+        int frame_exposure_time;   //支架曝光
+        int black_region_threshold;   //图像阈值分割
 		VisionParam()
 		{
 			th_min = 0;
@@ -188,6 +195,13 @@ public:
 			angle_r2 = 0;
 			angle_c2 = 0;
 			delta_z_put = 0;
+            x_offset = 0;
+            y_offset = 0;
+            z_offset = 0;
+            location_exposure_time = 35000;
+            read_code_exposure_time = 35000;
+            frame_exposure_time = 35000;
+            black_region_threshold = 128;
 		}
 	} VisionParam;              // 视觉检测参数
 

@@ -885,7 +885,7 @@ color: white;</string>
                <x>0</x>
                <y>0</y>
                <width>360</width>
-               <height>673</height>
+               <height>715</height>
               </rect>
              </property>
              <property name="minimumSize">
@@ -1171,6 +1171,12 @@ color: white;</string>
                  </sizepolicy>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
                  <item>
                   <widget class="QWidget" name="widget_13" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -1182,7 +1188,11 @@ color: white;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QSpinBox" name="spinBox_TID_send_cmc_msleep_time"/>
+                     <widget class="QSpinBox" name="spinBox_TID_send_cmc_msleep_time">
+                      <property name="maximum">
+                       <number>999</number>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1198,7 +1208,11 @@ color: white;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QSpinBox" name="spinBox_sn_send_cmc_msleep_time"/>
+                     <widget class="QSpinBox" name="spinBox_sn_send_cmc_msleep_time">
+                      <property name="maximum">
+                       <number>999</number>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1214,7 +1228,31 @@ color: white;</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QSpinBox" name="spinBox_wait_last_fid_max_time"/>
+                     <widget class="QSpinBox" name="spinBox_wait_last_fid_max_time">
+                      <property name="maximum">
+                       <number>9999</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="widget_25" native="true">
+                   <layout class="QHBoxLayout" name="horizontalLayout_26">
+                    <item>
+                     <widget class="QLabel" name="label_8">
+                      <property name="text">
+                       <string>读码相机曝光参数</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSpinBox" name="spinBox_read_code_exposure_time">
+                      <property name="maximum">
+                       <number>999999</number>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>

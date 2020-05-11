@@ -430,140 +430,21 @@
            <property name="verticalSpacing">
             <number>2</number>
            </property>
-           <item row="9" column="0">
-            <widget class="QWidget" name="widget_13" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_17">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-             </layout>
-            </widget>
-           </item>
-           <item row="10" column="0">
-            <widget class="QWidget" name="widget_14" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>20</height>
-              </size>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_18">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-             </layout>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QWidget" name="widget_12" native="true">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>20</height>
-              </size>
-             </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-             </layout>
-            </widget>
-           </item>
-           <item row="16" column="0">
-            <widget class="QCheckBox" name="checkBox_close_fid">
-             <property name="text">
-              <string>关闭读fid</string>
-             </property>
-            </widget>
-           </item>
-           <item row="17" column="0">
-            <widget class="QToolButton" name="toolButton_send_undo_0">
-             <property name="text">
-              <string> UNDO 0 </string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_6">
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>2</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item row="18" column="0">
-            <widget class="QPushButton" name="pushButton_send_AAAAAA">
-             <property name="text">
-              <string>AAAAAA</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="0">
+           <item row="7" column="0">
             <widget class="QCheckBox" name="checkBox_close_location">
              <property name="text">
               <string>关闭定位</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
-            <widget class="QCheckBox" name="checkBox_offline">
-             <property name="text">
-              <string>离线模式</string>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
+           <item row="9" column="0">
             <widget class="QCheckBox" name="checkBox_close_tid">
              <property name="text">
               <string>关闭读tid</string>
              </property>
             </widget>
            </item>
-           <item row="21" column="0">
+           <item row="16" column="0">
             <widget class="QToolButton" name="toolButton_start">
              <property name="minimumSize">
               <size>
@@ -592,7 +473,7 @@
              </property>
             </widget>
            </item>
-           <item row="20" column="0">
+           <item row="15" column="0">
             <spacer name="verticalSpacer_2">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -605,7 +486,7 @@
              </property>
             </spacer>
            </item>
-           <item row="24" column="0">
+           <item row="19" column="0">
             <widget class="QToolButton" name="toolButton_reset">
              <property name="minimumSize">
               <size>
@@ -682,7 +563,32 @@
              </property>
             </widget>
            </item>
-           <item row="23" column="0">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>100</width>
+               <height>80</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>当前产品型号</string>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0">
             <widget class="QToolButton" name="toolButton_stop">
              <property name="minimumSize">
               <size>
@@ -711,32 +617,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>100</width>
-               <height>80</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>当前产品型号</string>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="19" column="0">
+           <item row="14" column="0">
             <widget class="QCheckBox" name="checkBox">
              <property name="enabled">
               <bool>false</bool>
@@ -746,24 +627,58 @@
              </property>
             </widget>
            </item>
-           <item row="11" column="0">
+           <item row="6" column="0">
             <widget class="Line" name="line">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
-           <item row="15" column="0">
+           <item row="10" column="0">
             <widget class="QCheckBox" name="checkBox_close_sn">
              <property name="text">
               <string>关闭读sn</string>
              </property>
             </widget>
            </item>
-           <item row="22" column="0">
+           <item row="17" column="0">
             <widget class="QLabel" name="label_repair_mode">
              <property name="text">
               <string>正常模式</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QPushButton" name="pushButton_send_AAAAAA">
+             <property name="text">
+              <string>AAAAAA</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QCheckBox" name="checkBox_close_fid">
+             <property name="text">
+              <string>关闭读fid</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>2</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QToolButton" name="toolButton_send_undo_0">
+             <property name="text">
+              <string> UNDO 0 </string>
              </property>
             </widget>
            </item>
@@ -1128,6 +1043,13 @@ background-color: black;</string>
                     </widget>
                    </item>
                    <item>
+                    <widget class="QToolButton" name="toolButton_information_xlsx">
+                     <property name="text">
+                      <string>生成设备信息采集表</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
                     <widget class="QLabel" name="label_ng_table_export_path">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -1150,6 +1072,34 @@ background-color: black;</string>
                  </widget>
                 </item>
                </layout>
+              </widget>
+             </widget>
+             <widget class="QWidget" name="tab">
+              <attribute name="title">
+               <string>上游产品回流NG</string>
+              </attribute>
+              <widget class="QTableView" name="tableView_advance_product_ng">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>671</width>
+                 <height>471</height>
+                </rect>
+               </property>
+              </widget>
+              <widget class="QToolButton" name="toolButton_romove_advance_product_ng">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>487</y>
+                 <width>161</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>删除选中行</string>
+               </property>
               </widget>
              </widget>
             </widget>

@@ -6,6 +6,7 @@
 #include <QTextCodec>
 #include "baojitai.h"
 #include "halcon_tools.h"
+#include "product.h"
 
 using namespace HalconCpp;
 
@@ -18,7 +19,7 @@ Frame_Dialog::Frame_Dialog(QWidget *parent) :
 
     Baojitai* baojitai = Baojitai::instance();
     int x = baojitai->frame_param_.x();
-    int y = baojitai->frame_param_.h();
+    int y = baojitai->frame_param_.y();
     int w = baojitai->frame_param_.w();
     int h = baojitai->frame_param_.h();
     int mw = baojitai->frame_param_.magic_w();
@@ -56,6 +57,15 @@ Frame_Dialog::Frame_Dialog(QWidget *parent) :
     disk_ok_ = false;
     found_left_ = false;
     found_right_ = false;
+
+    Product* product = Baojitai::instance()->current_product();
+    if (product)
+    {
+        Product::VisionParam param = product->vision_param();
+        ui->spinBox_frame_exposure_time->setValue(param.frame_exposure_time);
+        //待保存至每个产品
+
+    }
     connect(Baojitai::instance(), SIGNAL(signal_camera_buffer_updated(Camera*)), this, SLOT(on_camera_buffer_changed(Camera*)), Qt::QueuedConnection);
 }
 
@@ -236,6 +246,13 @@ void Frame_Dialog::on_pushButton_save_config_clicked()
     int rw = ui->spinBox_rw->text().toInt();
     int rh = ui->spinBox_rh->text().toInt();
     int side_hand_magic_h = ui->spinBox_side_hand_magic_y->text().toInt();
+    int frame_exposure_time = ui->spinBox_frame_exposure_time->text().toInt();
+
+	Product* current_product = Baojitai::instance()->current_product();
+    Product::VisionParam param = current_product->vision_param();
+    param.frame_exposure_time = frame_exposure_time;
+    current_product->set_vision_param(param);
+    current_product->save_config(ProductManager::instance()->product_config_path(current_product->name()));
 
     Baojitai* baojitai = Baojitai::instance();
     baojitai->frame_param_.set_x(x);

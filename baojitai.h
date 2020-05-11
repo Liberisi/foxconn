@@ -131,6 +131,9 @@ public:
     HHomMat2D image_to_robotic_matrix(){return image_to_robotic_coordinates_matrix_;}
 	void set_image_to_robotic_matrix(HHomMat2D hommat);
 
+//    HMetrologyModel image_to_MetrologyHandle(){return MetrologyHandle;}
+//    void set_image_to_MetrologyHandle(HMetrologyModel HMetrologyHandle);
+
 	SerialPort* serial_port_sending_code() { return sp_sending_code_; }
     SerialPort* serial_port_repair_mode() { return serial_port_repair_mode_;}
     SerialPort* serial_port_read_fid() { return sp_read_fid_;}
@@ -272,7 +275,7 @@ public:
     // ItemInformationCenterDelegate
     virtual void on_advanced_device_connect(ItemInformationCenter* info_center, const string& ip_str);
     virtual void on_advanced_device_disconnect(ItemInformationCenter* info_center, const string& ip_str);
-    virtual void on_advanced_device_item_information(const string& name, bool is_ng, const string& ng_reason);
+	virtual void on_advanced_device_item_information(const string& name, bool is_ng, const string& ng_reason, const string &station, const string &datatime); ///
     // Fid CMC Socket Delegate
     virtual void on_fid_cmc_socket_connected(FidCMCSocket* fid_cmc_socket);
     virtual void on_fid_cmc_socket_disconnected(FidCMCSocket* cmc_client);
@@ -364,6 +367,8 @@ private:
 
 	HHomMat2D image_to_robotic_coordinates_matrix_;
 
+//    HMetrologyModel MetrologyHandle;
+
 	bool is_running_;
 	bool repair_mode_;
     bool offline_mode_;
@@ -404,6 +409,10 @@ private:
 public:
     MsleepSetting msleep_time_;
     void save_msleep_time();
+
+//public:
+//    MsleepSetting msleep_time_;
+//    void save_msleep_time();
 };
 
 #endif // BAOJITAI_H
