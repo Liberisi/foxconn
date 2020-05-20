@@ -525,11 +525,19 @@ void Baojitai::set_current_product(Product* product)
 
 void Baojitai::remove_data_files(QDate date)
 {
-    string path = data_filesystem_.directory_path(date);
-    QDir dir(path.c_str());
-    dir.removeRecursively();
-    if (baojitai_logger_)
-        baojitai_logger_->log(Logger::kLogLevelInfo, "remove files in ", path);
+    //QDateTime datetime;
+    for (int i = 1; i < 3; ++i)
+    {
+        for (int j = 0; j < 2; ++j)
+        {
+            string path = data_filesystem_.directory_path(date, i, j == 0);
+            QDir dir(path.c_str());
+            dir.removeRecursively();
+            if (baojitai_logger_)
+                baojitai_logger_->log(Logger::kLogLevelInfo, "remove files in ", path);
+        }
+    }
+
 }
 
 bool Baojitai::material_exists(string material, string& product)
