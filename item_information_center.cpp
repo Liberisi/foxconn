@@ -375,6 +375,24 @@ void ItemInformationCenter::add_item(const string& id_str, bool is_ng, const str
         set_item(id_str, is_ng, ng_reason, station, datatime);
     }
 }
+void ItemInformationCenter::get_all_item_id(vector<string> &items)
+{
+    QSqlQuery query;
+    string command = "SELECT * FROM product";
+    query.prepare(command.c_str());
+    if(!query.exec())
+    {
+        return;
+    }
+    else
+    {
+        while(query.next())
+        {
+            string id_str = query.value(0).toString().toStdString();
+            items.push_back(id_str);
+        }
+    }
+}
 void ItemInformationCenter::remove_item(const string& id_str) //sql移除
 {
     QSqlQuery query;

@@ -346,6 +346,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView_ng->setModel(&ng_list_item_model_);
     ui->tableView_ng->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
+    ui->tableView_advance_product_ng->setModel(&advanced_device_ng_item_model_);
+
 
     //QsqDatabase db = QsqlDatabase::addDatabase("SQLITE");
     //db.setDatabaseName("item.db");
@@ -363,6 +365,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //model->setHeaderData(5,Qt::Horizontal,QObject::tr("DATATIME"));
     //ui->tableView_advance_product_ng->setModel(model);
     //db->close();
+
 }
 
 MainWindow::~MainWindow()
@@ -2139,4 +2142,74 @@ void MainWindow::on_toolButton_information_xlsx_clicked()
 
 //    QXlsx::Document xlsx2("equipment_information_collection.xlsx");/*复制book1到book2*/
 //    xlsx2.saveAs("equipment_information_collection.xlsx");
+}
+
+void MainWindow::reload_advanced_device_ng_table()
+{
+    advanced_device_ng_item_model_.clear();
+
+    ItemInformationCenter* ng_item_info = ItemInformationCenter::instance();
+    if (ng_item_info)
+    {
+        vector<string> items_id;
+        ng_item_info->get_all_item_id(items_id);
+        for (size_t i = 0; i < items_id.size(); ++i)
+        {
+            string id_str = items_id[i];
+            bool is_ng;
+            string ng_reason;
+            string station;
+            string time;
+            bool find = ng_item_info->get_item(id_str, &is_ng, ng_reason, station, time);
+            if (find)
+            {
+                QStandardItem* item_id = new QStandardItem(id_str.c_str());
+                string ng_str = is_ng ? "ng" : "ok";
+                QStandardItem* item_ng = new QStandardItem(ng_str.c_str());
+                QStandardItem* item_station = new QStandardItem(station.c_str());
+                QStandardItem* item_ng_reason = new QStandardItem(ng_reason.c_str());
+                QStandardItem* item_time = new QStandardItem(time.c_str());
+                QList<QStandardItem*> row;
+                row.append(item_id);
+                row.append(item_ng);
+                row.append(item_station);
+                row.append(item_ng_reason);
+                row.append(item_time);
+                advanced_device_ng_item_model_.appendRow(row);
+            }
+        }
+    }
+}
+
+void MainWindow::on_pushButton_refresh_advance_ng_list_clicked()
+{
+    reload_advanced_device_ng_table();
+}
+
+void MainWindow::on_toolButton_romove_advance_product_ng_clicked()
+{
+    QList<int> removeRows;
+    vector<string> remove_id;
+
+    foreach(QModelIndex index, ui->tableView_advance_product_ng->selectionModel()->selectedIndexes()) {
+        if(!removeRows.contains(index.row())) {
+            removeRows.append(index.row());
+        }
+    }
+
+    qSort(removeRows);
+    int countRow = removeRows.count();
+    for (int i = 0; i < countRow; ++i)
+    {
+        QStandardItem* item = advanced_device_ng_item_model_.item(removeRows.at(i));
+        string id_str = item->text().toStdString();
+        remove_id.push_back(id_str);
+    }
+
+    ItemInformationCenter* ng_item_info = ItemInformationCenter::instance();
+    for( int i = countRow; i > 0; i--)
+    {
+        advanced_device_ng_item_model_.removeRow( removeRows.at(i-1), QModelIndex());
+        ng_item_info->remove_item(remove_id[i-1]);
+    }
 }

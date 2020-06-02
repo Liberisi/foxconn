@@ -775,7 +775,7 @@
            <item>
             <widget class="QTabWidget" name="tabWidget">
              <property name="currentIndex">
-              <number>3</number>
+              <number>4</number>
              </property>
              <widget class="QWidget" name="pos_visual_angle">
               <attribute name="title">
@@ -1091,14 +1091,27 @@ background-color: black;</string>
               <widget class="QToolButton" name="toolButton_romove_advance_product_ng">
                <property name="geometry">
                 <rect>
-                 <x>10</x>
-                 <y>487</y>
+                 <x>120</x>
+                 <y>490</y>
                  <width>161</width>
                  <height>31</height>
                 </rect>
                </property>
                <property name="text">
                 <string>删除选中行</string>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="pushButton_refresh_advance_ng_list">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>490</y>
+                 <width>93</width>
+                 <height>28</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>刷新</string>
                </property>
               </widget>
              </widget>

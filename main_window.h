@@ -120,6 +120,10 @@ private slots:
 
     void on_toolButton_information_xlsx_clicked();
     
+    void on_pushButton_refresh_advance_ng_list_clicked();
+
+    void on_toolButton_romove_advance_product_ng_clicked();
+
 public slots:
     void on_serial_sinal(const string& device_name);
     void on_serial_port_status_signal(SerialPort* serial_port);
@@ -151,6 +155,7 @@ private:
     void draw_camera_reading_code(HWindow& window);
     void draw_camera_location(HWindow& window);
     void draw_camera_check_frame(HWindow& window);
+    void reload_advanced_device_ng_table();
 
 
     Ui::MainWindow *ui;
@@ -194,6 +199,7 @@ private:
 
     QStandardItemModel info_list_item_model_;
     QStandardItemModel ng_list_item_model_;
+    QStandardItemModel advanced_device_ng_item_model_;
 
 };
 
