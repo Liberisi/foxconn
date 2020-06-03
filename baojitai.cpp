@@ -173,6 +173,8 @@ void Baojitai::start()
 	{
 		camera_reading_code_->open();
 		camera_reading_code_->set_exposure(read_code_exposure_time);
+        if (baojitai_logger_)
+            baojitai_logger_->log(Logger::kLogLevelInfo, "camera", "set reading code exposure", read_code_exposure_time, read_code_exposure_time );
 	}
 	this->log_camera_status(camera_reading_code_, "camera_reading_code");
 	if (camera_reading_code_ && camera_reading_code_->is_open())
@@ -189,6 +191,8 @@ void Baojitai::start()
 	{
 		camera_location_->open();
 		camera_location_->set_exposure(location_exposure_time);
+        if (baojitai_logger_)
+            baojitai_logger_->log(Logger::kLogLevelInfo, "camera", "set location exposure time", location_exposure_time, location_exposure_time );
 	}
 	this->log_camera_status(camera_location_, "camera_location");
 	if (camera_location_ && camera_location_->is_open())
@@ -205,6 +209,8 @@ void Baojitai::start()
 	{
 		camera_check_frame_->open();
 		camera_check_frame_->set_exposure(frame_exposure_time);
+        if (baojitai_logger_)
+            baojitai_logger_->log(Logger::kLogLevelInfo, "camera", "set frame exposure time", frame_exposure_time, frame_exposure_time );
 	}
 	this->log_camera_status(camera_check_frame_, "camera_check_frame");
 	if (camera_check_frame_ && camera_check_frame_->is_open())
