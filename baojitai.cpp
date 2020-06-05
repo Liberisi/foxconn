@@ -17,6 +17,7 @@
 #include <QSettings>
 
 
+
 using namespace ssvision;
 using namespace HalconCpp;
 
@@ -55,7 +56,8 @@ string yyyyMMdd_hhmmss_xxx(QDateTime& datetime);
 string yyyyMMdd_hhmmss_xxx_location_bmp(QDateTime& datetime);
 string yyyyMMdd_hhmmss_xxx_location_NG_bmp(QDateTime& datetime);
 string yyyyMMdd_hhmmss_xxx_reading_code_bmp(QDateTime& datetime);
-string yyyyMMdd_hhmmss_xxx_reading_code_NG_bmp(QDateTime& datetime);
+string yyyyMMdd_hhmmss_xxx_reading_code_NG_bmp(QDateTime& datetime,bool &board_code_success, bool &product_code_success);
+
 string yyyyMMdd_hhmmss_xxx_check_frame_bmp(QDateTime& datetime);
 string yyyyMMdd_hhmmss_xxx_check_frame_NG_bmp(QDateTime& datetime);
 
@@ -81,6 +83,8 @@ Baojitai::Baojitai():
     offline_mode_ = false;
     is_waiting_fid_ = false;
     wait_fid_send_ = false;
+
+    seconed_trigger_ = false;
     //receive_send_fid_ = false;
 
 //    MetrologyHandle.CreateMetrologyModel();
@@ -173,8 +177,6 @@ void Baojitai::start()
 	{
 		camera_reading_code_->open();
 		camera_reading_code_->set_exposure(read_code_exposure_time);
-        if (baojitai_logger_)
-            baojitai_logger_->log(Logger::kLogLevelInfo, "camera", "set reading code exposure", read_code_exposure_time, read_code_exposure_time );
 	}
 	this->log_camera_status(camera_reading_code_, "camera_reading_code");
 	if (camera_reading_code_ && camera_reading_code_->is_open())
@@ -191,8 +193,6 @@ void Baojitai::start()
 	{
 		camera_location_->open();
 		camera_location_->set_exposure(location_exposure_time);
-        if (baojitai_logger_)
-            baojitai_logger_->log(Logger::kLogLevelInfo, "camera", "set location exposure time", location_exposure_time, location_exposure_time );
 	}
 	this->log_camera_status(camera_location_, "camera_location");
 	if (camera_location_ && camera_location_->is_open())
@@ -209,8 +209,6 @@ void Baojitai::start()
 	{
 		camera_check_frame_->open();
 		camera_check_frame_->set_exposure(frame_exposure_time);
-        if (baojitai_logger_)
-            baojitai_logger_->log(Logger::kLogLevelInfo, "camera", "set frame exposure time", frame_exposure_time, frame_exposure_time );
 	}
 	this->log_camera_status(camera_check_frame_, "camera_check_frame");
 	if (camera_check_frame_ && camera_check_frame_->is_open())
@@ -543,7 +541,6 @@ void Baojitai::remove_data_files(QDate date)
                 baojitai_logger_->log(Logger::kLogLevelInfo, "remove files in ", path);
         }
     }
-
 }
 
 bool Baojitai::material_exists(string material, string& product)
@@ -597,7 +594,7 @@ void Baojitai::setup()
     QString current_item_db_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kCurrentProductNGDataBaseFileName);
     item_center_->open(current_item_db_path.toStdString());
     item_center_->set_delegate(this);
-    item_center_->listening(8001);
+    item_center_->listening(8002);
 
     QString material_product_db_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kMaterialProductDataBaseFileName);
     material_product_map_.open(material_product_db_path.toStdString());
@@ -1058,10 +1055,7 @@ void Baojitai::update_camera_reading_code_buffer(void* data, int width, int heig
 
 void Baojitai::process_location_image(void* data, int width, int height)
 {
-    char file_name[128];
-            memset(file_name, 0, 128);
-            sprintf(file_name, "location_image_threshold.log");
-            std::ofstream out_log(file_name);
+
 
 	location_result_.success = false;
 	location_result_.find_rect = false;
@@ -1074,8 +1068,12 @@ void Baojitai::process_location_image(void* data, int width, int height)
 	int var = product->vision_param().xl1;
 
     int region_threshold = product->vision_param().black_region_threshold;
+	//if (!region_threshold.IsInitialized()&& )
+	//{
+	//	region_threshold = 180;
+	//}
 
-    out_log<<region_threshold<<endl;
+
 
 	string width_config_str = to_string(width_config);
 	string height_config_str = to_string(height_config);
@@ -1085,7 +1083,7 @@ void Baojitai::process_location_image(void* data, int width, int height)
 		string("[") + width_config_str + ", " + height_config_str + "] var " + var_str);
 
 	// 图像处理， 定位
-    int black_region_threshold[3] = {  region_threshold+10,region_threshold,region_threshold-10 };
+    int black_region_threshold[8] = {region_threshold,  region_threshold+50, region_threshold-50, region_threshold+25, region_threshold-25, 75,125,180};
 	bool find_sucess = false;
 	for (int i = 0; i < sizeof(black_region_threshold) / sizeof(black_region_threshold[0]); ++i)
 	{
@@ -1178,8 +1176,9 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 	vector<HRegion> bar_code_regions;
 	vector<string> bar_codes;
 	int board_code_duration = 0;
+    ItemInformationCenter* ng_info = ItemInformationCenter::instance();
 	if (param.board_bar_code_type)
-		halcontools::read_bar_code(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, board_code_duration);
+        halcontools::read_bar_code(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, board_code_duration);
 	bool find_board_code = false;
 	if (param.use_board_code && bar_codes.size() > 0)
 	{
@@ -1210,19 +1209,48 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 					}
 					if (prefix_equal)
 					{
-						find_board_code = true;
-						tid_ = code;
-						board_bar_code_region_ = bar_code_regions[i];
-						break;
+
+                        bool find = ng_info->contrast_item(code);
+                        if(find)
+                        {
+                           set_plc("M32",1);
+                           if (baojitai_logger_)
+                           {
+                               baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG");
+                               emit signal_product_info(QStringLiteral("上游产品NG"));
+                           }
+                           break;
+                        }
+                        else
+                        {
+                            find_board_code = true;
+                            tid_ = code;
+                            board_bar_code_region_ = bar_code_regions[i];
+                            break;
+                        }
 					}
 				}
 				else
 				{
                     qDebug() << "not check prefix and find board code " << endl;
-					find_board_code = true;
-					tid_ = code;
-					board_bar_code_region_ = bar_code_regions[i];
-					break;
+                    bool find = ng_info->contrast_item(code);
+                    if(find)
+                    {
+                        set_plc("M32",1);
+                        if (baojitai_logger_)
+                        {
+                            baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG");
+                            emit signal_product_info(QStringLiteral("上游产品NG"));
+                        }
+                       break;
+                    }
+                    else
+                    {
+                        find_board_code = true;
+                        tid_ = code;
+                        board_bar_code_region_ = bar_code_regions[i];
+                        break;
+                    }
 				}
 			}
             else
@@ -1230,7 +1258,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
                 qDebug() << "board code length error" << endl;
             }
 		}
-        if (!find_board_code)
+       /* if (!find_board_code)
         {
             bar_code_regions.clear();
             bar_codes.clear();
@@ -1277,7 +1305,8 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
                     }
                 }
         }
-	}
+	}*/
+    }
 	if (!param.use_board_code || find_board_code)
 		board_code_success_ = true;
 	else
@@ -1298,7 +1327,9 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
         emit signal_product_info("sn - mat code");
 		vector<HXLD> mat_code_xlds;
 		vector<string> mat_codes;
-		halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+        halcontools::read_2d_code(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+        if (baojitai_logger_)
+            baojitai_logger_->log(Logger::kLogLevelInfo, "read_2d_code_special");
 		for (int i = 0; i < mat_codes.size(); ++i)
 		{
 			string code = mat_codes[i];
@@ -1320,7 +1351,9 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 		{
 			mat_code_xlds.clear();
 			mat_codes.clear();
-            halcontools::read_2d_code(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            halcontools::read_2d_code_special(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            if (baojitai_logger_)
+                baojitai_logger_->log(Logger::kLogLevelInfo, "read_2d_code");
 			for (int i = 0; i < mat_codes.size(); ++i)
 			{
 				string code = mat_codes[i];
@@ -1343,6 +1376,8 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
             mat_code_xlds.clear();
             mat_codes.clear();
             halcontools::read_2d_code_complex(data, width, height, param.product_mat_code_type, mat_codes, mat_code_xlds, product_mat_code_duration);
+            if (baojitai_logger_)
+                baojitai_logger_->log(Logger::kLogLevelInfo, "read_2d_code_complex");
             for (int i = 0; i < mat_codes.size(); ++i)
             {
                 string code = mat_codes[i];
@@ -1462,8 +1497,9 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 		{
 			baojitai_logger_->log(Logger::kLogLevelInfo, "not use product code");
 		}
-	}
     }
+
+
 
     // remove me
 //    this->board_code_success_ = true;
@@ -1471,6 +1507,7 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 //    tid_ = "test_tid";
 //    sn_ = "test_sn";
 }
+
 
 void Baojitai::process_check_frame_image(void* data, int width, int height)
 {
@@ -1549,6 +1586,8 @@ void Baojitai::post_process_location_image()
     string file_name = location_result_.success ? yyyyMMdd_hhmmss_xxx_location_bmp(location_time_) : yyyyMMdd_hhmmss_xxx_location_NG_bmp(location_time_);
     string file_path = data_filesystem_.file_path(location_time_, file_name);
     halcontools::write_image((void*)image_location_buffer_, image_location_buffer_width_, image_location_buffer_height_, file_path);
+    Product* product = current_product();
+    string product_model = product->name();
     if (!location_result_.success)
     {
         string file_path_ng = data_filesystem_.file_path_ng(location_time_, file_name);
@@ -1559,7 +1598,7 @@ void Baojitai::post_process_location_image()
                                              location_result_.phi,
                                              location_result_.l1,
                                              location_result_.l2,
-                                             location_result_.success ? "OK" : "NG",
+                                             location_result_.success ? "OK" : (product_model+string("NG")).c_str(),
                                              file_path_ng);
     }
 }
@@ -1616,11 +1655,33 @@ void Baojitai::post_process_reading_code_image()
 	{
         if (!close_sn)
         {
-            set_plc("M41", 1);
+//			set_plc("M41", 1);
+//			emit signal_sn_ng("unknown", "image", tid_.c_str());
+
+            //change
+            if(!seconed_trigger_)
+            {
+            //change
+
+            QThread::msleep(1000);
+            set_plc("M45", 1);
+
+            //change
+            seconed_trigger_ = true;
+            //change
+
             emit signal_sn_ng("unknown", "image", tid_.c_str());
+           }
+
+            else
+            {
+                set_plc("M41", 1);
+                seconed_trigger_ = false;
+                emit signal_sn_ng("unknown", "image", tid_.c_str());
+            }
         }
 	}
-	string file_name = (board_code_success_ && product_code_success_) ? yyyyMMdd_hhmmss_xxx_reading_code_bmp(reading_code_time_) : yyyyMMdd_hhmmss_xxx_reading_code_NG_bmp(reading_code_time_);
+    string file_name = (board_code_success_ && product_code_success_) ? yyyyMMdd_hhmmss_xxx_reading_code_bmp(reading_code_time_) : yyyyMMdd_hhmmss_xxx_reading_code_NG_bmp(reading_code_time_,board_code_success_,product_code_success_);
     string file_path = data_filesystem_.file_path(reading_code_time_, file_name);
     halcontools::write_image((void*)image_reading_code_buffer_, image_reading_code_buffer_width_, image_reading_code_buffer_height_, file_path);
     if (!board_code_success_ || !product_code_success_)
@@ -1804,8 +1865,18 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
         case kPixelFormatGray8:
         {
             update_camera_reading_code_buffer(data, width, height);
+
+            if (baojitai_logger_)
+                baojitai_logger_->log(Logger::kLogLevelInfo, "buffer","成功更新");
+
             if (is_running()){
+
+                if (baojitai_logger_)
+                    baojitai_logger_->log(Logger::kLogLevelInfo, "reading_code_process","准备就绪");
+
                 process_reading_code_image(data, width, height);
+
+
                 if (repair_mode_)
                     repair_mode_post_process_reading_code_image();
                 else
@@ -1814,6 +1885,11 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
         }
             break;
         default:
+
+            set_plc("M45", 1);
+            if (baojitai_logger_)
+                baojitai_logger_->log(Logger::kLogLevelInfo, "读码拍照失败，硬体？故障？","重拍");
+
             break;
         }
     }
@@ -1854,27 +1930,27 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
             emit signal_product_arrive();
             update_camera_location_buffer(data, width, height);
 
-            unsigned char* img_data = (unsigned char*)data;
+//            unsigned char* img_data = (unsigned char*)data;
 
-            // 152, 745
-            //    444, 1362
-            for (int row = 152; row < 500; row++)
-            {
-                for (int col = 765; col < 1662; ++col)
-                {
-                    unsigned char* byte = img_data + row * width + col;
-                    *byte = 255;
-                }
-            }
+//            // 152, 745
+//            //    444, 1362
+//            for (int row = 152; row < 500; row++)
+//            {
+//                for (int col = 765; col < 1662; ++col)
+//                {
+//                    unsigned char* byte = img_data + row * width + col;
+//                    *byte = 255;
+//                }
+//            }
 
-            for (int row = 1354; row < 1652; row++)
-            {
-                for (int col = 569; col < 1357; col++)
-                {
-                    unsigned char* byte = img_data + row * width + col;
-                    *byte = 255;
-                }
-            }
+//            for (int row = 1354; row < 1652; row++)
+//            {
+//                for (int col = 569; col < 1357; col++)
+//                {
+//                    unsigned char* byte = img_data + row * width + col;
+//                    *byte = 255;
+//                }
+//            }
 
             if (is_running()){
                 process_location_image(data, width, height);
@@ -2198,6 +2274,7 @@ void Baojitai::on_signal_send_tid(SerialPort* sp)
         qDebug() << "M60 2" << to_string(flag).c_str() << endl;
         while (flag != 0 || flag_b != 0)
         {
+            emit signal_product_info(QStringLiteral("plc tid——M60/D1000没有正常置位"));
             if (baojitai_logger_)
                 baojitai_logger_->log(Logger::kLogLevelInfo, "M60 != 0 || D1000 != 0");
             plc_act_utl_->GetDevice("M60", flag);
@@ -2312,6 +2389,7 @@ void Baojitai::send_sn(SerialPort* sp)
             baojitai_logger_->log(Logger::kLogLevelInfo, "M63 ", to_string(flag));
         while (flag != 0 || flag_b != 0)
         {
+            emit signal_product_info(QStringLiteral("plc sn——M63/D1100没有正常置位"));
             QThread::msleep(10);
             //plc_act_utl_->GetDevice("M63", flag);
             get_plc("M63", flag);
@@ -2881,11 +2959,23 @@ string yyyyMMdd_hhmmss_xxx_reading_code_bmp(QDateTime& datetime)
     string yyyyMMdd_hhmmss_xxx_str = yyyyMMdd_hhmmss_xxx(datetime);
     return yyyyMMdd_hhmmss_xxx_str + "_c.bmp";
 }
-string yyyyMMdd_hhmmss_xxx_reading_code_NG_bmp(QDateTime& datetime)
+string yyyyMMdd_hhmmss_xxx_reading_code_NG_bmp(QDateTime& datetime,bool &board_code_success, bool &product_code_success)
 {
     string yyyyMMdd_hhmmss_xxx_str = yyyyMMdd_hhmmss_xxx(datetime);
-    return yyyyMMdd_hhmmss_xxx_str + "_c_NG.bmp";
+    if (!board_code_success)
+    {
+        return yyyyMMdd_hhmmss_xxx_str + "_c_NG_TID.bmp";
+    }
+    else if(!product_code_success)
+    {
+        return yyyyMMdd_hhmmss_xxx_str + "_c_NG_SN.bmp";
+    }
 }
+//string yyyyMMdd_hhmmss_xxx_reading_SN_code_NG_bmp(QDateTime& datetime)
+//{
+//    string yyyyMMdd_hhmmss_xxx_str = yyyyMMdd_hhmmss_xxx(datetime);
+//    return yyyyMMdd_hhmmss_xxx_str + "_c_NG_SN.bmp";
+//}
 string yyyyMMdd_hhmmss_xxx_check_frame_bmp(QDateTime& datetime)
 {
     string yyyyMMdd_hhmmss_xxx_str = yyyyMMdd_hhmmss_xxx(datetime);

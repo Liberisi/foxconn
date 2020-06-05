@@ -45,8 +45,10 @@ public:
     void add_item(const string& id_str, bool is_ng, const string& ng_reason , const string& station, const string &datatime);
     void remove_item(const string& id_str);
     void get_all_item_id(vector<string> &items);
-    bool get_item(const string& id_str, bool* is_ng, string& ng_reason , string &station, string &datatime);
+    bool get_item(const string& id_str, bool *is_ng, string &ng_reason, string &station, string &datatime);
     void set_item(const string& id_str, bool is_ng, const string& ng_reason , const string& station, const string &datatime);
+    bool contrast_item(const string& id_str);
+
 
 protected:
     void on_item_message(QTcpSocket* socket, QString& message);

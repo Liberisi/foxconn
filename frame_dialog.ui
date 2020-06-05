@@ -494,6 +494,12 @@
                    <height>16777215</height>
                   </size>
                  </property>
+                 <property name="mouseTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
                  <property name="minimum">
                   <number>20</number>
                  </property>
@@ -540,6 +546,12 @@
                    <width>60</width>
                    <height>16777215</height>
                   </size>
+                 </property>
+                 <property name="mouseTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="minimum">
                   <number>20</number>
@@ -943,6 +955,12 @@
                    <width>60</width>
                    <height>16777215</height>
                   </size>
+                 </property>
+                 <property name="mouseTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
                  </property>
                  <property name="minimum">
                   <number>100</number>
@@ -1349,6 +1367,12 @@
                 <width>60</width>
                 <height>16777215</height>
                </size>
+              </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
               </property>
               <property name="minimum">
                <number>100</number>
