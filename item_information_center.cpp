@@ -361,9 +361,6 @@ void ItemInformationCenter::open(const string db_path)
         db_ = QSqlDatabase::addDatabase(driver);
         db_.setDatabaseName(db_path.c_str());
         db_.open();
-//        sql_create_table.sprintf("CREATE TABLE product (id TEXT , ng BOOL, reason TEXT, station TEXT, datatime TEXT)");
-//        qDebug() << sql_create_table << endl;
-//        QSqlQuery query(sql_create_table);
        QSqlQuery query("CREATE TABLE product (id TEXT PRIMARY KEY, ng TEXT, reason TEXT, station TEXT, datatime TEXT)");
         if(!query.isActive())
             qWarning() << "ERROR: " << query.lastError().text();
@@ -382,25 +379,38 @@ void ItemInformationCenter::add_item(const string& id_str, const string& ng_str,
     out_log << station << endl;
     out_log << datatime << endl;
 
-
     QSqlQuery query;
+    query.prepare("INSERT INTO product (id, ng, reason, station, datatime) "
+                  "VALUES (:id, :ng, :reason, :station, :datatime)");
+    query.bindValue(":id", id_str);
+    query.bindValue(":ng", ng_str);
+    query.bindValue(":reason", ng_reason);
+    query.bindValue(":station", station);
+    query.bindValue(":datatime", datatime);
+
+
+//    QSqlQuery query;
 //    string command ="INSERT INTO product (id, ng, reason, station, datatime) VALUES ('" + id_str + "','" + is_ng + "','" +ng_reason+"','" + station + "','"+ datatime + "')";
 //    command += string("\'")+id_str+string("',") + string("'")+(is_ng ? "1" : "0") + string("',") + string("'")+ng_reason + string("',")+string("'")+station +string("',") + string("'")+ datatime +string("'")+string(")");
 
 //    command += "\'"+id_str+"\','" + (is_ng ? "1" : "0") + "',\'" + ng_reason + "',\'" + station + "',\'" + datatime +"\'" + ")";
 //    out_log << command << endl;
 //    QString str = QString("insert into product(num, name, score) values('%1', '%2', '%3')").arg(num).arg(namestr).arg(score);
-    query.prepare("INSERT INTO product VALUES (id_str, is_ng, ng_reason, station, datatime)");
-    query.bindValue("id_str",id_str.c_str());
-    query.bindValue("is_ng",ng_str.c_str());
-    query.bindValue("ng_reason",ng_reason.c_str());
-    query.bindValue("station",station.c_str());
-    query.bindValue("datatime",datatime.c_str());
+//    query.prepare("INSERT INTO product VALUES (id_str, is_ng, ng_reason, station, datatime)");
+//    query.bindValue("id_str",id_str.c_str());
+//    query.bindValue("is_ng",ng_str.c_str());
+//    query.bindValue("ng_reason",ng_reason.c_str());
+//    query.bindValue("station",station.c_str());
+//    query.bindValue("datatime",datatime.c_str());
 
     if(!query.exec(/*command.c_str()*/))
     {
         out_log << "invoke set_item" << endl;
 		set_item(id_str, ng_str, ng_reason, station, datatime);
+    }
+    else
+    {
+        out_log << "insert success" << endl;
     }
 }
 
