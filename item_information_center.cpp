@@ -390,11 +390,11 @@ void ItemInformationCenter::add_item(const string& id_str, const string& ng_str,
     {
         out_log << "prepare fail" << endl;
     }
-    query.bindValue(":id", id_str);
-    query.bindValue(":ng", ng_str);
-    query.bindValue(":reason", ng_reason);
-    query.bindValue(":station", station);
-    query.bindValue(":datatime", datatime);
+    query.bindValue(":id", id_str.c_str());
+    query.bindValue(":ng", ng_str.c_str());
+    query.bindValue(":reason", ng_reason.c_str());
+    query.bindValue(":station", station.c_str());
+    query.bindValue(":datatime", datatime.c_str());
 
 
 //    QSqlQuery query;
@@ -424,7 +424,6 @@ void ItemInformationCenter::add_item(const string& id_str, const string& ng_str,
 
 void ItemInformationCenter::get_all_item_id(vector<string> &items)
 {
-    db_.open();
     QSqlQuery query;
     string command = "SELECT * FROM product";
     query.prepare(command.c_str());
@@ -444,7 +443,6 @@ void ItemInformationCenter::get_all_item_id(vector<string> &items)
 
 void ItemInformationCenter::remove_item(const string& id_str) //sql移除
 {
-    db_.open();
     QSqlQuery query;
     string command = "DELETE FROM product WHERE id = ";
     command += "\'" + id_str + "\'";
@@ -452,7 +450,6 @@ void ItemInformationCenter::remove_item(const string& id_str) //sql移除
 }
 bool ItemInformationCenter::get_item(const string& id_str, string& is_ng, string& ng_reason , string& station, string &datatime) //查询
 {
-    db_.open();
     QSqlQuery query;
     string command = "SELECT ng , reason FROM product WHERE id = ";
     command += "\'" + id_str + "\'";
@@ -506,7 +503,6 @@ void ItemInformationCenter::set_item(const string& id_str, const string& is_ng, 
     out_log << station << endl;
     out_log << datatime << endl;
 
-    db_.open();
     QSqlQuery query;
     string command = "UPDATE product set ";
     command += "ng = '" + is_ng  + ", ";

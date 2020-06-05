@@ -26,7 +26,7 @@ public:
 
 protected:
 
-    void closeEvent(QCloseEvent *event);
+//    void closeEvent(QCloseEvent *event);
 
 public slots:
     void on_camera_buffer_changed(Camera* camera);

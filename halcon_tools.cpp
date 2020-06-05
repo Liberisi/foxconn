@@ -144,10 +144,36 @@ namespace halcontools
     {
         clock_t clock_begin = clock();
         HDataCode2D datacode;
-        datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "maximum_recognition");
+        datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
         HTuple readed_strings;
         HTuple result_handles;
-        HXLDCont xld = datacode.FindDataCode2d(img, "stop_after_result_num", 2, &result_handles, &readed_strings);
+
+
+		HImage image = img.ScaleImageMax();
+		image = image.Emphasize(7, 7, 1);
+		image = image.MedianImage("circle", 1, "mirrored");
+		HImage image_invert = image.InvertImage();
+        HImage image_result = image_invert.GrayRangeRect(10, 10);
+
+        HRegion white_region = image_result.FastThreshold(128, 255, 10);
+        white_region = white_region.Connection();
+        white_region = white_region.FillUp();
+
+        //	select_shape(ConnectedRegions2, SelectedRegions1, ['area', 'rectangularity'], 'and', [99999, 0.5], [9999999, 1])
+        HTuple features;
+        features.Append("area");
+        features.Append("rectangularity");
+        HTuple min, max;
+        min.Append(8999);
+        min.Append(0.5);
+        max.Append(29999);
+        max.Append(1);
+        white_region = white_region.SelectShape(features, "and", min, max);
+        white_region = white_region.DilationRectangle1(25, 25);
+        white_region = white_region.Union1();
+        image_invert = image_invert.ReduceDomain(white_region);
+
+		HXLDCont xld = datacode.FindDataCode2d(image_invert, "stop_after_result_num", 2, &result_handles, &readed_strings);
         for (int i = 0; i < readed_strings.Length(); ++i)
         {
             //HString* str = readed_strings.ToSArr();
@@ -159,49 +185,6 @@ namespace halcontools
         datacode.Clear();
         clock_t clock_end = clock();
         duration_ms = (clock_end - clock_begin) * 1000 / CLOCKS_PER_SEC;
-//        clock_t clock_begin = clock();
-//        HDataCode2D datacode;
-//        datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
-//        HTuple readed_strings;
-//        HTuple result_handles;
-
-
-//		HImage image = img.ScaleImageMax();
-//		image = image.Emphasize(7, 7, 1);
-//		image = image.MedianImage("circle", 1, "mirrored");
-//		HImage image_invert = image.InvertImage();
-//        HImage image_result = image_invert.GrayRangeRect(10, 10);
-
-//        HRegion white_region = image_result.FastThreshold(128, 255, 10);
-//        white_region = white_region.Connection();
-//        white_region = white_region.FillUp();
-
-//        //	select_shape(ConnectedRegions2, SelectedRegions1, ['area', 'rectangularity'], 'and', [99999, 0.5], [9999999, 1])
-//        HTuple features;
-//        features.Append("area");
-//        features.Append("rectangularity");
-//        HTuple min, max;
-//        min.Append(8999);
-//        min.Append(0.5);
-//        max.Append(29999);
-//        max.Append(1);
-//        white_region = white_region.SelectShape(features, "and", min, max);
-//        white_region = white_region.DilationRectangle1(25, 25);
-//        white_region = white_region.Union1();
-//        image_invert = image_invert.ReduceDomain(white_region);
-
-//		HXLDCont xld = datacode.FindDataCode2d(image_invert, "stop_after_result_num", 2, &result_handles, &readed_strings);
-//        for (int i = 0; i < readed_strings.Length(); ++i)
-//        {
-//            //HString* str = readed_strings.ToSArr();
-//            HTuple t = readed_strings[i];
-//            codes.push_back(t.ToString().Text());
-//            HXLD region = xld.SelectObj(i + 1);
-//            code_regions.push_back(region);
-//        }
-//        datacode.Clear();
-//        clock_t clock_end = clock();
-//        duration_ms = (clock_end - clock_begin) * 1000 / CLOCKS_PER_SEC;
     }
 
     void read_2d_code_complex(void* data, int width, int height, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms)
@@ -213,13 +196,14 @@ namespace halcontools
     void read_2d_code_special(const HImage& img, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms)
        {
            clock_t clock_begin = clock();
+		   HObject  ho_ModelRegion, ho_ImageReduced1;
 		   HObject  ho_ImageScaleMax, ho_ImageEmphasize, ho_ImageMedian;
 		   HObject  ho_Edges, ho_SelectedXLD, ho_SelectedContours, ho_ObjectSelected;
            HObject  ho_Region, ho_ImageReduced, ho_SymbolXLDs1, ho_RegionDilation;
 
 		   // Local control variables
 		   HTuple  hv_BarCodeHandle, hv_Width;
-           HTuple   hv_i, hv_NumberRegions, hv_ResultHandles1;
+		   HTuple  hv_Height, hv_i, hv_NumberRegions, hv_ResultHandles1;
 		   HTuple  hv_DecodedDataStrings1;
 		   HDataCode2D datacode;
 
@@ -228,7 +212,7 @@ namespace halcontools
 
 		   CreateBarCodeModel(HTuple(), HTuple(), &hv_BarCodeHandle);
 		   SetBarCodeParam(hv_BarCodeHandle, "check_char", "present");
-           datacode.CreateDataCode2dModel(code_name.c_str(),  "default_parameters", "enhanced_recognition");
+		   datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
 
 		   //*** 指定了一个大概的区域
 //		   img.GetImageSize(&hv_Width, &hv_Height);
@@ -245,7 +229,6 @@ namespace halcontools
 
 		   //***筛选轮廓
 		   SelectShapeXld(ho_Edges, &ho_SelectedXLD, "area", "and", 10000, 30000);
-
 		   SelectContoursXld(ho_SelectedXLD, &ho_SelectedContours, "closed", 0.5, 5, -0.5,
 			   0.5);
 
@@ -329,7 +312,7 @@ namespace halcontools
 	{
         clock_t clock_begin = clock();
 		HDataCode2D datacode;
-        datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
+		datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
 		HTuple readed_strings;
 		HTuple result_handles;
 		HXLDCont xld = datacode.FindDataCode2d(img, "stop_after_result_num", 2, &result_handles, &readed_strings);
@@ -361,17 +344,14 @@ namespace halcontools
         barcode.CreateBarCodeModel(HTuple(), HTuple());
         HTuple GenParamNames;
         HTuple GenParamValues;
-        GenParamNames.Append("meas_thresh");
-//        GenParamNames.Append("check_char");
-//		GenParamNames.Append("element_size_max");
-//        GenParamValues.Append("true");
-        GenParamValues.Append(0.2);
-//        GenParamValues.Append(16);
-
+        GenParamNames.Append("start_stop_tolerance");
+        GenParamNames.Append("check_char");
+        GenParamNames.Append("element_size_max");
+        GenParamValues.Append("true");
+//        GenParamValues.Append(high);
+        GenParamValues.Append(16);
         barcode.SetBarCodeParam(GenParamNames,GenParamValues);
-        img.ScaleImageMax();
         img.Emphasize(7,7,1);
-        img.MedianImage("circle", 1, "mirrored");
         HRegion regions = barcode.FindBarCode(img, code_name.c_str(), &readed_strings);
         for (int i = 0; i < readed_strings.Length(); ++i)
         {
@@ -400,9 +380,6 @@ namespace halcontools
         GenParamValues.Append(1.2);
         GenParamValues.Append(16);
         barcode.SetBarCodeParam(GenParamNames,GenParamValues);
-        img.ScaleImageMax();
-        img.Emphasize(7,7,1);
-        img.MedianImage("circle", 1, "mirrored");
 		HRegion regions = barcode.FindBarCode(img, code_name.c_str(), &readed_strings);
 		for (int i = 0; i < readed_strings.Length(); ++i)
 		{
@@ -917,54 +894,83 @@ namespace halcontools
 //            *find = true;
 //    }
         {
-
+            char file_name[128];
+            memset(file_name, 0, 128);
+            sprintf(file_name, "halcon_tool.log");
+            std::ofstream out_log(file_name);
     //       halcon_tools_logger_->log(Logger::kLogLevelInfo,"extract_start");
     //       HTuple Width;
     //      HTuple Height;
     //       img.GetImageSize(& Width, & Height);
            HRegion region;
     //	   8线
-    //     region.GenRectangle1(1, 70, 1613, 2140);
+    //       region.GenRectangle1(l, 70, 1613, 2140);
             //3线
-        region.GenRectangle1(2, 344, 944, 1777);
+    //       region.GenRectangle1(2, 344, 944, 1777);
             //4线
-      //     region.GenRectangle1(46, 41, 1041, 1613);
+    //	   region.GenRectangle1(124, 181, 978, 1605);
            //5线
-     //    region.GenRectangle1(155, 400, 1045, 1825);
+           region.GenRectangle1(155, 400, 1045, 1825);
            //2线
-     //      region.GenRectangle1(51, 23, 1003, 1459);
-          // region.GenRectangle2(529, 734, 1.34965, 716, 453);
+    //       region.GenRectangle2(529, 734, 1.34965, 716, 453);
           // 6线
-           //region.GenRectangle2(541.858, 926.5, 178.67, 711.192, 465.658);
-    //      region.GenRectangle1(77, 197, 1015, 1649);
-
-           //1line
-       //    region.GenRectangle1(60,536, 1008, 1916);
+          //   region.GenRectangle2(541.858, 926.5, 178.67, 711.192, 465.658);
 
            HImage img_reduce = img.ReduceDomain(region);
-		   double Min, Max, Range;
-		   img_reduce.MinMaxGray(region, 0, &Min, &Max, &Range);
-		   HImage powimage = img_reduce.PowImage(2);
-           double Mult = 1/Max;
-           HImage scaleImage = powimage.ScaleImage(Mult, 0);
+    //        out_log << "start" << endl;
+    //       HImage dupImgae = img.CopyImage();
+    //        HMetrologyModel MetrologyHandle = Baojitai::instance()->image_to_MetrologyHandle();
+    //        ClearMetrologyModel(MetrologyHandle);
 
-           if (black_region_threshold < 30)
-            {
-               black_region_threshold = 30;
-            }
-           else if (black_region_threshold > 230)
-            {
-               black_region_threshold = 230;
-            }
+//           HRegion white_region = img_reduce.Threshold(128, 255);
+//           if (!white_region.IsInitialized() && find)
+//           {
+//               *find = false;
+//               return;
+//           }
+//           white_region = white_region.ClosingCircle(20);
+//           white_region = white_region.Connection();
+//           HTuple row, col;
+//           HTuple region_area = white_region.AreaCenter(&row, &col);
+//           HTuple region_area_sorted_idx = region_area.TupleSortIndex();
+//           int area_max_idx = region_area_sorted_idx[region_area_sorted_idx.Length() - 1];
+//           int area_max = region_area[area_max_idx ];
 
-		   HRegion black_region = scaleImage.Threshold(0, black_region_threshold);
+//           out_log<<area_max<<endl;
+
+//           HTuple width, height;
+//           //int width = img.Width();
+//           //int height = img.Height();
+//           HalconCpp::GetImageSize(img_reduce, &width, &height);
+
+//           out_log <<width.D() << endl;
+//           out_log << height.D() << endl;
+
+//           if (find && area_max < width * height * 0.5 * 0.5)
+//           {
+//               *find = false;
+//               return;
+//           }
+
+//           HRegion roi_region = white_region.SelectObj(area_max_idx + 1);
+//           roi_region = roi_region.FillUp();
+//           roi_region = roi_region.ErosionCircle(60);
+//           HImage roi = img.ReduceDomain(roi_region);
+//           HImage roi_mean = roi.MeanImage(53, 53);
+//           roi_region = roi_region.ErosionCircle(30);
+//           roi_mean = roi_mean.ReduceDomain(roi_region);
+
+
+
+            HRegion black_region = img_reduce.Threshold(0, black_region_threshold);
+            out_log<<black_region_threshold<<endl;
             if (!black_region.IsInitialized() && find)
             {
                 *find = false;
                 return;
             }
 
-//            black_region = black_region.OpeningCircle(10);
+            black_region = black_region.OpeningCircle(30);
             black_region = black_region.Connection();
             black_region = black_region.FillUp();
 
@@ -981,13 +987,13 @@ namespace halcontools
             double black_region_area_max = black_region_area[black_region_area_max_idx];
             black_region = black_region.SelectShape("area", "and", black_region_area_max, 9999999);
 
-//            out_log<<black_region_area_max<<endl;
+            out_log<<black_region_area_max<<endl;
 
             HTuple phi_noise = black_region.OrientationRegion();
             double phi_noise_ = phi_noise.D();
 
             HRegion Rectangle;
-            Rectangle.GenRectangle2(200, 200, phi_noise_, 160, 80);
+            Rectangle.GenRectangle2(200, 200, phi_noise_, 100, 50);
             black_region = black_region.Opening(Rectangle);
 
             double r, c, l1, l2;
@@ -996,11 +1002,11 @@ namespace halcontools
             black_region.SmallestRectangle2(&r, &c, &theta, &l1, &l2);
 
 
-//                    out_log << r << endl;
-//                    out_log << c << endl;
-//                    out_log <<l1 << endl;
-//                    out_log << l2 << endl;
-//                    out_log << theta << endl;
+                    out_log << r << endl;
+                    out_log << c << endl;
+                    out_log <<l1 << endl;
+                    out_log << l2 << endl;
+                    out_log << theta << endl;
 
             if (x)
                 *x = c;

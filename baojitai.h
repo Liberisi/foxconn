@@ -308,8 +308,6 @@ private:
     void update_camera_reading_code_buffer(void* data, int width, int height);
     void process_location_image(void* data, int width, int height);
     void process_reading_code_image(void* data, int width, int height);
-
-
     void process_check_frame_image(void* data, int width, int height);
     void post_process_location_image();
     void post_process_reading_code_image();
@@ -412,12 +410,11 @@ public:
     MsleepSetting msleep_time_;
     void save_msleep_time();
 
+    bool seconed_trigger_;
+
 //public:
 //    MsleepSetting msleep_time_;
 //    void save_msleep_time();
-
-private:
-    bool seconed_trigger_;
 };
 
 #endif // BAOJITAI_H

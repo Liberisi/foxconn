@@ -2,8 +2,6 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlRecord>
 
 MaterialProductMap::MaterialProductMap()
 {

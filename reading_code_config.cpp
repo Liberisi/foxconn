@@ -321,7 +321,7 @@ void ReadingCodeConfigDialog::on_toolButton_reading_code_clicked()
     mat_code_xlds_.clear();
     mat_codes_.clear();
     int mat_code_duration;
-    halcontools::read_2d_code(halcon_image_, ssvision::k2DCodeDataMatrixECC200, mat_codes_, mat_code_xlds_, mat_code_duration);
+    halcontools::read_2d_code_special(halcon_image_, ssvision::k2DCodeDataMatrixECC200, mat_codes_, mat_code_xlds_, mat_code_duration);
 
     reading_code_duration_ = bar_code_duration + mat_code_duration;
 

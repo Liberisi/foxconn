@@ -187,7 +187,6 @@
     <ClCompile Include="Debug\moc_save_config_dialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="equipment_information_collection.cpp" />
     <ClCompile Include="fid_cmc_socket.cpp" />
     <ClCompile Include="fidparser.cpp" />
     <ClCompile Include="frame_dialog.cpp" />
@@ -298,7 +297,6 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="datetime_filesystem.h" />
-    <ClInclude Include="equipment_information_collection.h" />
     <CustomBuild Include="fid_cmc_socket.h">
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o "$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DQT_NO_DEBUG -DQT_XLSX_LIB -DQT_AXCONTAINER_LIB -DQT_AXBASE_LIB -DQT_WIDGETS_LIB -DQT_WINEXTRAS_LIB -DQT_GUI_LIB -DQT_SERIALPORT_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG "-I." "-ID:\MTVec\include" "-ID:\OPENCV\opencv\build\include" "-ID:\balser\development\include" "-I\Act\Include" "-I.\ssvision" "-ID:\QTxlsx\build-qtxlsx-Desktop_Qt_5_6_3_MSVC2013_64bit-Debug\include" "-ID:\QTxlsx\build-qtxlsx-Desktop_Qt_5_6_3_MSVC2013_64bit-Debug\include\QtXlsx" "-I$(QTDIR)\include" "-I$(QTDIR)\include\ActiveQt" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtWinExtras" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I$(QTDIR)\include\QtSerialPort" "-I$(QTDIR)\include\QtNetwork" "-I$(QTDIR)\include\QtSql" "-I$(QTDIR)\include\QtCore" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2013"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing fid_cmc_socket.h...</Message>

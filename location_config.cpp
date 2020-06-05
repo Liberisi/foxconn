@@ -58,16 +58,16 @@ LocationConfigDialog::~LocationConfigDialog()
     delete ui;
 }
 
-void LocationConfigDialog::closeEvent(QCloseEvent *event)
-{
-    Camera* camera = Baojitai::instance()->camera_location();
-    if (camera && camera->is_open())
-    {
-        camera->stop();
-        camera->close();
-        event->accept();
-    }
-}
+//LocationConfigDialog::closeEvent(QCloseEvent *event)
+//{
+////    Camera* camera = Baojitai::instance()->camera_location();
+////    if (camera && camera->is_open())
+////    {
+////        camera->stop();
+////        camera->close();
+////        event->accept();
+////    }
+//}
 
 void LocationConfigDialog::on_paint2(HalconWidget *, HWindow &halcon_window)
 {
@@ -86,8 +86,11 @@ void LocationConfigDialog::on_paint2(HalconWidget *, HWindow &halcon_window)
     int w = ui->spinBox_width->text().toInt();
     int h = ui->spinBox_height->text().toInt();
 
-    halcontools::draw_rect(halcon_window, x + w * 0.5, y + h * 0.5, 0, w * 0.5, h * 0.5, halcontools::kHalconColorGreen, 1, false);
 
+    if (support_location_)
+    {
+        halcontools::draw_rect(halcon_window, x + w * 0.5, y + h * 0.5, phi, w * 0.5, h * 0.5, halcontools::kHalconColorGreen, 1, false);
+    }
 }
 
 void LocationConfigDialog::on_paint(HalconWidget *, HWindow &halcon_window)
@@ -222,8 +225,6 @@ void LocationConfigDialog::on_toolButton_extract_clicked()
         size_str.sprintf("[%0.2f, %0.2f]", width_mm, height_mm);
         ui->label_size->setText(size_str);
         ui->image_widget->update();
-        ui->lineEdit_l1->setText(QString::number((int)width_mm));
-        ui->lineEdit_l2->setText(QString::number((int)height_mm));
     }
 }
 
@@ -607,35 +608,29 @@ void LocationConfigDialog::on_pushButton_save_result_image_clicked()
 void LocationConfigDialog::on_toolButton_2_clicked()
 {
 
-	ui->image_widget->update();
 }
 
 void LocationConfigDialog::on_spinBox_x_valueChanged(int arg1)
 {
-	support_location_ = true;
-	ui->image_widget->update();
+
 }
 
 void LocationConfigDialog::on_spinBox_y_valueChanged(int arg1)
 {
-	support_location_ = true;
-	ui->image_widget->update();
+
 }
 
 void LocationConfigDialog::on_spinBox_width_valueChanged(int arg1)
 {
-	support_location_ = true;
-	ui->image_widget->update();
+
 }
 
 void LocationConfigDialog::on_spinBox_height_valueChanged(int arg1)
 {
-	support_location_ = true;
-	ui->image_widget->update();
+
 }
 
 void LocationConfigDialog::on_doubleSpinBox_phi_valueChanged(double arg1)
 {
-	support_location_ = true;
-	ui->image_widget->update();
+
 }
