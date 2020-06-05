@@ -380,8 +380,16 @@ void ItemInformationCenter::add_item(const string& id_str, const string& ng_str,
     out_log << datatime << endl;
 
     QSqlQuery query;
+    if (
     query.prepare("INSERT INTO product (id, ng, reason, station, datatime) "
-                  "VALUES (:id, :ng, :reason, :station, :datatime)");
+                  "VALUES (:id, :ng, :reason, :station, :datatime)"))
+    {
+        out_log << "prepare success" << endl;
+    }
+    else
+    {
+        out_log << "prepare fail" << endl;
+    }
     query.bindValue(":id", id_str);
     query.bindValue(":ng", ng_str);
     query.bindValue(":reason", ng_reason);
