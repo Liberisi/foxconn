@@ -196,103 +196,104 @@ namespace halcontools
     void read_2d_code_special(const HImage& img, const string& code_name, vector<string>& codes, vector<HXLD>& code_regions, int& duration_ms)
        {
            clock_t clock_begin = clock();
-		   HObject  ho_ModelRegion, ho_ImageReduced1;
-		   HObject  ho_ImageScaleMax, ho_ImageEmphasize, ho_ImageMedian;
-		   HObject  ho_Edges, ho_SelectedXLD, ho_SelectedContours, ho_ObjectSelected;
-           HObject  ho_Region, ho_ImageReduced, ho_SymbolXLDs1, ho_RegionDilation;
+//		   HObject  ho_ModelRegion, ho_ImageReduced1;
+//		   HObject  ho_ImageScaleMax, ho_ImageEmphasize, ho_ImageMedian;
+//		   HObject  ho_Edges, ho_SelectedXLD, ho_SelectedContours, ho_ObjectSelected;
+//           HObject  ho_Region, ho_ImageReduced, ho_SymbolXLDs1, ho_RegionDilation;
 
-		   // Local control variables
-		   HTuple  hv_BarCodeHandle, hv_Width;
-		   HTuple  hv_Height, hv_i, hv_NumberRegions, hv_ResultHandles1;
-		   HTuple  hv_DecodedDataStrings1;
-		   HDataCode2D datacode;
+//		   // Local control variables
+//		   HTuple  hv_BarCodeHandle, hv_Width;
+//		   HTuple  hv_Height, hv_i, hv_NumberRegions, hv_ResultHandles1;
+//		   HTuple  hv_DecodedDataStrings1;
+//		   HDataCode2D datacode;
 
 
-		   //Image Acquisition 01: Do something
+//		   //Image Acquisition 01: Do something
 
-		   CreateBarCodeModel(HTuple(), HTuple(), &hv_BarCodeHandle);
-		   SetBarCodeParam(hv_BarCodeHandle, "check_char", "present");
-		   datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
+//		   CreateBarCodeModel(HTuple(), HTuple(), &hv_BarCodeHandle);
+//		   SetBarCodeParam(hv_BarCodeHandle, "check_char", "present");
+//		   datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
 
-		   //*** 指定了一个大概的区域
-//		   img.GetImageSize(&hv_Width, &hv_Height);
-//		   GenRectangle1(&ho_ModelRegion, 100, 0, 2800, hv_Width);
-//		   ReduceDomain(img, ho_ModelRegion, &ho_ImageReduced1);
+//		   //*** 指定了一个大概的区域
+////		   img.GetImageSize(&hv_Width, &hv_Height);
+////		   GenRectangle1(&ho_ModelRegion, 100, 0, 2800, hv_Width);
+////		   ReduceDomain(img, ho_ModelRegion, &ho_ImageReduced1);
 
-		   //*** 图像增强
-           ScaleImageMax(img, &ho_ImageScaleMax);
-		   Emphasize(ho_ImageScaleMax, &ho_ImageEmphasize, 7, 7, 1);
-		   MedianImage(ho_ImageEmphasize, &ho_ImageMedian, "circle", 1, "mirrored");
+//		   //*** 图像增强
+//           ScaleImageMax(img, &ho_ImageScaleMax);
+//		   Emphasize(ho_ImageScaleMax, &ho_ImageEmphasize, 7, 7, 1);
+//		   MedianImage(ho_ImageEmphasize, &ho_ImageMedian, "circle", 1, "mirrored");
 
-		   //***边缘检测`
-		   EdgesSubPix(ho_ImageMedian, &ho_Edges, "canny", 1.2, 5, 70);
+//		   //***边缘检测`
+//		   EdgesSubPix(ho_ImageMedian, &ho_Edges, "canny", 1.2, 5, 70);
 
-		   //***筛选轮廓
-		   SelectShapeXld(ho_Edges, &ho_SelectedXLD, "area", "and", 10000, 30000);
-		   SelectContoursXld(ho_SelectedXLD, &ho_SelectedContours, "closed", 0.5, 5, -0.5,
-			   0.5);
+//		   //***筛选轮廓
+//		   SelectShapeXld(ho_Edges, &ho_SelectedXLD, "area", "and", 10000, 30000);
+//		   SelectContoursXld(ho_SelectedXLD, &ho_SelectedContours, "closed", 0.5, 5, -0.5,
+//			   0.5);
 
-		   GenRegionContourXld(ho_SelectedContours, &ho_Region, "filled");
-           DilationRectangle1(ho_Region, &ho_RegionDilation, 10, 10);
-           CountObj(ho_RegionDilation, &hv_NumberRegions);
-		   {
-			   HTuple end_val36 = hv_NumberRegions;
-			   HTuple step_val36 = 1;
-			   for (hv_i = 1; hv_i.Continue(end_val36, step_val36); hv_i += step_val36)
-			   {
-                   SelectObj(ho_RegionDilation, &ho_ObjectSelected, hv_i);
-				   ReduceDomain(img, ho_ObjectSelected, &ho_ImageReduced);
-
-				   HXLD ho_SymbolXLDs1 = datacode.FindDataCode2d(ho_ImageReduced, "stop_after_result_num",
-					   2, &hv_ResultHandles1, &hv_DecodedDataStrings1); 
-//				   HTuple t = hv_DecodedDataStrings1[hv_i];
-                   codes.push_back(hv_DecodedDataStrings1.ToString().Text());
-				   code_regions.push_back(ho_SymbolXLDs1);
-			   }
-		   }
-
-//           HDataCode2D datacode;
-//           datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
-//           HTuple readed_strings;
-//           HTuple result_handles;
-//
-//           Hlong Width = 0;
-//           Hlong Height = 0;
-//           img.GetImageSize(&Width, &Height);
-//           HRegion get_rectangle_region;
-//           get_rectangle_region.GenRectangle1(800, 0, 2000,Width);
-//           HImage image_reduce =img.ReduceDomain(get_rectangle_region);
-//           HImage ScaleImage = image_reduce.ScaleImageMax();
-//           HImage image_emphasize = ScaleImage.Emphasize(7,7,1);
-//           HImage image_median = image_emphasize.MedianImage("circle", 1, "mirrored");
-//
-//           HXLDCont Edgexld = image_median.EdgesSubPix("canny", 1.2 , 5 , 70);
-//
-//           //HXLDCont HXLDCont::SelectShapeXld(const HTuple& Features, const HString& Operation, const HTuple& Min, const HTuple& Max) const
-//           //	select_shape(ConnectedRegions2, SelectedRegions1, ['area', 'rectangularity'], 'and', [99999, 0.5], [9999999, 1])
-//           HTuple features;
-//           features.Append("area");
-//           HTuple min, max;
-//           min.Append(10000);
-//           max.Append(30000);
-//           HXLDCont SelectedXLD = Edgexld.SelectShapeXld(features, "and", min, max);
-//           HXLDCont SelectedContours = SelectedXLD.SelectContoursXld("closed", 0.5, 5, -0.5, 0.5);
-//           HRegion Target_region = SelectedContours.GenRegionContourXld("filled");
-//           Hlong Target_region_numbers = Target_region.CountObj();
-//           for(int i = 0; i<Target_region_numbers; ++i)
+//		   GenRegionContourXld(ho_SelectedContours, &ho_Region, "filled");
+//           DilationRectangle1(ho_Region, &ho_RegionDilation, 10, 10);
+//           CountObj(ho_RegionDilation, &hv_NumberRegions);
+//		   {
+//			   HTuple end_val36 = hv_NumberRegions;
+//			   HTuple step_val36 = 1;
+//           for (hv_i = 1; hv_i.Continue(end_val36, step_val36); hv_i += step_val36)
 //           {
-//               HRegion Selected_Target_region = Target_region.SelectObj(i+1);
-//               HImage Reduce_Target_region = img.ReduceDomain(Selected_Target_region);
-//               HXLDCont xld = datacode.FindDataCode2d(Reduce_Target_region, "stop_after_result_num", 2, &result_handles, &readed_strings);
-////               for (int i = 0; i < readed_strings.Length(); ++i)
-////               {
-//                   //HString* str = readed_strings.ToSArr();
-//                   HTuple t = readed_strings[i];
-//                   codes.push_back(t.ToString().Text());
-////                   HXLD region = xld.SelectObj(i + 1);
-//                   code_regions.push_back(xld);
-////               }
+//               SelectObj(ho_RegionDilation, &ho_ObjectSelected, hv_i);
+//               ReduceDomain(img, ho_ObjectSelected, &ho_ImageReduced);
+
+//               HXLD ho_SymbolXLDs1 = datacode.FindDataCode2d(ho_ImageReduced, "stop_after_result_num",
+//                   2, &hv_ResultHandles1, &hv_DecodedDataStrings1);
+////				   HTuple t = hv_DecodedDataStrings1[hv_i];
+//               codes.push_back(hv_DecodedDataStrings1.ToString().Text());
+//               code_regions.push_back(ho_SymbolXLDs1);
 //           }
+//       }
+
+           HDataCode2D datacode;
+           datacode.CreateDataCode2dModel(code_name.c_str(), "default_parameters", "enhanced_recognition");
+           HTuple readed_strings;
+           HTuple result_handles;
+
+           Hlong Width = 0;
+           Hlong Height = 0;
+           img.GetImageSize(&Width, &Height);
+           HRegion get_rectangle_region;
+           get_rectangle_region.GenRectangle1(800, 0, 2000,Width);
+           HImage image_reduce =img.ReduceDomain(get_rectangle_region);
+           HImage ScaleImage = image_reduce.ScaleImageMax();
+           HImage image_emphasize = ScaleImage.Emphasize(7,7,1);
+           HImage image_median = image_emphasize.MedianImage("circle", 1, "mirrored");
+
+           HXLDCont Edgexld = image_median.EdgesSubPix("canny", 1.2 , 5 , 70);
+
+           //HXLDCont HXLDCont::SelectShapeXld(const HTuple& Features, const HString& Operation, const HTuple& Min, const HTuple& Max) const
+           //	select_shape(ConnectedRegions2, SelectedRegions1, ['area', 'rectangularity'], 'and', [99999, 0.5], [9999999, 1])
+           HTuple features;
+           features.Append("area");
+           HTuple min, max;
+           min.Append(10000);
+           max.Append(30000);
+           HXLDCont SelectedXLD = Edgexld.SelectShapeXld(features, "and", min, max);
+           HXLDCont SelectedContours = SelectedXLD.SelectContoursXld("closed", 0.5, 5, -0.5, 0.5);
+           HRegion Target_region = SelectedContours.GenRegionContourXld("filled");
+           HRegion Target_region_dilationRectangle = Target_region.DilationRectangle1(10,10);
+           Hlong Target_region_numbers = Target_region_dilationRectangle.CountObj();
+           for(int i = 0; i<Target_region_numbers; ++i)
+           {
+               HRegion Selected_Target_region = Target_region.SelectObj(i+1);
+               HImage Reduce_Target_region = img.ReduceDomain(Selected_Target_region);
+               HXLDCont xld = datacode.FindDataCode2d(Reduce_Target_region, "stop_after_result_num", 2, &result_handles, &readed_strings);
+//               for (int i = 0; i < readed_strings.Length(); ++i)
+//               {
+                   //HString* str = readed_strings.ToSArr();
+//                   HTuple t = readed_strings[i];
+                   codes.push_back(readed_strings.ToString().Text());
+//                   HXLD region = xld.SelectObj(i + 1);
+                   code_regions.push_back(xld);
+//               }
+           }
 	       datacode.Clear();
            clock_t clock_end = clock();
            duration_ms = (clock_end - clock_begin) * 1000 / CLOCKS_PER_SEC;

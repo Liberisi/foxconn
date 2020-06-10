@@ -45,7 +45,7 @@ static const char* const kCurrentProductModelNameFileName = "current_product_mod
 static const char* const kFrameParamFileName = "frame_param";
 static const char* const kFrameDiskSVMFileName = "frame_detect_svm";
 static const char* const kFrameSideHandSVMFileName = "frame_side_hand_svm";
-static const char* const kCurrentProductNGDataBaseFileName = "item.db";
+static const char* const kCurrentProductNGDataBaseFileName = "item12.db";
 static const char* const kMaterialProductDataBaseFileName = "material_product.db";
 static const char* const kReadCodeMsleepTimeFileName = "Msleep_Time_setting";
 static const char* const kcameraexposureFileName = "Msleep_Time_setting";
@@ -596,6 +596,14 @@ void Baojitai::setup()
     item_center_->set_delegate(this);
     item_center_->listening(8002);
 
+    char file_name[128];
+    memset(file_name, 0, 128);
+    sprintf(file_name, "setup.log");
+    std::ofstream out_log(file_name);
+    QString loginfo;
+    loginfo.sprintf("%p",QThread::currentThread());
+    out_log << loginfo.toStdString() << endl;
+
     QString material_product_db_path = QDir::cleanPath(QString(config_dir.c_str()) + QDir::separator() + kMaterialProductDataBaseFileName);
     material_product_map_.open(material_product_db_path.toStdString());
 
@@ -1083,7 +1091,7 @@ void Baojitai::process_location_image(void* data, int width, int height)
 		string("[") + width_config_str + ", " + height_config_str + "] var " + var_str);
 
 	// 图像处理， 定位
-    int black_region_threshold[8] = {region_threshold,  region_threshold+50, region_threshold-50, region_threshold+25, region_threshold-25, 75,125,180};
+    int black_region_threshold[17] = {region_threshold,  region_threshold+50, region_threshold-50, region_threshold+40, region_threshold-40,region_threshold + 30,region_threshold-30,region_threshold+ 20,region_threshold- 20,region_threshold+ 10,region_threshold-10, 30,70,110,150,190,230};
 	bool find_sucess = false;
 	for (int i = 0; i < sizeof(black_region_threshold) / sizeof(black_region_threshold[0]); ++i)
 	{
@@ -1258,7 +1266,8 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
                 qDebug() << "board code length error" << endl;
             }
 		}
-       /* if (!find_board_code)
+
+        if (!find_board_code)
         {
             bar_code_regions.clear();
             bar_codes.clear();
@@ -1305,8 +1314,9 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
                     }
                 }
         }
-	}*/
+        }
     }
+
 	if (!param.use_board_code || find_board_code)
 		board_code_success_ = true;
 	else

@@ -74,7 +74,7 @@ void LocationConfigDialog::on_paint2(HalconWidget *, HWindow &halcon_window)
     if (!halcon_window.IsHandleValid())
         return;
 
-    if (!halcon_image_.IsInitialized())
+    if (halcon_image_.IsInitialized())
         return;
 
     halcon_window.SetPart(0, 0, (Hlong)halcon_image_.Height(), (Hlong)halcon_image_.Width());

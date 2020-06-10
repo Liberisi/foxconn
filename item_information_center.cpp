@@ -1,6 +1,10 @@
 #include "item_information_center.h"
 #include <QDebug>
 #include "baojitai.h"
+#include "qthread.h"
+#include <QSqlQuery>
+#include <QSqlError>
+
 
 ItemInformationCenter* ItemInformationCenter::instance()  //继承
 {
@@ -13,121 +17,7 @@ ItemInformationCenter* ItemInformationCenter::instance()  //继承
 }
 
 
-//
-//void ItemInformationCenter::initServerSignals()   //初始化信号槽
-//{
-//    connect(&m_server, SIGNAL(newConnection()), this, SLOT(onServerNewConnection()));
 
-
-//}
-//bool ItemInformationCenter::startServer(int port)         //启动服务器
-//{
-
-//    if(m_server.listen(QHostAddress::AnyIPv4,port)       //只监听IPV4的所有客户端
-//    {
-////        ui->targetLabel->show();
-////        ui->targetObject->show();
-////        ui->localPort->setText(QString("%1").arg(m_server.serverPort()));
-
-//        return true;
-//    }
-//    else
-//       return false;
-
-//}
-
-//void ItemInformationCenter::onServerNewConnection()
-//{
-//    qDebug() << "onNewConnection";
-//    QTcpSocket* tcp = m_server.nextPendingConnection();     //获取新的客户端信息
-
-//    QString info=tcp->peerAddress().toString()+":"+QString("%1").arg(tcp->peerPort());
-//    //ui->targetObject->addItem(info);
-//    QMessageBox::information(this,"提示",QString("新的客户端连入:%1").arg(info),QMessageBox::Ok);
-
-//    tcp->setObjectName(info);       //设置名称,方便查找
-
-//    connect(tcp, SIGNAL(connected()), this, SLOT(onServerConnected()));
-//    connect(tcp, SIGNAL(disconnected()), this, SLOT(onServerDisconnected()));
-//    connect(tcp, SIGNAL(readyRead()), this, SLOT(onServerDataReady()));
-//    connect(tcp, SIGNAL(bytesWritten(qint64)), this, SLOT(onServerBytesWritten(qint64)));
-
-//}
-//void ItemInformationCenter::onServerConnected()
-//{
-
-//}
-//void ItemInformationCenter::onServerDisconnected()
-//{
-//    QTcpSocket* tcp = dynamic_cast<QTcpSocket*>(sender());
-
-//    if( tcp != NULL )       //从连接对象中移除掉
-//    {
-//        qDebug() << "onServerDisconnected";
-//        qDebug() << "Local Address:" << tcp->peerAddress();
-//        qDebug() << "Local Port:" << tcp->peerPort();
-
-
-//        QString info=tcp->peerAddress().toString()+":"+QString("%1").arg(tcp->peerPort());
-
-//        QMessageBox::information(this,"提示",QString("客户端断开连接:%1").arg(info),QMessageBox::Ok);
-
-//        int index = ui-> targetObject ->findText(info);
-//        if(index>=0)
-//        ui->targetObject->removeItem(index);
-//    }
-
-//}
-//void ItemInformationCenter::onServerDataReady()
-//{
-//    QTcpSocket* tcp = dynamic_cast<QTcpSocket*>(sender());
-
-//    if(tcp->peerAddress().toString()!=targetAddr || tcp->peerPort()!=targetPort  )
-//    {
-//        targetAddr = tcp->peerAddress().toString();
-//        targetPort = tcp->peerPort();
-
-//        ui->recvEdit->insertPlainText("[接受来自"+ targetAddr+":"+QString("%1").arg(targetPort)+"]:\r\n");
-
-//    }
-
-//    ui->recvEdit->moveCursor(QTextCursor::End);
-
-////    if(ui->hexRecv->isChecked())        //十六进制接收？
-////    {
-////          QByteArray data =  tcp->readAll();
-
-
-////          for(int i=0;i<data.length();i++)
-////          {
-
-////              ui->recvEdit->insertPlainText(QString("%1 ").arg((unsigned char)data[i],2,16,QChar('0')).toUpper());
-
-////          }
-////          ui->recvEdit->insertPlainText("\r\n");
-////    }
-////    else
-//            QString message = tcp->readLine();
-//			out_log << message.toStdString() << endl;
-////            on_item_message(socket, message);
-//            if (message.length() > 0 && message[0] == '@')
-//            {
-//                on_item_message(socket, message);
-//				out_log << message.toStdString() << endl;
-//            }
-////        ui->recvEdit->insertPlainText(QString::fromLocal8Bit(tcp->readAll())+"\r\n");
-
-
-//}
-//void ItemInformationCenter::onServerBytesWritten(qint64 bytes)
-//{
-//    qDebug() << "onBytesWritten:" << bytes;
-
-
-//    ui->sendLenLabel->setText(QString("%1").arg(ui->sendLenLabel->text().toInt()+bytes));
-
-//}
-//
 ItemInformationCenter::ItemInformationCenter() //初始化
 {
     delegate_ = NULL;
@@ -225,41 +115,12 @@ void ItemInformationCenter::on_socket_disconnect()   //隧道断开
 
 void ItemInformationCenter::on_socket_read()
 {
-	char file_name[128];
-	memset(file_name, 0, 128);
-	sprintf(file_name, "server_read.log");
-	std::ofstream out_log(file_name);
+
 
 	QTcpSocket* socket = dynamic_cast<QTcpSocket*>(sender());
 	QString message = QString::fromLocal8Bit(socket->readAll());
 	on_item_message(socket, message);
 
-	//    if(tcp->peerAddress().toString()!=targetAddr || tcp->peerPort()!=targetPort  )
-    //    {
-	//        targetAddr = tcp->peerAddress().toString();
-	//        targetPort = tcp->peerPort();
-//    vector<QTcpSocket*>::iterator iter = sockets_.begin();
-//    while(iter != sockets_.end())
-//    {
-//        QTcpSocket* socket = *iter;
-//		
-//        while (socket->canReadLine())
-//        {
-//
-//            QString message = QString::fromLocal8Bit(socket->readLine());
-//			out_log << message.toStdString() << endl;
-////            on_item_message(socket, message);
-//            if (message.length() > 0 && message[0] == '@')
-//            {
-//                on_item_message(socket, message);
-//				out_log << message.toStdString() << endl;
-//            }
-////            /*socket->write("autoNG\r\n")*/;
-//            
-//            out_log << message.toStdString() << endl;
-//        }
-//        iter++;
-//    }
 }
 
 void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message) //信息
@@ -351,10 +212,22 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
         }
     }
     add_item(item_name.toStdString(), ng_str.toStdString()  , ng_reason.toStdString(), station.toStdString(), datatime.toStdString());
+
+    QString loginfo;
+    loginfo.sprintf("%p",QThread::currentThread());
+    out_log << loginfo.toStdString() << endl;
 }
 
 void ItemInformationCenter::open(const string db_path)
 {
+    char file_name[128];
+    memset(file_name, 0, 128);
+    sprintf(file_name, "opendb.log");
+    std::ofstream out_log(file_name);
+    QString loginfo;
+    loginfo.sprintf("%p",QThread::currentThread());
+    out_log << loginfo.toStdString() << endl;
+
     const QString driver("QSQLITE");
     if(QSqlDatabase::isDriverAvailable(driver))
     {
@@ -368,41 +241,13 @@ void ItemInformationCenter::open(const string db_path)
 }
 
 
-void ItemInformationCenter::add_item(const string& id_str, const string& ng_str, const string& ng_reason, const string& station, const string &datatime) //sql增加
+void ItemInformationCenter::add_item(string &id_str, string &ng_str, string &ng_reason, string &station, string &datatime) //sql增加
 {
     char file_name[128];
     memset(file_name, 0, 128);
     sprintf(file_name, "add_item.log");
     std::ofstream out_log(file_name);
-    out_log << id_str << endl;
-    out_log << ng_reason << endl;
-    out_log << station << endl;
-    out_log << datatime << endl;
 
-    QSqlQuery query;
-    if (
-    query.prepare("INSERT INTO product (id, ng, reason, station, datatime) "
-                  "VALUES (:id, :ng, :reason, :station, :datatime)"))
-    {
-        out_log << "prepare success" << endl;
-    }
-    else
-    {
-        out_log << "prepare fail" << endl;
-    }
-    query.bindValue(":id", id_str.c_str());
-    query.bindValue(":ng", ng_str.c_str());
-    query.bindValue(":reason", ng_reason.c_str());
-    query.bindValue(":station", station.c_str());
-    query.bindValue(":datatime", datatime.c_str());
-
-
-//    QSqlQuery query;
-//    string command ="INSERT INTO product (id, ng, reason, station, datatime) VALUES ('" + id_str + "','" + is_ng + "','" +ng_reason+"','" + station + "','"+ datatime + "')";
-//    command += string("\'")+id_str+string("',") + string("'")+(is_ng ? "1" : "0") + string("',") + string("'")+ng_reason + string("',")+string("'")+station +string("',") + string("'")+ datatime +string("'")+string(")");
-
-//    command += "\'"+id_str+"\','" + (is_ng ? "1" : "0") + "',\'" + ng_reason + "',\'" + station + "',\'" + datatime +"\'" + ")";
-//    out_log << command << endl;
 //    QString str = QString("insert into product(num, name, score) values('%1', '%2', '%3')").arg(num).arg(namestr).arg(score);
 //    query.prepare("INSERT INTO product VALUES (id_str, is_ng, ng_reason, station, datatime)");
 //    query.bindValue("id_str",id_str.c_str());
@@ -411,7 +256,13 @@ void ItemInformationCenter::add_item(const string& id_str, const string& ng_str,
 //    query.bindValue("station",station.c_str());
 //    query.bindValue("datatime",datatime.c_str());
 
-    if(!query.exec(/*command.c_str()*/))
+    QSqlQuery query;
+    string command = "INSERT INTO product (id, ng, reason, station, datatime) VALUES (";
+    command += "\'"+id_str+"\',\'" + ng_str + "\',\'" + ng_reason +"\',\'" + station + "\',\'" + datatime + "\'"+ ")";
+
+    out_log << command << endl;
+
+    if(!query.exec(command.c_str()))
     {
         out_log << "invoke set_item" << endl;
 		set_item(id_str, ng_str, ng_reason, station, datatime);
@@ -492,11 +343,11 @@ bool ItemInformationCenter::contrast_item(const string& id_str)
     }
 }
 
-void ItemInformationCenter::set_item(const string& id_str, const string& is_ng, const string& ng_reason, const string &station, const string &datatime) //修改
+void ItemInformationCenter::set_item(string &id_str, string &is_ng, string &ng_reason, string &station, string &datatime) //修改
 {
     char file_name[128];
     memset(file_name, 0, 128);
-    sprintf(file_name, "add_item.log");
+    sprintf(file_name, "set_item.log");
     std::ofstream out_log(file_name);
     out_log << id_str << endl;
     out_log << ng_reason<< endl;
@@ -505,12 +356,15 @@ void ItemInformationCenter::set_item(const string& id_str, const string& is_ng, 
 
     QSqlQuery query;
     string command = "UPDATE product set ";
-    command += "ng = '" + is_ng  + ", ";
-    command += "reason = '" + ng_reason + ", ";
-    command += "station = '" + station + ",";
-    command += "datatime = '" + datatime + ",";
+    command += "ng = '" + is_ng  + "', ";
+    command += "reason = '" + ng_reason + "', ";
+    command += "station = '" + station + "',";
+    command += "datatime = '" + datatime + "',";
     command += "WHERE id = ";
     command += "\'" + id_str + "\'";
+
+    out_log << command << endl;
+
     query.exec(command.c_str());
 }
 

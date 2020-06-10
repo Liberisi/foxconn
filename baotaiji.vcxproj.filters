@@ -36,12 +36,12 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{04ade423-9e0c-4d5f-a6b3-e20f98aafc20}</UniqueIdentifier>
+      <UniqueIdentifier>{a5dd86c0-8626-4c4d-ac0b-35c71e0110df}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{7eb082f5-cf67-4dc9-aa74-fe4d20f90b01}</UniqueIdentifier>
+      <UniqueIdentifier>{40c53a74-3cc4-40f4-b535-39541128db4d}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -220,9 +220,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActUtlType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="about.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -235,24 +232,12 @@
     <CustomBuild Include="communication.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="datetime_filesystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="fid_cmc_socket.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="fidparser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="frame_dialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="frameparam.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="halcon_tools.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="halcon_widget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -268,75 +253,57 @@
     <CustomBuild Include="material_product_dialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="material_product_map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="msleepsetting.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="plc_config_dialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="position_calibrate.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="product.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="reading_code_config.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="save_config_dialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="saveconfig.h">
+    <CustomBuild Include="ActUtlType.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="serial_port_manager.h">
+    </CustomBuild>
+    <CustomBuild Include="datetime_filesystem.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="support_location_select_region.h">
+    </CustomBuild>
+    <CustomBuild Include="fidparser.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="xlsx.h">
+    </CustomBuild>
+    <CustomBuild Include="frameparam.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_about.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_camera_config_dialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_communication.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_config_save.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_frame_dialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_location_config.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_main_window.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_material_product_dialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_plc_config_dialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_position_calibrate.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_reading_code_config.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
+    </CustomBuild>
+    <CustomBuild Include="halcon_tools.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="material_product_map.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="msleepsetting.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="product.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="resource.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="saveconfig.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="serial_port_manager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="support_location_select_region.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="xlsx.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="about.ui">
@@ -371,6 +338,39 @@
     </CustomBuild>
     <CustomBuild Include="reading_code_config.ui">
       <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_about.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_camera_config_dialog.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_communication.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_config_save.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_frame_dialog.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_location_config.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_main_window.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_material_product_dialog.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_plc_config_dialog.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_position_calibrate.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneratedFiles\ui_reading_code_config.h">
+      <Filter>Generated Files</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
