@@ -62,21 +62,6 @@ vector<string> ItemInformationCenter::connected_device_ip_list() //连接设备i
     return ip_list;
 }
 
-void ItemInformationCenter::onServerBytesWritten(QString bytes)
-{
-//    bool repair_mode = Baojitai::instance()->is_repair_mode();
-//    if (repair_mode = false)
-//    {
-//       string response_item_name = item_name.toStdString()+ "autoNG\r\n";
-//        socket->write(response_item_name.c_str(), response_item_name.length());
-//    }
-//    else
-//    {
-//        string response_item_name = item_name.toStdString()+ "manualNG\r\n";
-//        socket->write(response_item_name.c_str(), response_item_name.length());
-//    }
-
-}
 
 void ItemInformationCenter::on_socket_connect()  //隧道连接
 {
@@ -234,7 +219,7 @@ void ItemInformationCenter::open(const string db_path)
         db_ = QSqlDatabase::addDatabase(driver);
         db_.setDatabaseName(db_path.c_str());
         db_.open();
-       QSqlQuery query("CREATE TABLE product (id TEXT PRIMARY KEY, ng TEXT, reason TEXT, station TEXT, datatime TEXT)");
+        QSqlQuery query("CREATE TABLE product (id TEXT PRIMARY KEY, ng TEXT, reason TEXT, station TEXT, datatime TEXT)");
         if(!query.isActive())
             qWarning() << "ERROR: " << query.lastError().text();
     }
@@ -256,10 +241,11 @@ void ItemInformationCenter::add_item(string &id_str, string &ng_str, string &ng_
 //    query.bindValue("station",station.c_str());
 //    query.bindValue("datatime",datatime.c_str());
 
-    QSqlQuery query;
+
+    QSqlQuery query = QSqlQuery(db_);
     string command = "INSERT INTO product (id, ng, reason, station, datatime) VALUES (";
     command += "\'"+id_str+"\',\'" + ng_str + "\',\'" + ng_reason +"\',\'" + station + "\',\'" + datatime + "\'"+ ")";
-
+    query.prepare(command.c_str());
     out_log << command << endl;
 
     if(!query.exec(command.c_str()))
@@ -275,7 +261,7 @@ void ItemInformationCenter::add_item(string &id_str, string &ng_str, string &ng_
 
 void ItemInformationCenter::get_all_item_id(vector<string> &items)
 {
-    QSqlQuery query;
+    QSqlQuery query = QSqlQuery(db_);
     string command = "SELECT * FROM product";
     query.prepare(command.c_str());
     if(!query.exec())
@@ -294,14 +280,14 @@ void ItemInformationCenter::get_all_item_id(vector<string> &items)
 
 void ItemInformationCenter::remove_item(const string& id_str) //sql移除
 {
-    QSqlQuery query;
+    QSqlQuery query = QSqlQuery(db_);
     string command = "DELETE FROM product WHERE id = ";
     command += "\'" + id_str + "\'";
     query.exec(command.c_str());
 }
 bool ItemInformationCenter::get_item(const string& id_str, string& is_ng, string& ng_reason , string& station, string &datatime) //查询
 {
-    QSqlQuery query;
+    QSqlQuery query = QSqlQuery(db_);
     string command = "SELECT ng , reason FROM product WHERE id = ";
     command += "\'" + id_str + "\'";
     query.prepare(command.c_str());
@@ -328,8 +314,7 @@ bool ItemInformationCenter::get_item(const string& id_str, string& is_ng, string
 
 bool ItemInformationCenter::contrast_item(const string& id_str)
 {
-    db_.open();
-    QSqlQuery query;
+    QSqlQuery query = QSqlQuery(db_);
     string command = "SELECT ng , reason FROM product WHERE id = ";
     command += "\'" + id_str + "\'";
     query.prepare(command.c_str());
@@ -354,7 +339,7 @@ void ItemInformationCenter::set_item(string &id_str, string &is_ng, string &ng_r
     out_log << station << endl;
     out_log << datatime << endl;
 
-    QSqlQuery query;
+    QSqlQuery query = QSqlQuery(db_);
     string command = "UPDATE product set ";
     command += "ng = '" + is_ng  + "', ";
     command += "reason = '" + ng_reason + "', ";

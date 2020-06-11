@@ -68,10 +68,12 @@ public slots:
     void on_socket_disconnect();
     void on_socket_read();
 
-    void onServerBytesWritten(QString bytes);
+private:
+    QSqlDatabase db_;
+
 
 protected:
-     QSqlDatabase db_;
+
      QTcpServer tcp_server_;
      vector<QTcpSocket*> sockets_;
      ItemInformationCenterDelegate* delegate_;

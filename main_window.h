@@ -15,7 +15,7 @@
 #include "halcon_widget.h"
 #include "baojitai.h"
 #include "ActUtlType.h"
-#include <QtXlsx>
+
 
 
 using namespace  std;

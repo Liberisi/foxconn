@@ -13,9 +13,9 @@ void MaterialProductMap::open(const string db_path)
     const QString driver("QSQLITE");
     if(QSqlDatabase::isDriverAvailable(driver))
     {
-        db_ = QSqlDatabase::addDatabase(driver);
-        db_.setDatabaseName(db_path.c_str());
-        db_.open();
+        db = QSqlDatabase::addDatabase(driver);
+        db.setDatabaseName(db_path.c_str());
+        db.open();
         QSqlQuery query("CREATE TABLE material (id TEXT PRIMARY KEY, product TEXT)");
         if(!query.isActive())
             qDebug() << "ERROR: " << query.lastError().text();
