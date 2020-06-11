@@ -38,11 +38,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlQueryModel>
 #include <QtCore>
-#include "xlsxdocument.h"
-#include "xlsxformat.h"
-#include "xlsxcellrange.h"
-#include "xlsxchart.h"
-#include <QtXlsx>
+
 
 
 MainWindow::MainWindow(QWidget *parent) :

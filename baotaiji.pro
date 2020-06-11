@@ -9,7 +9,7 @@ QT       += serialport
 QT       += winextras
 QT       += network
 QT       += sql
-QT       += xlsx
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -124,7 +124,6 @@ HEADERS  += \
     material_product_map.h \
     material_product_dialog.h \
     msleepsetting.h \
-    xlsx.h \
     support_location_select_region.h
 
 FORMS    += \

@@ -18,7 +18,7 @@ public:
     void update(string material, string product);
 
 private:
-     QSqlDatabase db_;
+     QSqlDatabase db;
 };
 
 #endif // MATERIALPRODUCTMAP_H
