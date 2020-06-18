@@ -74,6 +74,8 @@ public:
 
     void setup();
     void shutdown();
+
+    Logger* baojitai_logger(){return baojitai_logger_;}
 	
 	void start();
     // 强制恢复从tid开始轮流发码

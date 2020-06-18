@@ -2179,6 +2179,11 @@ void MainWindow::reload_advanced_device_ng_table()
 
 void MainWindow::on_pushButton_refresh_advance_ng_list_clicked()
 {
+    ItemInformationCenter* item_center = ItemInformationCenter::instance();
+    QString id = ui->lineEdit_item_id->text();
+    string id_str = id.toStdString();
+    item_center->add_item(id_str, "ng", "reason", "station", "20200618");
+
     reload_advanced_device_ng_table();
 }
 
@@ -2208,4 +2213,12 @@ void MainWindow::on_toolButton_romove_advance_product_ng_clicked()
         advanced_device_ng_item_model_.removeRow( removeRows.at(i-1), QModelIndex());
         ng_item_info->remove_item(remove_id[i-1]);
     }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString id = ui->lineEdit_item_id->text();
+    string id_str = id.toStdString();
+    MaterialProductMap product_map;
+    product_map.insert(id_str, "xxxxx");
 }

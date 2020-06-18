@@ -1,4 +1,5 @@
-
+ssvision/release
+ssvision/debug
 *.Debug
 *.pdb
 *.lib

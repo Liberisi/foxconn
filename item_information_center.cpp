@@ -22,6 +22,11 @@ ItemInformationCenter::ItemInformationCenter() //初始化
 {
     delegate_ = NULL;
     connect(&tcp_server_, SIGNAL(newConnection()), this, SLOT(on_socket_connect()));
+    connect(this,
+            SIGNAL(signal_item_message(QTcpSocket*,QString)),
+            this,
+            SLOT(on_signal_item_message(QTcpSocket*,QString)),
+            Qt::QueuedConnection);
 }
 
 void ItemInformationCenter::set_delegate(ItemInformationCenterDelegate *delegate) //断开
@@ -100,15 +105,36 @@ void ItemInformationCenter::on_socket_disconnect()   //隧道断开
 
 void ItemInformationCenter::on_socket_read()
 {
-
-
-	QTcpSocket* socket = dynamic_cast<QTcpSocket*>(sender());
-	QString message = QString::fromLocal8Bit(socket->readAll());
-	on_item_message(socket, message);
-
+//	QTcpSocket* socket = dynamic_cast<QTcpSocket*>(sender());
+//	QString message = QString::fromLocal8Bit(socket->readAll());
+//	on_item_message(socket, message);
+    Logger* logger = Baojitai::instance()->baojitai_logger();
+    vector<QTcpSocket*>::iterator iter = sockets_.begin();
+    while(iter != sockets_.end())
+    {
+        QTcpSocket* socket = *iter;
+        QByteArray message_bytes = socket->readAll();
+        if (logger)
+        {
+            logger->log(Logger::kLogLevelInfo, "Advanced Machines", "read bytes ", message_bytes.length(), message_bytes.length());
+        }
+        QString message(message_bytes);
+        qDebug() << message << endl;
+        if (logger)
+        {
+            logger->log(Logger::kLogLevelInfo, "Advanced Machines", "read message ", message.toStdString());
+        }
+        if (message.length() > 0 && message[0] == '@')
+        {
+            qDebug() << "emit message " << message;
+            emit signal_item_message(socket, message);
+            //on_item_message(socket, message);
+        }
+        iter++;
+    }
 }
 
-void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message) //信息
+void ItemInformationCenter::on_signal_item_message(QTcpSocket* socket, QString message) //信息
 {
 //    if (message.length() == 0)
 //        return;
@@ -119,19 +145,20 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
     // @条码_ok_工站_datatime\r
     // @条码_ng_原因_工站_datatime\r
 
-    char file_name[128];
-    memset(file_name, 0, 128);
-    sprintf(file_name, "server.log");
-    std::ofstream out_log(file_name);
-    out_log << message.toStdString() << endl;
+    qDebug() << "on signal message" << message;
+
+    Logger* logger = Baojitai::instance()->baojitai_logger();
+    if(logger)
+    {
+        logger->log(Logger::kLogLevelInfo, "on item message", message.toStdString());
+    }
+
     QStringList str_list = message.split('_');
-
-
     QString item_name;
     if (str_list.length() > 0)
     {
         item_name = str_list[0];
-        out_log << item_name.toStdString() << endl;
+        //out_log << item_name.toStdString() << endl;
         if (item_name.length() > 1)
         {
             item_name = item_name.right(item_name.length()-1);
@@ -168,7 +195,7 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
         if (repair_mode = false)
         {
             string response_item_name = item_name.toStdString()+ "autoNG\r\n";
-            out_log << response_item_name << endl;
+            //out_log << response_item_name << endl;
             socket->write(response_item_name.c_str(), response_item_name.length());
         }
         else
@@ -181,57 +208,82 @@ void ItemInformationCenter::on_item_message(QTcpSocket* socket, QString& message
     //工站
     //贴标机和锁螺丝机
     QString station;
-    if (str_list.length() > 1)
+    if (str_list.length() > 3)
     {
         station = str_list[3];
     }
 
     //日期
     QString datatime;
-    if (str_list.length() > 1)
+    if (str_list.length() > 4)
     {
         datatime = str_list[4];
         if (datatime.length() > 1)
         {
-            datatime = datatime.left(item_name.length()-2);
+            datatime = datatime.left(datatime.length()-2);
         }
     }
+
+    if (logger)
+    {
+        string item_info = (item_name + " " + ng_str + " " + ng_reason + " " + station + " " + datatime).toStdString();
+        logger->log(Logger::kLogLevelInfo, "add item", item_info);
+    }
+    qDebug() << item_name << " " << ng_str << " " << ng_reason << " " << station << " " << datatime;
     add_item(item_name.toStdString(), ng_str.toStdString()  , ng_reason.toStdString(), station.toStdString(), datatime.toStdString());
 
-    QString loginfo;
-    loginfo.sprintf("%p",QThread::currentThread());
-    out_log << loginfo.toStdString() << endl;
+//    QString loginfo;
+//    loginfo.sprintf("%p",QThread::currentThread());
+    //out_log << loginfo.toStdString() << endl;
 }
 
 void ItemInformationCenter::open(const string db_path)
 {
-    char file_name[128];
-    memset(file_name, 0, 128);
-    sprintf(file_name, "opendb.log");
-    std::ofstream out_log(file_name);
-    QString loginfo;
-    loginfo.sprintf("%p",QThread::currentThread());
-    out_log << loginfo.toStdString() << endl;
+//    char file_name[128];
+//    memset(file_name, 0, 128);
+//    sprintf(file_name, "opendb.log");
+//    std::ofstream out_log(file_name);
+//    QString loginfo;
+//    loginfo.sprintf("%p",QThread::currentThread());
+//    out_log << loginfo.toStdString() << endl;
+
+    Logger* logger = Baojitai::instance()->baojitai_logger();
 
     const QString driver("QSQLITE");
     if(QSqlDatabase::isDriverAvailable(driver))
     {
         db_ = QSqlDatabase::addDatabase(driver);
         db_.setDatabaseName(db_path.c_str());
+        logger->log(Logger::kLogLevelInfo, "sqlite", "open db", db_path);
         db_.open();
-        QSqlQuery query("CREATE TABLE product (id TEXT PRIMARY KEY, ng TEXT, reason TEXT, station TEXT, datatime TEXT)");
-        if(!query.isActive())
-            qWarning() << "ERROR: " << query.lastError().text();
+        QStringList tables = db_.tables();
+        if (tables.length() == 0)
+        {
+            logger->log(Logger::kLogLevelInfo, "sqlite", "create table product");
+            QSqlQuery query("CREATE TABLE product (id TEXT PRIMARY KEY, ng TEXT, reason TEXT, station TEXT, datatime TEXT)");
+            if(!query.isActive())
+            {
+                logger->log(Logger::kLogLevelInfo, "sqlite", "create table fail");
+            }
+            else
+            {
+                logger->log(Logger::kLogLevelInfo, "sqlite", "create table success");
+            }
+        }
+        else
+        {
+            logger->log(Logger::kLogLevelInfo, "sqlite", "exist table success");
+        }
     }
 }
 
 
-void ItemInformationCenter::add_item(string &id_str, string &ng_str, string &ng_reason, string &station, string &datatime) //sql增加
+void ItemInformationCenter::add_item(const string &id_str, const string &ng_str, const string &ng_reason, const string &station, const string &datatime) //sql增加
 {
-    char file_name[128];
-    memset(file_name, 0, 128);
-    sprintf(file_name, "add_item.log");
-    std::ofstream out_log(file_name);
+//    char file_name[128];
+//    memset(file_name, 0, 128);
+//    sprintf(file_name, "add_item.log");
+//    std::ofstream out_log(file_name);
 
 //    QString str = QString("insert into product(num, name, score) values('%1', '%2', '%3')").arg(num).arg(namestr).arg(score);
 //    query.prepare("INSERT INTO product VALUES (id_str, is_ng, ng_reason, station, datatime)");
@@ -241,21 +293,23 @@ void ItemInformationCenter::add_item(string &id_str, string &ng_str, string &ng_
 //    query.bindValue("station",station.c_str());
 //    query.bindValue("datatime",datatime.c_str());
 
-
+    db_.open();
     QSqlQuery query = QSqlQuery(db_);
     string command = "INSERT INTO product (id, ng, reason, station, datatime) VALUES (";
     command += "\'"+id_str+"\',\'" + ng_str + "\',\'" + ng_reason +"\',\'" + station + "\',\'" + datatime + "\'"+ ")";
     query.prepare(command.c_str());
-    out_log << command << endl;
+    qDebug() << command.c_str() << endl;
 
     if(!query.exec(command.c_str()))
     {
-        out_log << "invoke set_item" << endl;
-		set_item(id_str, ng_str, ng_reason, station, datatime);
+        QSqlError error = query.lastError();
+        qDebug() << error << endl;
+        qDebug() << "invoke set_item" << endl;
+        //set_item(id_str, ng_str, ng_reason, station, datatime);
     }
     else
     {
-        out_log << "insert success" << endl;
+        qDebug() << "insert success" << endl;
     }
 }
 

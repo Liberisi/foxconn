@@ -45,8 +45,8 @@ static const char* const kCurrentProductModelNameFileName = "current_product_mod
 static const char* const kFrameParamFileName = "frame_param";
 static const char* const kFrameDiskSVMFileName = "frame_detect_svm";
 static const char* const kFrameSideHandSVMFileName = "frame_side_hand_svm";
-static const char* const kCurrentProductNGDataBaseFileName = "item12.db";
-static const char* const kMaterialProductDataBaseFileName = "material_product.db";
+static const char* const kCurrentProductNGDataBaseFileName = "only.db";
+static const char* const kMaterialProductDataBaseFileName = "only.db";
 static const char* const kReadCodeMsleepTimeFileName = "Msleep_Time_setting";
 static const char* const kcameraexposureFileName = "Msleep_Time_setting";
 string config_dir_path();
