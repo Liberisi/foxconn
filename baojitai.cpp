@@ -1217,48 +1217,57 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
 					}
 					if (prefix_equal)
 					{
+                        find_board_code = true;
+                        tid_ = code;
+                        board_bar_code_region_ = bar_code_regions[i];
+                        break;
 
-                        bool find = ng_info->contrast_item(code);
-                        if(find)
-                        {
-                           set_plc("M32",1);
-                           if (baojitai_logger_)
-                           {
-                               baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG");
-                               emit signal_product_info(QStringLiteral("上游产品NG"));
-                           }
-                           break;
-                        }
-                        else
-                        {
-                            find_board_code = true;
-                            tid_ = code;
-                            board_bar_code_region_ = bar_code_regions[i];
-                            break;
-                        }
+//                        bool find = ng_info->contrast_item(code);
+//                        if(find)
+//                        {
+//                           set_plc("M32",1);
+//                           if (baojitai_logger_)
+//                           {
+//                               baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG");
+//                               emit signal_product_info(QStringLiteral("上游产品NG"));
+//                           }
+//                           break;
+//                        }
+//                        else
+//                        {
+//                            find_board_code = true;
+//                            tid_ = code;
+//                            board_bar_code_region_ = bar_code_regions[i];
+//                            break;
+//                        }
 					}
 				}
 				else
 				{
                     qDebug() << "not check prefix and find board code " << endl;
-                    bool find = ng_info->contrast_item(code);
-                    if(find)
-                    {
-                        set_plc("M32",1);
-                        if (baojitai_logger_)
-                        {
-                            baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG");
-                            emit signal_product_info(QStringLiteral("上游产品NG"));
-                        }
-                       break;
-                    }
-                    else
-                    {
-                        find_board_code = true;
-                        tid_ = code;
-                        board_bar_code_region_ = bar_code_regions[i];
-                        break;
-                    }
+                    find_board_code = true;
+                    tid_ = code;
+                    board_bar_code_region_ = bar_code_regions[i];
+                    break;
+//                    qDebug() << "not check prefix and find board code " << endl;
+//                    bool find = ng_info->contrast_item(code);
+//                    if(find)
+//                    {
+//                        set_plc("M32",1);
+//                        if (baojitai_logger_)
+//                        {
+//                            baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG");
+//                            emit signal_product_info(QStringLiteral("上游产品NG"));
+//                        }
+//                       break;
+//                    }
+//                    else
+//                    {
+//                        find_board_code = true;
+//                        tid_ = code;
+//                        board_bar_code_region_ = bar_code_regions[i];
+//                        break;
+//                    }
 				}
 			}
             else
@@ -1267,54 +1276,54 @@ void Baojitai::process_reading_code_image(void* data, int width, int height)
             }
 		}
 
-        if (!find_board_code)
-        {
-            bar_code_regions.clear();
-            bar_codes.clear();
-            halcontools::read_tid_bar_code(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, board_code_duration);
-            for (int i = 0; i < bar_codes.size(); ++i)
-            {
-                string code = bar_codes[i];
-                if (code.length() <= 2 )
-                    continue;
-                code = code.substr(1, code.length() - 2);
-                qDebug() << "board bar code: " << code.c_str() << endl;
-                qDebug() << "check length: " << code.length() << " vs " << param.board_code_length << endl;
-                if (code.length() == param.board_code_length)
-                {
-                    string prefix = param.board_code_prefix();
-                    qDebug() << "check length: " << param.board_code_length << endl;
-                    qDebug() << "check prefix: " << prefix.c_str() << endl;
-                    if (prefix.length() > 0 && prefix.length() <= code.length())
-                    {
-                        bool prefix_equal = true;
-                        for (int i = 0; i < prefix.length(); ++i)
-                        {
-                            if (prefix[i] != code[i])
-                            {
-                                prefix_equal = false;
-                                break;
-                            }
-                        }
-                        if (prefix_equal)
-                        {
-                            find_board_code = true;
-                            tid_ = code;
-                            board_bar_code_region_ = bar_code_regions[i];
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        qDebug() << "not check prefix and find board code " << endl;
-                        find_board_code = true;
-                        tid_ = code;
-                        board_bar_code_region_ = bar_code_regions[i];
-                        break;
-                    }
-                }
-        }
-        }
+//        if (!find_board_code)
+//        {
+//            bar_code_regions.clear();
+//            bar_codes.clear();
+//            halcontools::read_tid_bar_code(data, width, height, param.board_bar_code_type, bar_codes, bar_code_regions, board_code_duration);
+//            for (int i = 0; i < bar_codes.size(); ++i)
+//            {
+//                string code = bar_codes[i];
+//                if (code.length() <= 2 )
+//                    continue;
+//                code = code.substr(1, code.length() - 2);
+//                qDebug() << "board bar code: " << code.c_str() << endl;
+//                qDebug() << "check length: " << code.length() << " vs " << param.board_code_length << endl;
+//                if (code.length() == param.board_code_length)
+//                {
+//                    string prefix = param.board_code_prefix();
+//                    qDebug() << "check length: " << param.board_code_length << endl;
+//                    qDebug() << "check prefix: " << prefix.c_str() << endl;
+//                    if (prefix.length() > 0 && prefix.length() <= code.length())
+//                    {
+//                        bool prefix_equal = true;
+//                        for (int i = 0; i < prefix.length(); ++i)
+//                        {
+//                            if (prefix[i] != code[i])
+//                            {
+//                                prefix_equal = false;
+//                                break;
+//                            }
+//                        }
+//                        if (prefix_equal)
+//                        {
+//                            find_board_code = true;
+//                            tid_ = code;
+//                            board_bar_code_region_ = bar_code_regions[i];
+//                            break;
+//                        }
+//                    }
+//                    else
+//                    {
+//                        qDebug() << "not check prefix and find board code " << endl;
+//                        find_board_code = true;
+//                        tid_ = code;
+//                        board_bar_code_region_ = bar_code_regions[i];
+//                        break;
+//                    }
+//                }
+//        }
+//        }
     }
 
 	if (!param.use_board_code || find_board_code)
@@ -1638,13 +1647,36 @@ void Baojitai::post_process_reading_code_image()
     emit signal_reading_code_finish();
     bool close_tid = is_close_tid();
     bool close_sn = is_close_sn();
+    ItemInformationCenter* ng_item_info = ItemInformationCenter::instance();
+    bool advanced_ng_contrast_find;
     if (board_code_success_ && product_code_success_)
 	{
         if (tid_.length() > 0)
         {
-            if (baojitai_logger_)
-                baojitai_logger_->log(Logger::kLogLevelInfo, "success and tid.length > 0");
-            try_sending_tid();
+            vector<string> items_id;
+            ng_item_info->get_all_item_id(items_id);
+            for (size_t i = 0; i < items_id.size(); ++i)
+            {
+                if(items_id[i] == tid_)
+                {
+                    advanced_ng_contrast_find = true;
+                }
+            }
+            if(advanced_ng_contrast_find)
+            {
+            set_plc("M32",1);
+              if (baojitai_logger_)
+               {
+                   baojitai_logger_->log(Logger::kLogLevelInfo, "上游产品NG",tid_);
+                   emit signal_product_info(QStringLiteral("上游产品NG"));
+               }
+            }
+            else
+            {
+              if (baojitai_logger_)
+                  baojitai_logger_->log(Logger::kLogLevelInfo, "success and tid.length > 0");
+                 try_sending_tid();
+            }
         }
         else
         {
@@ -1895,11 +1927,6 @@ void Baojitai::on_camera_capture(Camera *camera, int width, int height, void *da
         }
             break;
         default:
-
-            set_plc("M45", 1);
-            if (baojitai_logger_)
-                baojitai_logger_->log(Logger::kLogLevelInfo, "读码拍照失败，硬体？故障？","重拍");
-
             break;
         }
     }

@@ -120,7 +120,7 @@ private slots:
 
     void on_toolButton_information_xlsx_clicked();
     
-    void on_pushButton_refresh_advance_ng_list_clicked();
+    //void on_pushButton_refresh_advance_ng_list_clicked();
 
     void on_toolButton_romove_advance_product_ng_clicked();
 
@@ -149,6 +149,8 @@ public slots:
     void on_signal_tid_ng(QString tid, QString reason);
     void on_signal_sn_ng(QString sn, QString reason, QString tid);
     void on_signal_fid_ng(QString fid, QString reason);
+
+    void on_pushButton_refresh_advance_ng_list_clicked();
 
 private:
     void on_camera_reading_code_buffer_changed();

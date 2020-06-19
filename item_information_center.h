@@ -47,12 +47,12 @@ public:
 
     void open(const string db_path);
     // is_ng 为 true 表示 NG
-    void add_item(const string& id_str, const string& ng_str, const string& ng_reason, const string& station, const string &datatime);
+    void add_item(const string& id_str, const string& ng_str, const string &ng_code, const string& ng_reason, const string& station, const string &datatime);
     void remove_item(const string& id_str);
     void get_all_item_id(vector<string> &items);
-    bool get_item(const string& id_str, string& is_ng, string& ng_reason , string &station, string &datatime);
-    void set_item(string& id_str, string& is_ng, string& ng_reason, string& station, string &datatime);
-    bool contrast_item(const string& id_str);
+    bool get_item(const string& id_str, string& is_ng, string &ng_code, string& ng_reason , string &station, string &datatime);
+    void set_item(string& id_str, string& is_ng, string &ng_code, string& ng_reason, string& station, string &datatime);
+    bool contrast_item(const string &id_str, string& id);
 
 protected:
     //void on_item_message(QTcpSocket* socket, QString& message);
@@ -77,6 +77,9 @@ public slots:
 private:
     QSqlDatabase db_;
 
+signals:
+
+     void signal_query_updated();
 
 protected:
 

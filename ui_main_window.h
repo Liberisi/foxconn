@@ -125,6 +125,8 @@ public:
     QTableView *tableView_advance_product_ng;
     QToolButton *toolButton_romove_advance_product_ng;
     QPushButton *pushButton_refresh_advance_ng_list;
+    QLineEdit *lineEdit_item_id;
+    QPushButton *pushButton;
     QWidget *PM;
     QVBoxLayout *verticalLayout_15;
     QWidget *widget_8;
@@ -754,6 +756,12 @@ public:
         pushButton_refresh_advance_ng_list = new QPushButton(tab);
         pushButton_refresh_advance_ng_list->setObjectName(QStringLiteral("pushButton_refresh_advance_ng_list"));
         pushButton_refresh_advance_ng_list->setGeometry(QRect(10, 490, 93, 28));
+        lineEdit_item_id = new QLineEdit(tab);
+        lineEdit_item_id->setObjectName(QStringLiteral("lineEdit_item_id"));
+        lineEdit_item_id->setGeometry(QRect(290, 490, 113, 21));
+        pushButton = new QPushButton(tab);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(430, 490, 171, 28));
         tabWidget->addTab(tab, QString());
 
         verticalLayout_5->addWidget(tabWidget);
@@ -1341,6 +1349,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "NG\350\241\250\346\240\274", Q_NULLPTR));
         toolButton_romove_advance_product_ng->setText(QApplication::translate("MainWindow", "\345\210\240\351\231\244\351\200\211\344\270\255\350\241\214", Q_NULLPTR));
         pushButton_refresh_advance_ng_list->setText(QApplication::translate("MainWindow", "\345\210\267\346\226\260", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainWindow", "Test Product Table", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "\344\270\212\346\270\270\344\272\247\345\223\201\345\233\236\346\265\201NG", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("MainWindow", "\345\236\213\345\217\267\347\256\241\347\220\206", Q_NULLPTR));
         label_11->setText(QApplication::translate("MainWindow", "\345\210\233\345\273\272\345\236\213\345\217\267", Q_NULLPTR));

@@ -328,7 +328,8 @@ MainWindow::MainWindow(QWidget *parent) :
 //    RoboticTCPServer* robotic_server = baojitai->robotic_tcp_server();
 //    if (robotic_server)
 //        ui->label_robotic_port->setText(to_string(robotic_server->listening_port()).c_str());
-//    ItemInformationCenter* item_center = baojitai->item_center();
+    ItemInformationCenter* Infor = ItemInformationCenter::instance();;
+    connect(Infor,SIGNAL(signal_query_updated()),this,SLOT(on_pushButton_refresh_advance_ng_list_clicked()), Qt::QueuedConnection);
 //    if (item_center)
 //        ui->label_advanced_device_port->setText(to_string(item_center->listening_port()).c_str());
 
@@ -362,6 +363,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->tableView_advance_product_ng->setModel(model);
     //db->close();
 
+    QTimer::singleShot(5000, this, SLOT(on_pushButton_refresh_advance_ng_list_clicked()));
 }
 
 MainWindow::~MainWindow()
@@ -2153,23 +2155,26 @@ void MainWindow::reload_advanced_device_ng_table()
         {
             string id_str = items_id[i];
             string is_ng;
+            string ng_code;
             string ng_reason;
             string station;
             string time;
-            bool find = ng_item_info->get_item(id_str, is_ng, ng_reason, station, time);
+            bool find = ng_item_info->get_item(id_str, is_ng, ng_code, ng_reason, station, time);
             if (find)
             {
                 QStandardItem* item_id = new QStandardItem(id_str.c_str());
 //                string ng_str = is_ng ? "ng" : "ok";
                 QStandardItem* item_ng = new QStandardItem(is_ng.c_str());
-                QStandardItem* item_station = new QStandardItem(station.c_str());
+                QStandardItem* item_ng_code = new QStandardItem(ng_code.c_str());
                 QStandardItem* item_ng_reason = new QStandardItem(ng_reason.c_str());
+                QStandardItem* item_station = new QStandardItem(station.c_str());
                 QStandardItem* item_time = new QStandardItem(time.c_str());
                 QList<QStandardItem*> row;
                 row.append(item_id);
                 row.append(item_ng);
-                row.append(item_station);
+                row.append(item_ng_code);
                 row.append(item_ng_reason);
+                row.append(item_station);
                 row.append(item_time);
                 advanced_device_ng_item_model_.appendRow(row);
             }
@@ -2180,9 +2185,9 @@ void MainWindow::reload_advanced_device_ng_table()
 void MainWindow::on_pushButton_refresh_advance_ng_list_clicked()
 {
     ItemInformationCenter* item_center = ItemInformationCenter::instance();
-    QString id = ui->lineEdit_item_id->text();
-    string id_str = id.toStdString();
-    item_center->add_item(id_str, "ng", "reason", "station", "20200618");
+//    QString id = ui->lineEdit_item_id->text();
+//    string id_str = id.toStdString();
+    item_center->add_item("TID物料号", "ng", "ng代码", "原因", "工站", "时间");
 
     reload_advanced_device_ng_table();
 }
